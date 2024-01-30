@@ -12,7 +12,11 @@
       <el-button type="danger">危险按钮</el-button>
     </el-row>
     <div>现在试试</div>
+<<<<<<< HEAD
     <div>我就试试，怎么了</div>
+=======
+    <div>那还是不要试了吧</div>
+>>>>>>> 0414aaa51261f303013de161d7d77503bce1c942
  </div>
  </div>
 </template>
