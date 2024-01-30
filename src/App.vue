@@ -12,6 +12,7 @@
       <el-button type="danger">危险按钮</el-button>
     </el-row>
     <div>现在试试</div>
+    <div>那还是不要试了吧</div>
  </div>
  </div>
 </template>
