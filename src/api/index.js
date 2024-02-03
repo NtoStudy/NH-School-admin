@@ -13,5 +13,3 @@ request.interceptors.response.use((res) => {
 }, (error) => {
   return Promise.reject(new Error('faile:', error))
 })
-
-export default request
