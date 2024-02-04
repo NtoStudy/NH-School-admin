@@ -40,9 +40,6 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
     - 一方面是对查看自己的学期成绩如何
 
-- NanSystemMaintenance 系统维护
-
-    - 这里就随便写一点东西进去
 
 - NanIdeologicalAndPoliticalTeam 思政队伍
 

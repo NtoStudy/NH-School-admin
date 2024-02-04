@@ -12,47 +12,93 @@ export const AsideRoutes = [
     children: [
       {
         path: '/Home',
-        component: () => import('@/views/NanHome')
-      },
-      {
-        path: '/NanSystemMaintenance',
-        component: () => import('@/views/NanSystemMaintenance')
+        name: 'home',
+        component: () => import('@/views/NanHome'),
+        meta: {
+          title: '首页',
+          icon: '../../首页.png'
+        }
       },
       {
         path: '/NanAssessmentManagement',
-        component: () => import('@/views/NanAssessmentManagement')
+        name: 'NanAssessmentManagement',
+        component: () => import('@/views/NanAssessmentManagement'),
+        meta: {
+          title: '考核管理',
+          icon: '../../考核管理.png'
+        }
       },
       {
         path: '/NanIdeologicalAndPoliticalTeam',
-        component: () => import('@/views/NanIdeologicalAndPoliticalTeam')
+        name: 'NanIdeologicalAndPoliticalTeam',
+        component: () => import('@/views/NanIdeologicalAndPoliticalTeam'),
+        meta: {
+          title: '思政队伍',
+          icon: '../../思政队伍.png'
+        }
       },
       {
         path: '/NanPersonalInformation',
-        component: () => import('@/views/NanPersonalInformation')
+        name: 'NanPersonalInformation',
+        component: () => import('@/views/NanPersonalInformation'),
+        meta: {
+          title: '个人信息',
+          icon: '../../个人信息.png'
+        }
       },
       {
         path: '/NanStudentFinancialAid',
-        component: () => import('@/views/NanStudentFinancialAid')
+        name: 'NanStudentFinancialAid',
+        component: () => import('@/views/NanStudentFinancialAid'),
+        meta: {
+          title: '学生资助',
+          icon: '../../学生资助.png'
+        }
       },
       {
         path: '/NanAwardsAndAwards',
-        component: () => import('@/views/NanAwardsAndAwards')
+        name: 'NanAwardsAndAwards',
+        component: () => import('@/views/NanAwardsAndAwards'),
+        meta: {
+          title: '评奖评优',
+          icon: '../../评奖评优.png'
+        }
       },
       {
         path: '/NanWorkStudy',
-        component: () => import('@/views/NanWorkStudy')
+        name: 'NanWorkStudy',
+        component: () => import('@/views/NanWorkStudy'),
+        meta: {
+          title: '勤工俭学',
+          icon: '../../勤工俭学.png'
+        }
       },
       {
         path: '/NanDisciplinarySanctions',
-        component: () => import('@/views/NanDisciplinarySanctions')
+        name: 'NanDisciplinarySanctions',
+        component: () => import('@/views/NanDisciplinarySanctions'),
+        meta: {
+          title: '违纪处分',
+          icon: '../../违纪处分.png'
+        }
       },
       {
         path: '/NanCondominiumManagement',
-        component: () => import('@/views/NanCondominiumManagement')
+        name: 'NanCondominiumManagement',
+        component: () => import('@/views/NanCondominiumManagement'),
+        meta: {
+          title: '公寓管理',
+          icon: '../../公寓管理.png'
+        }
       },
       {
         path: '/NanEverydayMatters',
-        component: () => import('@/views/NanEverydayMatters')
+        name: 'NanEverydayMatters',
+        component: () => import('@/views/NanEverydayMatters'),
+        meta: {
+          title: '日常事务',
+          icon: '../../日常事务.png'
+        }
       }
     ]
   }
