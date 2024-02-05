@@ -1,8 +1,21 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Layout from '@/Layout'
-
 Vue.use(VueRouter)
+
+// 解决编程式路由跳转到当前路由抛出 NavigationDuplicated 的警告错误
+const originPush = VueRouter.prototype.push
+const originReplace = VueRouter.prototype.replace
+VueRouter.prototype.push = function (location, resolve, reject) {
+  if (resolve && reject) {
+    originPush.call(this, location, resolve, reject)
+  } else {
+    originPush.call(this, location, () => { }, () => { })
+  }
+}
+VueRouter.prototype.replace = function (location, resolve, reject) {
+  (resolve && reject) ? originReplace.call(this, location, resolve, reject) : originReplace.call(this, location, () => { }, () => { })
+}
 
 export const AsideRoutes = [
   {
