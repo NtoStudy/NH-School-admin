@@ -16,7 +16,7 @@ export const AsideRoutes = [
         component: () => import('@/views/NanHome'),
         meta: {
           title: '首页',
-          icon: '../../首页.png'
+          icon: { url: require('../assets/首页.png') }
         }
       },
       {
@@ -25,7 +25,7 @@ export const AsideRoutes = [
         component: () => import('@/views/NanAssessmentManagement'),
         meta: {
           title: '考核管理',
-          icon: '../../考核管理.png'
+          icon: { url: require('../assets/考核管理.png') }
         }
       },
       {
@@ -34,7 +34,7 @@ export const AsideRoutes = [
         component: () => import('@/views/NanIdeologicalAndPoliticalTeam'),
         meta: {
           title: '思政队伍',
-          icon: '../../思政队伍.png'
+          icon: { url: require('../assets/思政队伍.png') }
         }
       },
       {
@@ -43,7 +43,7 @@ export const AsideRoutes = [
         component: () => import('@/views/NanPersonalInformation'),
         meta: {
           title: '个人信息',
-          icon: '../../个人信息.png'
+          icon: { url: require('../assets/个人信息.png') }
         }
       },
       {
@@ -52,7 +52,7 @@ export const AsideRoutes = [
         component: () => import('@/views/NanStudentFinancialAid'),
         meta: {
           title: '学生资助',
-          icon: '../../学生资助.png'
+          icon: { url: require('../assets/学生资助.png') }
         }
       },
       {
@@ -61,7 +61,7 @@ export const AsideRoutes = [
         component: () => import('@/views/NanAwardsAndAwards'),
         meta: {
           title: '评奖评优',
-          icon: '../../评奖评优.png'
+          icon: { url: require('../assets/评奖评优.png') }
         }
       },
       {
@@ -70,7 +70,7 @@ export const AsideRoutes = [
         component: () => import('@/views/NanWorkStudy'),
         meta: {
           title: '勤工俭学',
-          icon: '../../勤工俭学.png'
+          icon: { url: require('../assets/勤工俭学.png') }
         }
       },
       {
@@ -79,7 +79,7 @@ export const AsideRoutes = [
         component: () => import('@/views/NanDisciplinarySanctions'),
         meta: {
           title: '违纪处分',
-          icon: '../../违纪处分.png'
+          icon: { url: require('../assets/违纪处分.png') }
         }
       },
       {
@@ -88,7 +88,7 @@ export const AsideRoutes = [
         component: () => import('@/views/NanCondominiumManagement'),
         meta: {
           title: '公寓管理',
-          icon: '../../公寓管理.png'
+          icon: { url: require('../assets/公寓管理.png') }
         }
       },
       {
@@ -97,7 +97,7 @@ export const AsideRoutes = [
         component: () => import('@/views/NanEverydayMatters'),
         meta: {
           title: '日常事务',
-          icon: '../../日常事务.png'
+          icon: { url: require('../assets/日常事务.png') }
         }
       }
     ]
