@@ -1,5 +1,6 @@
 <template>
-  <div>勤工俭学</div>
+  <div>
+  </div>
 </template>
 
 <script>

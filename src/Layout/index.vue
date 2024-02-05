@@ -41,7 +41,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-::v-deep .el-container {
+.el-container {
   width: 100%;
   height: 100%;
   .el-aside {
