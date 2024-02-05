@@ -10,12 +10,12 @@
                   <span class="div-span_title">通知通告</span>
                 </div>
                 <div class="el-header-div_more">
-                  <span @click="dialogVisible = true">更多</span>
+                  <span @click="CLICKLOOKMORE">更多</span>
                   <i class="el-icon-d-arrow-right"></i>
                 </div>
             </el-header>
             <el-main>
-              <template v-for="item in itemList">
+              <template v-for="item in homeNotices">
                 <ListItem :item="item" :showTop="item.showTop" :key="item.id"></ListItem>
               </template>
             </el-main>
@@ -34,7 +34,7 @@
       :visible.sync="dialogVisible"
       width="70%"
     >
-      <el-table :data="gridData" border height="50vh">
+      <el-table :data="allNotices" border height="50vh">
         <el-table-column property="context" label="标题" width="1069">
           <template slot-scope="scope">
             <div class="el-table-column-div_box">
@@ -61,17 +61,36 @@
 
 <script>
 import ListItem from './list-item'
+import { mapState } from 'vuex'
 export default {
   name: 'NanHome',
   data () {
     return {
-      itemList: [],
       dialogVisible: false,
       gridData: []
     }
   },
   components: {
     ListItem
+  },
+  created () {
+    this.$store.dispatch('home/fetchHomeNotices')
+  },
+  computed: {
+    ...mapState('home', {
+      homeNotices: state => state.homeNotices,
+      allNotices: state => state.allNotices
+    })
+  },
+  methods: {
+    async CLICKLOOKMORE () {
+      this.dialogVisible = true
+      try {
+        await this.$store.dispatch('home/fetchAllNotices')
+      } catch (error) {
+        console.log(error)
+      }
+    }
   }
 }
 </script>

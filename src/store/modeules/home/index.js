@@ -1,20 +1,31 @@
 import { getHomeNotices, getAllNotices } from '@/api'
-const state = {}
+const state = {
+  homeNotices: [],
+  allNotices: []
+}
 const mutations = {
-  FETCHHOMENOTICES () {},
-  GETALLNOTICES () {}
+  FETCHHOMENOTICES (state, data) {
+    state.homeNotices = data
+  },
+  FETCHALLNOTICES (state, data) {
+    state.allNotices = data
+  }
 }
 const actions = {
-  async FETCHHomeNotices ({ commit }) {
-    await getHomeNotices()
+  async fetchHomeNotices ({ commit }) {
+    const res = await getHomeNotices()
+    commit('FETCHHOMENOTICES', res.data)
   },
   async fetchAllNotices ({ commit }) {
-    await getAllNotices()
+    const res = await getAllNotices()
+    console.log(res)
+    commit('FETCHALLNOTICES', res.data)
   }
 }
 const getters = {}
 
 export default {
+  namespaced: true,
   state,
   mutations,
   actions,
