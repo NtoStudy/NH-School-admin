@@ -32,8 +32,20 @@
     <!-- 弹出层 -->
     <el-dialog
       :visible.sync="dialogVisible"
-      width="30%"
+      width="70%"
     >
+      <el-table :data="gridData" border height="50vh">
+        <el-table-column property="context" label="标题" width="1069">
+          <template slot-scope="scope">
+            <div class="el-table-column-div_box">
+              <img v-if="scope.row.showTop" src="../../assets/置顶.png" class="div-img_top">
+              <p class="div-p_context">{{ scope.row.context }}</p>
+            </div>
+          </template>
+        </el-table-column>
+        <el-table-column property="time" label="发布时间" width="200"></el-table-column>
+      </el-table>
+      <!-- 分页器 -->
     </el-dialog>
   </div>
 </template>
@@ -52,7 +64,29 @@ export default {
         { id: 5, context: '学工系统暑期留校申请说明', showTop: false, time: '2023.08.05' },
         { id: 6, context: '如何进行本学年的学费缴费', showTop: false, time: '2023.07.05' }
       ],
-      dialogVisible: false
+      dialogVisible: false,
+      gridData: [
+        { id: 1, context: '一站式学生社区服务大厅首批入驻办理事项', showTop: true, time: '2024.02.05' },
+        { id: 2, context: '辅导员考核学生评分操作步骤说明', showTop: true, time: '2023.12.30' },
+        { id: 3, context: '助学贷款学工系统提交步骤', showTop: false, time: '2024.01.03' },
+        { id: 4, context: '综合测评学生自行提交操作', showTop: false, time: '2023.12.31' },
+        { id: 5, context: '学工系统暑期留校申请说明', showTop: false, time: '2023.08.05' },
+        { id: 6, context: '如何进行本学年的学费缴费', showTop: false, time: '2023.07.05' },
+        { id: 7, context: '如何进行本学年的学费缴费', showTop: false, time: '2023.07.05' },
+        { id: 8, context: '如何进行本学年的学费缴费', showTop: false, time: '2023.07.05' },
+        { id: 9, context: '如何进行本学年的学费缴费', showTop: false, time: '2023.07.05' },
+        { id: 10, context: '如何进行本学年的学费缴费', showTop: false, time: '2023.07.05' },
+        { id: 11, context: '如何进行本学年的学费缴费', showTop: false, time: '2023.07.05' },
+        { id: 12, context: '如何进行本学年的学费缴费', showTop: false, time: '2023.07.05' },
+        { id: 13, context: '如何进行本学年的学费缴费', showTop: false, time: '2023.07.05' },
+        { id: 14, context: '如何进行本学年的学费缴费', showTop: false, time: '2023.07.05' },
+        { id: 15, context: '如何进行本学年的学费缴费', showTop: false, time: '2023.07.05' },
+        { id: 16, context: '如何进行本学年的学费缴费', showTop: false, time: '2023.07.05' },
+        { id: 17, context: '如何进行本学年的学费缴费', showTop: false, time: '2023.07.05' },
+        { id: 18, context: '如何进行本学年的学费缴费', showTop: false, time: '2023.07.05' },
+        { id: 19, context: '如何进行本学年的学费缴费', showTop: false, time: '2023.07.05' },
+        { id: 20, context: '如何进行本学年的学费缴费', showTop: false, time: '2023.07.05' }
+      ]
     }
   },
   components: {
@@ -118,5 +152,41 @@ export default {
          }
       }
     }
+}
+.el-dialog {
+  .el-dialog__body {
+    .el-table  {
+      .el-table__row {
+        .el-table-column-div_box {
+          display: flex;
+          align-items: center;
+          .div-img_top {
+            margin-right: 10px;
+            height: 20px;
+            margin-top: 3px;
+          }
+          .div-p_context {
+              text-decoration: underline;
+              color: #49BEA4;
+              &:hover {
+                color: #000;
+                cursor: pointer;
+              }
+          }
+        }
+      }
+      ::v-deep .el-table__header {
+        .el-table__cell {
+          background-color: #f7f5f5;
+          border-bottom: 1px solid #49BEA4;
+        }
+      }
+      ::v-deep .el-table__row {
+        .el-table__cell {
+          padding: 5px 0;
+        }
+      }
+    }
   }
+}
 </style>
