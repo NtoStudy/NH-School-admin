@@ -65,37 +65,9 @@ export default {
   name: 'NanHome',
   data () {
     return {
-      itemList: [
-        { id: 1, context: '一站式学生社区服务大厅首批入驻办理事项', showTop: true, time: '2024.02.05' },
-        { id: 2, context: '辅导员考核学生评分操作步骤说明', showTop: true, time: '2023.12.30' },
-        { id: 3, context: '助学贷款学工系统提交步骤', showTop: false, time: '2024.01.03' },
-        { id: 4, context: '综合测评学生自行提交操作', showTop: false, time: '2023.12.31' },
-        { id: 5, context: '学工系统暑期留校申请说明', showTop: false, time: '2023.08.05' },
-        { id: 6, context: '如何进行本学年的学费缴费', showTop: false, time: '2023.07.05' }
-      ],
+      itemList: [],
       dialogVisible: false,
-      gridData: [
-        { id: 1, context: '一站式学生社区服务大厅首批入驻办理事项', showTop: true, time: '2024.02.05' },
-        { id: 2, context: '辅导员考核学生评分操作步骤说明', showTop: true, time: '2023.12.30' },
-        { id: 3, context: '助学贷款学工系统提交步骤', showTop: false, time: '2024.01.03' },
-        { id: 4, context: '综合测评学生自行提交操作', showTop: false, time: '2023.12.31' },
-        { id: 5, context: '学工系统暑期留校申请说明', showTop: false, time: '2023.08.05' },
-        { id: 6, context: '如何进行本学年的学费缴费', showTop: false, time: '2023.07.05' },
-        { id: 7, context: '如何进行本学年的学费缴费', showTop: false, time: '2023.07.05' },
-        { id: 8, context: '如何进行本学年的学费缴费', showTop: false, time: '2023.07.05' },
-        { id: 9, context: '如何进行本学年的学费缴费', showTop: false, time: '2023.07.05' },
-        { id: 10, context: '如何进行本学年的学费缴费', showTop: false, time: '2023.07.05' },
-        { id: 11, context: '如何进行本学年的学费缴费', showTop: false, time: '2023.07.05' },
-        { id: 12, context: '如何进行本学年的学费缴费', showTop: false, time: '2023.07.05' },
-        { id: 13, context: '如何进行本学年的学费缴费', showTop: false, time: '2023.07.05' },
-        { id: 14, context: '如何进行本学年的学费缴费', showTop: false, time: '2023.07.05' },
-        { id: 15, context: '如何进行本学年的学费缴费', showTop: false, time: '2023.07.05' },
-        { id: 16, context: '如何进行本学年的学费缴费', showTop: false, time: '2023.07.05' },
-        { id: 17, context: '如何进行本学年的学费缴费', showTop: false, time: '2023.07.05' },
-        { id: 18, context: '如何进行本学年的学费缴费', showTop: false, time: '2023.07.05' },
-        { id: 19, context: '如何进行本学年的学费缴费', showTop: false, time: '2023.07.05' },
-        { id: 20, context: '如何进行本学年的学费缴费', showTop: false, time: '2023.07.05' }
-      ]
+      gridData: []
     }
   },
   components: {

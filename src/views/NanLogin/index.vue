@@ -46,7 +46,8 @@ export default {
         userCount: [{ required: true, message: '请输入学号或职工编号', trigger: 'blur' }],
         password: [{ required: true, message: '请输入密码', trigger: 'blur' }, { min: 10, max: 16, message: '密码的长度应该为10~16位之间', trigger: 'blur' }],
         isAgree: [{ validator: isAgree, message: '必须勾选用户使用协议', trigger: 'change' }]
-      }
+      },
+      dialogVisible: false
     }
   },
   methods: {
