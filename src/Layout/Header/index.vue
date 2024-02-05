@@ -10,14 +10,41 @@
       <span class="right-span_line">|</span>
       <img class="right-img_message" src="../../assets/村委信箱.png" alt="">
       <img class="right-img_setting" src="../../assets/设置.png" alt="">
-      <img class="right-img_screen" src="../../assets/全屏.png" alt="">
+      <el-tooltip class="item" effect="dark" :content="isFullscreen ? '取消全屏' : '全屏'" placement="bottom">
+        <img class="right-img_screen" :src="isFullscreen ? require('../../assets/退出全屏.png') : require('../../assets/全屏.png')" @click="toggleFullscreen">
+      </el-tooltip>
     </div>
   </div>
 </template>
 
 <script>
+import screenfull from 'screenfull'
 export default {
-  name: 'LayoutHeader'
+  name: 'LayoutHeader',
+  data () {
+    return {
+      isFullscreen: false
+    }
+  },
+  methods: {
+    toggleFullscreen () {
+      screenfull.toggle()
+    }
+  },
+  watch: {
+    isFullscreen (newVal) {
+      if (newVal) {
+        this.$message.once({ message: '全屏模式', type: 'success' })
+      } else {
+        this.$message.once({ message: '退出全屏', type: 'warning' })
+      }
+    }
+  },
+  mounted () {
+    screenfull.on('change', () => {
+      this.isFullscreen = screenfull.isFullscreen
+    })
+  }
 }
 </script>
 

@@ -18,7 +18,6 @@ const actions = {
   },
   async fetchAllNotices ({ commit }) {
     const res = await getAllNotices()
-    console.log(res)
     commit('FETCHALLNOTICES', res.data)
   }
 }

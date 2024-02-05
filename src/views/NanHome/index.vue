@@ -73,8 +73,8 @@ export default {
   components: {
     ListItem
   },
-  created () {
-    this.$store.dispatch('home/fetchHomeNotices')
+  async created () {
+    await this.$store.dispatch('home/fetchHomeNotices')
   },
   computed: {
     ...mapState('home', {
