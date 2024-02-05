@@ -29,7 +29,7 @@ export default {
   justify-content: space-between;
   .LayoutHeader-container-left {
     display: flex;
-    ::v-deep .el-button {
+    .el-button {
       color: #86888b;
       background-color: #fff;
       display: flex;
@@ -40,9 +40,9 @@ export default {
       width: 40px;
       height: 40px;
     }
-    ::v-deep .el-input {
+    .el-input {
       width: 200px;
-      .el-input__inner {
+      ::v-deep .el-input__inner {
         background-color: #fff;
         border: none;
       }

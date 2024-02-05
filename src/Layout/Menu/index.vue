@@ -33,7 +33,7 @@ export default {
 <style lang="scss" scoped>
 .LayoutMenu-container {
   margin-top: 10px;
-  ::v-deep .el-menu {
+  .el-menu {
     border-right: none;
     .el-menu-item {
       .el-menu-item-img_menuIcon {
