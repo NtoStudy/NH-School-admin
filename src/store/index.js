@@ -1,13 +1,16 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import getters from './getters'
-import indexPage from './modeules/indexPage'
-
+import home from './modeules/home'
+import setting from './modeules/setting'
+import user from './modeules/user'
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
   modules: {
-    indexPage
+    home,
+    setting,
+    user
   },
   getters
 })
