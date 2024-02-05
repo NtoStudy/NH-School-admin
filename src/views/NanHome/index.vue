@@ -244,12 +244,15 @@ export default {
         }
       }
     }
-   ::v-deep .el-scrollbar__view {
+  }
+}
+</style>
+
+<style lang="scss">
+  .el-scrollbar__view {
     .el-select-dropdown__item.selected {
-        color: #000;
+        color: #49BEA4;
         font-weight: 700;
     }
    }
-  }
-}
 </style>
