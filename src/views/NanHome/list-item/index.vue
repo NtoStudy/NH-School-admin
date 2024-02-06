@@ -1,5 +1,5 @@
 <template>
-  <div class="list-item">
+  <div class="list-item" @click="HANDLEEVENT">
     <el-row :gutter="5">
       <el-col :span="2" v-if="showTop">
         <div class="grid-content left">
@@ -31,6 +31,11 @@ export default {
     item: {
       type: Object,
       default: () => {}
+    }
+  },
+  methods: {
+    HANDLEEVENT () {
+      this.$emit('custom-event', true)
     }
   }
 }
@@ -66,7 +71,7 @@ export default {
       }
       .right {
         position: fixed;
-        right: 10px;
+        right: 20px;
         .div-div_time {
           color: #ccc;
         }

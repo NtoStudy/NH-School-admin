@@ -16,7 +16,7 @@
             </el-header>
             <el-main>
               <template v-for="item in homeNotices">
-                <ListItem :item="item" :showTop="item.showTop" :key="item.id"></ListItem>
+                <ListItem @custom-event="HANDLEEVENT" :item="item" :showTop="item.showTop" :key="item.id"></ListItem>
               </template>
             </el-main>
           </el-container>
@@ -34,10 +34,11 @@
       :visible.sync="dialogVisible"
       width="70%"
     >
+    <table-header></table-header>
       <el-table :data="allNotices" border height="50vh">
         <el-table-column property="context" label="标题" width="1069">
           <template slot-scope="scope">
-            <div class="el-table-column-div_box">
+            <div class="el-table-column-div_box" @click="TOTHISNOTICEDETAILD">
               <img v-if="scope.row.showTop" src="../../assets/置顶.png" class="div-img_top">
               <p class="div-p_context">{{ scope.row.context }}</p>
             </div>
@@ -48,24 +49,34 @@
       <!-- 分页器 -->
       <paginator-box></paginator-box>
     </el-dialog>
+    <dialog-artical v-model="innerVisible"></dialog-artical>
   </div>
 </template>
 
 <script>
 import ListItem from './list-item'
 import PaginatorBox from './paginator-box'
+import TableHeader from './table-header'
+import DialogArtical from './dialog-artical'
 import { mapState } from 'vuex'
+
 export default {
   name: 'NanHome',
   data () {
     return {
       dialogVisible: false,
-      gridData: []
+      innerVisible: false,
+      formInline: {
+        user: '',
+        region: ''
+      }
     }
   },
   components: {
     ListItem,
-    PaginatorBox
+    PaginatorBox,
+    TableHeader,
+    DialogArtical
   },
   async created () {
     await this.$store.dispatch('home/fetchHomeNotices')
@@ -84,6 +95,12 @@ export default {
       } catch (error) {
         console.log(error)
       }
+    },
+    TOTHISNOTICEDETAILD () {
+      this.innerVisible = true
+    },
+    HANDLEEVENT (value) {
+      this.innerVisible = value
     }
   }
 }
