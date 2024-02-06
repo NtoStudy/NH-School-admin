@@ -46,21 +46,14 @@
         <el-table-column property="time" label="发布时间" width="200"></el-table-column>
       </el-table>
       <!-- 分页器 -->
-      <el-pagination
-        @size-change="handleSizeChange"
-        @current-change="handleCurrentChange"
-        :current-page="currentPage4"
-        :page-sizes="[100, 200, 300, 400]"
-        :page-size="100"
-        layout="total, sizes, prev, pager, next, jumper"
-        :total="400">
-      </el-pagination>
+      <paginator-box></paginator-box>
     </el-dialog>
   </div>
 </template>
 
 <script>
 import ListItem from './list-item'
+import PaginatorBox from './paginator-box'
 import { mapState } from 'vuex'
 export default {
   name: 'NanHome',
@@ -71,7 +64,8 @@ export default {
     }
   },
   components: {
-    ListItem
+    ListItem,
+    PaginatorBox
   },
   async created () {
     await this.$store.dispatch('home/fetchHomeNotices')
@@ -188,62 +182,5 @@ export default {
       }
     }
   }
-  .el-pagination {
-    border: {
-      left: 1px solid #EBEEF5;
-      right: 1px solid #EBEEF5;
-      bottom: 1px solid #EBEEF5;
-    }
-    padding: 5px;
-    display: flex;
-    justify-content: flex-end;
-    ::v-deep .el-pager li.active {
-      color: #49BEA4;
-    }
-    ::v-deep .el-pager li:hover {
-      color: #49BEA4;
-    }
-    ::v-deep .el-pagination__jump {
-      .el-input {
-        .el-input__inner {
-          &:hover {
-            border-color:#ccc;
-          }
-          &:focus {
-            border-color: #49BEA4;
-          }
-        }
-      }
-    }
-    .btn-next,.btn-prev {
-      &:hover {
-        color: #49BEA4;
-      }
-    }
-    ::v-deep .el-select {
-      .el-input {
-        .el-input__inner {
-          &:hover {
-            border-color:#ccc;
-          }
-          &:focus {
-            border-color: #49BEA4;
-          }
-            &:not(:focus) {
-              border-color: #DCDFE6;
-            }
-        }
-      }
-    }
-  }
 }
-</style>
-
-<style lang="scss">
-  .el-scrollbar__view {
-    .el-select-dropdown__item.selected {
-        color: #49BEA4;
-        font-weight: 700;
-    }
-   }
 </style>
