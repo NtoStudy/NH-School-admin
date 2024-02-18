@@ -1,15 +1,16 @@
 <template>
   <div class="Nan-container">
     <el-container>
-      <!-- 80 -->
-      <el-aside width="200px">
+      <el-aside :width="$store.state.setting.asideWidth">
         <div class="el-aside-div_header">
           <img class="div-img_logo" src="../assets/logo.png" alt="">
-          <div class="div-div_title">智慧校园</div>
+          <div v-if="!$store.state.setting.isCollapse" class="div-div_title">智慧校园</div>
         </div>
         <LayoutMenu></LayoutMenu>
         <div class="el-aside-div_footer">
-          <i class="el-icon-s-fold"></i>
+          <NanSwitch v-model="isNight" active-color="#2F2F2F" inactive-color="#ddd" openText="🌙" closeText="☀️"
+        size="small"></NanSwitch>
+          <i @click="i_CHANGEFLOD" :class="'el-icon-s-' + $store.state.setting.isFold"></i>
         </div>
       </el-aside>
       <el-container class="right_main">
@@ -27,15 +28,23 @@
 <script>
 import LayoutHeader from './Header'
 import LayoutMenu from './Menu'
+import NanSwitch from '@/components/NanSwitch'
 export default {
   name: 'NanLayout',
   data () {
     return {
+      isNight: true
     }
   },
   components: {
     LayoutHeader,
-    LayoutMenu
+    LayoutMenu,
+    NanSwitch
+  },
+  methods: {
+    i_CHANGEFLOD () {
+      this.$store.commit('setting/theSidebarCollapses')
+    }
   }
 }
 </script>
@@ -81,12 +90,18 @@ export default {
       }
     }
     .el-aside-div_footer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
       bottom: 30px;
       .el-icon-s-fold {
-        font-size: 20px;
+        font-size: 60px;
+      }
+      .el-icon-s-unfold {
+        font-size: 60px;
       }
     }
   }
