@@ -37,7 +37,7 @@
     <table-header></table-header>
       <el-table :data="allNotices" border height="50vh">
         <el-table-column property="context" label="标题" width="1069">
-          <template slot-scope="scope">
+          <template v-slot="scope">
             <div class="el-table-column-div_box" @click="TOTHISNOTICEDETAILD">
               <img v-if="scope.row.showTop" src="../../assets/置顶.png" class="div-img_top">
               <p class="div-p_context">{{ scope.row.context }}</p>
@@ -49,7 +49,9 @@
       <!-- 分页器 -->
       <paginator-box></paginator-box>
     </el-dialog>
+    <!--文章展示弹层组件 -->
     <dialog-artical v-model="innerVisible"></dialog-artical>
+    <button @click="innerVisible = !innerVisible">点击展示弹层</button>
   </div>
 </template>
 
@@ -57,7 +59,7 @@
 import ListItem from './list-item'
 import PaginatorBox from './paginator-box'
 import TableHeader from './table-header'
-import DialogArtical from './dialog-artical'
+import DialogArtical from './dialog-article'
 import { mapState } from 'vuex'
 
 export default {
