@@ -1,7 +1,7 @@
 <template>
   <div class="dialog-article">
     <el-dialog :visible.sync="visibleValue" v-bind="$attrs" @close="handleClose">
-      <template slot="title">
+      <template v-slot:title>
         <div class="articleAttribute">
           <p class="articleAttribute_title">胡常常</p>
           <ul class="articleAttribute_postData">
@@ -20,7 +20,7 @@
       <div class="articleContent">
         <slot>内容</slot>
       </div>
-      <template slot="footer">
+      <template v-slot:footer>
         <button @click="handleClose">关闭</button>
       </template>
     </el-dialog>

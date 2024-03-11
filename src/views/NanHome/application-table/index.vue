@@ -54,6 +54,10 @@ export default {
       label="申请日期"
       sortable
       width="180">
+      <template v-slot="scope">
+        <i class="el-icon-time"></i>
+        <span style="margin-left: 10px">{{ scope.row.date }}</span>
+      </template>
     </el-table-column>
     <el-table-column
       prop="name"
@@ -64,6 +68,12 @@ export default {
       label="处理状态"
       width="85"
       :formatter="formatter">
+      <template v-slot="scope">
+          <!--
+               type:  danger 未通过
+           -->
+          <el-tag size="medium">{{ scope.row.address }}</el-tag>
+      </template>
     </el-table-column>
   </el-table>
 </template>
