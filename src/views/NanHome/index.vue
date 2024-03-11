@@ -5,7 +5,7 @@
         <card-container>
           <template v-slot:header>
               <div class="el-header-div_left">
-                <svg-icon iconClass="notice"></svg-icon>
+                <svg-icon iconClass="notice" :svgStyle="{ marginRight: '10px' }"></svg-icon>
                 <span class="div-span_title">通知通告</span>
               </div>
               <div class="el-header-div_more">
@@ -24,7 +24,7 @@
         <card-container>
           <template v-slot:header>
             <div class="el-header-div_left">
-              <svg-icon iconClass="download"></svg-icon>
+              <svg-icon iconClass="download" :svgStyle="{ marginRight: '10px'}"></svg-icon>
               <span class="div-span_title">文件下载</span>
             </div>
             <div class="el-header-div_more">
@@ -32,13 +32,28 @@
               <i class="el-icon-d-arrow-right"></i>
             </div>
           </template>
-          <template v-slot:main></template>
+          <template v-slot:main>
+            <template v-for="item in homeDownLoad">
+              <ListItem :item="item" :key="item.id"></ListItem>
+            </template>
+          </template>
         </card-container>
       </el-carousel-item>
       <el-carousel-item class="el-carousel-item_application">
         <card-container>
-          <template v-slot:header></template>
-          <template v-slot:main></template>
+          <template v-slot:header>
+            <div class="el-header-div_left">
+              <svg-icon iconClass="application" :svgStyle="{ marginRight: '10px'}"></svg-icon>
+              <span class="div-span_title">事务申请栏</span>
+            </div>
+            <div class="el-header-div_more">
+              <span @click="CLICKLOOKMORE">更多</span>
+              <i class="el-icon-d-arrow-right"></i>
+            </div>
+          </template>
+          <template v-slot:main>
+            <ApplicationTable></ApplicationTable>
+          </template>
         </card-container>
       </el-carousel-item>
     </el-carousel>
@@ -68,6 +83,7 @@
 </template>
 
 <script>
+import ApplicationTable from './application-table'
 import ListItem from './list-item'
 import CardContainer from './card-container'
 import PaginatorBox from './paginator-box'
@@ -92,15 +108,18 @@ export default {
     ListItem,
     PaginatorBox,
     TableHeader,
-    DialogArticle
+    DialogArticle,
+    ApplicationTable
   },
   async created () {
     await this.$store.dispatch('home/fetchHomeNotices')
+    await this.$store.dispatch('home/fetchHomeDownload')
   },
   computed: {
     ...mapState('home', {
       homeNotices: state => state.homeNotices,
-      allNotices: state => state.allNotices
+      allNotices: state => state.allNotices,
+      homeDownLoad: state => state.homeDownLoad
     })
   },
   methods: {
@@ -129,18 +148,14 @@ export default {
         .el-carousel__item {
             background-color: #fff;
          }
-         @mixin header {
+         @mixin header($color) {
            .el-header-div_left {
              display: flex;
              align-items: center;
-             .div-img_logo {
-               width: 40px;
-               margin-right: 10px;
-             }
              .div-span_title {
                position: relative;
                font-size: 13px;
-               color: #49BEA4;
+               color: $color;
                white-space: nowrap;
                &::after {
                  position: absolute;
@@ -149,25 +164,26 @@ export default {
                  content: '';
                  width: 70px;
                  height: 2px;
-                 background-color: #49BEA4;
+                 background-color: $color;
                }
              }
            }
            .el-header-div_more {
              color: #ccc;
              &:hover {
-               color: #49BEA4;
+               color: $color;
              }
            }
          }
          .el-carousel-item_notices {
-           @include header;
+           @include header(#49BEA4);
          }
          .el-carousel-item_download {
-           @include header;
+           @include header(#FBB64D);
+
          }
          .el-carousel-item_application {
-           @include header;
+           @include header(#A7458D);
          }
       }
     }

@@ -1,7 +1,8 @@
-import { getHomeNotices, getAllNotices } from '@/api'
+import { getHomeNotices, getAllNotices, getHomeDownload } from '@/api'
 const state = {
   homeNotices: [],
-  allNotices: []
+  allNotices: [],
+  homeDownLoad: []
 }
 const mutations = {
   FETCHHOMENOTICES (state, data) {
@@ -9,6 +10,9 @@ const mutations = {
   },
   FETCHALLNOTICES (state, data) {
     state.allNotices = data
+  },
+  FETCHHOMEDOWNLOAD (state, data) {
+    state.homeDownLoad = data
   }
 }
 const actions = {
@@ -19,6 +23,10 @@ const actions = {
   async fetchAllNotices ({ commit }) {
     const res = await getAllNotices()
     commit('FETCHALLNOTICES', res.data)
+  },
+  async fetchHomeDownload ({ commit }) {
+    const res = await getHomeDownload()
+    commit('FETCHHOMEDOWNLOAD', res.data)
   }
 }
 const getters = {}

@@ -19,4 +19,7 @@ request.interceptors.response.use((res) => {
 })
 
 export const getHomeNotices = () => request({ url: '/notices' })
+
 export const getAllNotices = () => request({ url: '/allNoticesList' })
+
+export const getHomeDownload = () => request({ url: '/homeDownload' })

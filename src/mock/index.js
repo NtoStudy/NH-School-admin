@@ -46,6 +46,17 @@ Mock.mock('/api/allNoticesList', 'get', () => {
   }
 })
 
+Mock.mock('/api/homeDownload', 'get', () => {
+  return {
+    data: [
+      { id: 1, context: '假期留校家长意见书及安全责任协议', time: '2024.02.05' },
+      { id: 2, context: '国开行生源地贷款续贷证明', time: '2023.12.30' },
+      { id: 3, context: '学籍处理相关表格', time: '2024.01.03' },
+      { id: 4, context: '推优团会相关表格', time: '2024.03.03' }
+    ]
+  }
+})
+
 // 启动 Mock 服务
 Mock.setup({
   timeout: '200-400'
