@@ -15,7 +15,9 @@
 export default {
   name: 'card-container',
   data () {
-    return {}
+    return {
+      data: '0'
+    }
   }
 }
 </script>
