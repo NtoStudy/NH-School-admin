@@ -5,7 +5,7 @@
         <card-container>
           <template v-slot:header>
               <div class="el-header-div_left">
-                <img class="div-img_logo" src="../../assets/通知通告.png" alt="">
+                <svg-icon iconClass="notice"></svg-icon>
                 <span class="div-span_title">通知通告</span>
               </div>
               <div class="el-header-div_more">
@@ -20,11 +20,26 @@
           </template>
         </card-container>
       </el-carousel-item>
-      <el-carousel-item class="el-carousel-item_">
-        <el-card shadow="hover"></el-card>
+      <el-carousel-item class="el-carousel-item_download">
+        <card-container>
+          <template v-slot:header>
+            <div class="el-header-div_left">
+              <svg-icon iconClass="download"></svg-icon>
+              <span class="div-span_title">文件下载</span>
+            </div>
+            <div class="el-header-div_more">
+              <span @click="CLICKLOOKMORE">更多</span>
+              <i class="el-icon-d-arrow-right"></i>
+            </div>
+          </template>
+          <template v-slot:main></template>
+        </card-container>
       </el-carousel-item>
-      <el-carousel-item class="el-carousel-item_">
-        <el-card shadow="hover"></el-card>
+      <el-carousel-item class="el-carousel-item_application">
+        <card-container>
+          <template v-slot:header></template>
+          <template v-slot:main></template>
+        </card-container>
       </el-carousel-item>
     </el-carousel>
     <!-- 弹出层 -->
@@ -114,36 +129,45 @@ export default {
         .el-carousel__item {
             background-color: #fff;
          }
+         @mixin header {
+           .el-header-div_left {
+             display: flex;
+             align-items: center;
+             .div-img_logo {
+               width: 40px;
+               margin-right: 10px;
+             }
+             .div-span_title {
+               position: relative;
+               font-size: 13px;
+               color: #49BEA4;
+               white-space: nowrap;
+               &::after {
+                 position: absolute;
+                 left: -8px;
+                 top: 26px;
+                 content: '';
+                 width: 70px;
+                 height: 2px;
+                 background-color: #49BEA4;
+               }
+             }
+           }
+           .el-header-div_more {
+             color: #ccc;
+             &:hover {
+               color: #49BEA4;
+             }
+           }
+         }
          .el-carousel-item_notices {
-              .el-header-div_left {
-                display: flex;
-                align-items: center;
-                .div-img_logo {
-                  width: 40px;
-                  margin-right: 10px;
-                }
-                .div-span_title {
-                  position: relative;
-                  font-size: 13px;
-                  color: #49BEA4;
-                  white-space: nowrap;
-                  &::after {
-                    position: absolute;
-                    left: -8px;
-                    top: 26px;
-                    content: '';
-                    width: 70px;
-                    height: 2px;
-                    background-color: #49BEA4;
-                  }
-                }
-              }
-              .el-header-div_more {
-                color: #ccc;
-                &:hover {
-                  color: #49BEA4;
-                }
-              }
+           @include header;
+         }
+         .el-carousel-item_download {
+           @include header;
+         }
+         .el-carousel-item_application {
+           @include header;
          }
       }
     }
