@@ -4,7 +4,10 @@
 
 <script>
 export default {
-  name: 'NotFound'
+  name: 'NotFound',
+  data () {
+    return {}
+  }
 }
 </script>
 

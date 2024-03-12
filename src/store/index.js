@@ -4,13 +4,15 @@ import getters from './getters'
 import home from './modeules/home'
 import setting from './modeules/setting'
 import user from './modeules/user'
+import tags from './modeules/tags'
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
   modules: {
     home,
     setting,
-    user
+    user,
+    tags
   },
   getters
 })

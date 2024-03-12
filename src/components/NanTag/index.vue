@@ -33,7 +33,7 @@ export default {
   },
   methods: {
     handleClick (event) {
-      this.emit('click', event)
+      this.$emit('click', event)
     },
     handleClose (event) {
       // 内层事件阻止冒泡与外层事件隔离 -> 防止与 handleClick 方法冲突 【冲突：点击 x 小图标，也会触发 handleClick 时间的执行】
@@ -51,7 +51,7 @@ export default {
         { this.$slots.default }
         { this.closable
           ? (
-          <span class='close-tag' onClick='{ this.handleClose }'>
+          <span class='close-tag' onClick={ this.handleClose }>
             x
           </span>
             )

@@ -79,7 +79,6 @@
     </el-dialog>
     <!--文章展示弹层组件 -->
     <dialog-article v-model="innerVisible"></dialog-article>
-    <nan-tag closable type="success">首页</nan-tag>
   </div>
 </template>
 

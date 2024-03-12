@@ -4,7 +4,10 @@
 
 <script>
 export default {
-  name: 'NanAssessmentManagement'
+  name: 'NanAssessmentManagement',
+  data () {
+    return {}
+  }
 }
 </script>
 
