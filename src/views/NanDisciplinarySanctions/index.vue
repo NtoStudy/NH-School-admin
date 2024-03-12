@@ -4,7 +4,10 @@
 
 <script>
 export default {
-  name: 'NanDisciplinarySanctions'
+  name: 'NanDisciplinarySanctions',
+  data () {
+    return {}
+  }
 }
 </script>
 

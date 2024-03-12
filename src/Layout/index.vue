@@ -18,6 +18,7 @@
           <LayoutHeader />
         </el-header>
         <el-main>
+          <LayoutBread></LayoutBread>
           <router-view></router-view>
         </el-main>
       </el-container>
@@ -27,6 +28,7 @@
 
 <script>
 import LayoutHeader from './Header'
+import LayoutBread from './Bread'
 import LayoutMenu from './Menu'
 import NanSwitch from '@/components/NanSwitch'
 export default {
@@ -39,7 +41,8 @@ export default {
   components: {
     LayoutHeader,
     LayoutMenu,
-    NanSwitch
+    NanSwitch,
+    LayoutBread
   },
   methods: {
     i_CHANGEFLOD () {

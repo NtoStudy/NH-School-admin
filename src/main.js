@@ -8,6 +8,7 @@ import 'reset-css'
 import './style/index.scss'
 import '@/mock'
 import './icons'
+import './components'
 Vue.config.productionTip = false
 Vue.use(ElementUI)
 

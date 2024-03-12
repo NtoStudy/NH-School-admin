@@ -1,7 +1,7 @@
 <template>
   <div class="LayoutMenu-container">
     <el-menu class="el-menu-vertical-demo" :collapse="$store.state.setting.isCollapse">
-      <el-menu-item v-for="(item, index) in menuList" :key="item.path" :index="1 + index.toString()" @click.native="CheckViews(item.path)">
+      <el-menu-item v-for="(item, index) in menuList" :key="item.path" :index="1 + index.toString()" @click.native="CheckViews(item)">
         <img :src="item.meta.icon.url" class="el-menu-item-img_menuIcon">
         <span class="el-menu-item-span_title" slot="title">{{item.meta.title}}</span>
       </el-menu-item>
@@ -19,8 +19,13 @@ export default {
     }
   },
   methods: {
-    CheckViews (value) {
-      this.$router.push(value)
+    CheckViews (item) {
+      const TargetObj = {
+        name: item.meta.title,
+        path: item.path
+      }
+      this.$router.push(TargetObj.path)
+      this.$store.dispatch('tags/add_TagItem', TargetObj)
     }
   },
   mounted () {

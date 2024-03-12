@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Layout from '@/Layout'
+import nprogress from 'nprogress'
+import 'nprogress/nprogress.css'
 Vue.use(VueRouter)
 
 // 解决编程式路由跳转到当前路由抛出 NavigationDuplicated 的警告错误
@@ -29,6 +31,15 @@ export const AsideRoutes = [
         component: () => import('@/views/NanHome'),
         meta: {
           title: '首页',
+          icon: { url: require('../assets/首页.png') }
+        }
+      },
+      {
+        path: '/SystemMaintenance',
+        name: 'SystemMaintenance',
+        component: () => import('@/views/SystemMaintenance'),
+        meta: {
+          title: '站内维护',
           icon: { url: require('../assets/首页.png') }
         }
       },
@@ -131,4 +142,15 @@ const router = new VueRouter({
   ]
 })
 
+// 路由全局前置守卫
+router.beforeEach((to, from, next) => {
+  console.log(to, from, next)
+  nprogress.start()
+  next()
+})
+
+// 路由全局后置守卫
+router.afterEach((to, from) => {
+  nprogress.done()
+})
 export default router

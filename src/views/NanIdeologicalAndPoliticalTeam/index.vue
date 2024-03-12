@@ -4,7 +4,10 @@
 
 <script>
 export default {
-  name: 'NanIdeologicalAndPoliticalTeam'
+  name: 'NanIdeologicalAndPoliticalTeam',
+  data () {
+    return {}
+  }
 }
 </script>
 
