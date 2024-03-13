@@ -1,5 +1,5 @@
 <template>
-  <el-card shadow="hover">
+  <el-card :style="{ height: height, width: width }" shadow="hover">
     <el-container>
       <el-header style="height: 40px;">
         <slot name="header"></slot>
@@ -14,6 +14,16 @@
 <script>
 export default {
   name: 'card-container',
+  props: {
+    height: {
+      type: String,
+      default: () => '100%'
+    },
+    width: {
+      type: String,
+      default: () => '100%'
+    }
+  },
   data () {
     return {
       data: '0'
@@ -24,8 +34,6 @@ export default {
 
 <style lang="scss" scoped>
 .el-card {
-  width: 100%;
-  height: 100%;
   ::v-deep .el-card__body {
     padding: 5px;
   }

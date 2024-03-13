@@ -57,6 +57,7 @@
         </card-container>
       </el-carousel-item>
     </el-carousel>
+    <nan-shortcut></nan-shortcut>
     <!-- 弹出层 -->
     <el-dialog
       :visible.sync="dialogVisible"
@@ -79,22 +80,27 @@
     </el-dialog>
     <!--文章展示弹层组件 -->
     <dialog-article v-model="innerVisible"></dialog-article>
+    <!-- 拖拽弹层 -->
+    <button @click="showDialog = true">Open Dialog</button>
+    <DraggableDialog :visible.sync="showDialog"></DraggableDialog>
   </div>
 </template>
 
 <script>
 import ApplicationTable from './application-table'
 import ListItem from './list-item'
-import CardContainer from './card-container'
 import PaginatorBox from './paginator-box'
 import TableHeader from './table-header'
 import DialogArticle from './dialog-article'
+import NanShortcut from '@/views/NanHome/NanShortcut/index.vue'
+import DraggableDialog from '@/views/NanHome/DraggableDialog/index.vue'
 import { mapState } from 'vuex'
 
 export default {
   name: 'NanHome',
   data () {
     return {
+      showDialog: false,
       dialogVisible: false,
       innerVisible: false,
       formInline: {
@@ -104,12 +110,13 @@ export default {
     }
   },
   components: {
-    CardContainer,
+    DraggableDialog,
     ListItem,
     PaginatorBox,
     TableHeader,
     DialogArticle,
-    ApplicationTable
+    ApplicationTable,
+    NanShortcut
   },
   async created () {
     await this.$store.dispatch('home/fetchHomeNotices')
@@ -136,6 +143,9 @@ export default {
     },
     HANDLEEVENT (value) {
       this.innerVisible = value
+    },
+    handleDialogVisibilityChange (visible) {
+      this.dialogVisible = visible // 更新组件传递回来的可见状态
     }
   }
 }

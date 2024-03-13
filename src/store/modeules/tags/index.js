@@ -10,9 +10,11 @@ const mutations = {
     if (isCurrent) {
       state.visitedViews.splice(index, 1)
       const newIndex = index === 0 ? 0 : index - 1
-      // 添加检测 router 是否存在
+      // 检测 visitedViews 是否长度 > 0
       if (state.visitedViews[newIndex]) {
         router.push({ path: state.visitedViews[newIndex].path })
+      } else {
+        router.push({ path: '/Home' })
       }
     } else {
       state.visitedViews.splice(index, 1)
