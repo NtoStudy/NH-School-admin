@@ -102,6 +102,7 @@ export default {
       showDialog: false,
       dialogVisible: false,
       innerVisible: false,
+      theme: 'light',
       formInline: {
         user: '',
         region: ''
@@ -155,7 +156,7 @@ export default {
     .el-carousel {
       .el-carousel__container {
         .el-carousel__item {
-            background-color: #fff;
+          background-color: var(--bg-color);
          }
          @mixin header($color) {
            .el-header-div_left {
@@ -221,7 +222,7 @@ export default {
       }
       ::v-deep .el-table__header {
         .el-table__cell {
-          background-color: #f7f5f5;
+          background-color: var(--bg-color);
           border-bottom: 1px solid #49BEA4;
         }
       }

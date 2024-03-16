@@ -1,0 +1,10 @@
+:root {
+    /*基色调*/
+    --bg-color: #fff;
+    --font-color: #333;
+    --border-color: #333;
+    /*定制化色调*/
+    --right_main-bg-color: #F7F7F7;
+    --el-header-bg-color1: #F7F7F7;
+    --el-header-bg-color2: #ffffff;
+}

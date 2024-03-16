@@ -47,7 +47,7 @@ export default {
 <style lang="scss" scoped>
 .LayoutMenu-container {
   margin-top: 10px;
-
+  background-color: var(--bg-color);
   .el-menu {
     border-right: none;
 

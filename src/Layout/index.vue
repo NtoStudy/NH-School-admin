@@ -129,9 +129,9 @@ export default {
   }
  .right_main {
     width: auto;
-    background-color: #F7F7F7;
+    background-color: var(--right_main-bg-color);
     .el-header {
-       background: linear-gradient(to right, #F7F7F7, #ffffff);
+       background: linear-gradient(to right, var(--el-header-bg-color1), var(--el-header-bg-color2));
     }
     .el-main {
       overflow: auto;

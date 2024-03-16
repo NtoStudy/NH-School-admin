@@ -1,27 +1,20 @@
-# school-admin
+# 智慧校园-后台管理系统
 
-## Project setup
-```
+## 项目设置
+
 yarn install
-```
 
-### Compiles and hot-reloads for development
-```
+## 编译并提供开发环境的热重载
+
 yarn serve
-```
 
-### Compiles and minifies for production
-```
+## 编译并压缩用于生产环境
+
 yarn build
-```
 
-### Lints and fixes files
-```
+## 校验并修复文件
+
 yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## 什么是后台管理系统 ？
 
@@ -72,3 +65,6 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 5. 审核奖学金
 6. 处理学生信息修改
 7. 接收宿舍维修信息
+
+## CSS3结合Vuex方案实现主题缓存切换
+
