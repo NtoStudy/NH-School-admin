@@ -57,7 +57,7 @@
         </card-container>
       </el-carousel-item>
     </el-carousel>
-    <nan-shortcut></nan-shortcut>
+    <nan-shortcut @click="handleDialogVisibilityChange"></nan-shortcut>
     <!-- 弹出层 -->
     <el-dialog
       :visible.sync="dialogVisible"
@@ -81,8 +81,7 @@
     <!--文章展示弹层组件 -->
     <dialog-article v-model="innerVisible"></dialog-article>
     <!-- 拖拽弹层 -->
-    <button @click="showDialog = true">Open Dialog</button>
-    <DraggableDialog :visible.sync="showDialog"></DraggableDialog>
+    <DraggableDialog title="管理 | 快捷访问" :visible.sync="showDialog"></DraggableDialog>
   </div>
 </template>
 
@@ -119,8 +118,8 @@ export default {
     NanShortcut
   },
   async created () {
-    await this.$store.dispatch('home/fetchHomeNotices')
-    await this.$store.dispatch('home/fetchHomeDownload')
+    await this.$store.dispatch('home/fetch_HomeNotices')
+    await this.$store.dispatch('home/fetch_HomeDownload')
   },
   computed: {
     ...mapState('home', {
@@ -133,7 +132,7 @@ export default {
     async CLICKLOOKMORE () {
       this.dialogVisible = true
       try {
-        await this.$store.dispatch('home/fetchAllNotices')
+        await this.$store.dispatch('home/fetch_AllNotices')
       } catch (error) {
         console.log(error)
       }
@@ -145,7 +144,7 @@ export default {
       this.innerVisible = value
     },
     handleDialogVisibilityChange (visible) {
-      this.dialogVisible = visible // 更新组件传递回来的可见状态
+      this.showDialog = visible
     }
   }
 }

@@ -9,31 +9,49 @@
       <!-- 可拖动的对话框组件 -->
       <!-- dialogStyle 动态设置对话框位置样式 -->
       <!-- ref 获取 DOM 元素引用 -->
-      <!-- @mousedown.prevent="startDragging($event)" 开始拖动事件 -->
       <div
         class="draggable-dialog"
         :style="dialogStyle"
         ref="dialog"
-        @mousedown.prevent="startDragging($event)"
       >
         <!-- 对话框内容区域 -->
         <div class="dialog-content">
-          <slot></slot>
+          <!-- 仅当用户点击并拖动标题栏时，才开始移动对话框 -->
+          <div class="dialog-content__header" @mousedown.prevent="startDragging($event)">
+            <span class="dialog-content__header__left"><strong>{{ headTitle }}</strong>{{ tailTitle }}</span>
+            <div class="dialog-content__header__right">
+              <button>保存设置</button>
+              <button @click="close">关闭</button>
+            </div>
+          </div>
+          <!-- 主体内容 -->
+          <div class="dialog-content__main">
+            <slot>
+              <ShortcutSetting></ShortcutSetting>
+            </slot>
+          </div>
         </div>
-    </div>
+      </div>
     </div>
   </transition>
 </template>
 
 <script>
+import ShortcutSetting from './shortcutSetting'
 export default {
   name: 'DraggableDialog',
-
+  components: {
+    ShortcutSetting
+  },
   // 组件传递的 props
   props: {
     visible: { // 控制对话框是否可见
       type: Boolean,
       required: true
+    },
+    title: { // 对话框标题
+      type: String,
+      default: () => ''
     }
   },
 
@@ -122,12 +140,18 @@ export default {
   computed: {
     dialogStyle () {
       return { transform: `translate(${this.translateX}px, ${this.translateY}px)` }
+    },
+    headTitle () {
+      return this.title.slice(0, 2)
+    },
+    tailTitle () {
+      return this.title.slice(2)
     }
   }
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .draggable-dialog-container {
   position: fixed;
   top: 0;
@@ -152,6 +176,33 @@ export default {
   position: absolute;
   background-color: #f8f8f8;
   width: 900px;
-  height: 450px;
+  height: 552px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+.dialog-content {
+  overflow: hidden;
+  .dialog-content__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    height: 35px;
+    background: radial-gradient(rgba(73, 190, 164, .4), rgba(255, 255, 255, .1));
+    border-bottom: #ccc 1px solid;
+    color: #49BEA4;
+    strong {
+      font-weight: bold;
+    }
+    .dialog-content__header__right {
+      button  {
+        background-color: rgba(73, 190, 164, .4);
+        border: none;
+        margin-right: 10px;
+        color: #fff;
+        font-size: 13px;
+        cursor: pointer;
+      }
+    }
+  }
+}
 }
 </style>

@@ -5,28 +5,28 @@ const state = {
   homeDownLoad: []
 }
 const mutations = {
-  FETCHHOMENOTICES (state, data) {
+  FETCH_HOMENOTICES (state, data) {
     state.homeNotices = data
   },
-  FETCHALLNOTICES (state, data) {
+  FETCH_ALLNOTICES (state, data) {
     state.allNotices = data
   },
-  FETCHHOMEDOWNLOAD (state, data) {
+  FETCH_HOMEDOWNLOAD (state, data) {
     state.homeDownLoad = data
   }
 }
 const actions = {
-  async fetchHomeNotices ({ commit }) {
+  async fetch_HomeNotices ({ commit }) {
     const res = await getHomeNotices()
-    commit('FETCHHOMENOTICES', res.data)
+    commit('FETCH_HOMENOTICES', res.data)
   },
-  async fetchAllNotices ({ commit }) {
+  async fetch_AllNotices ({ commit }) {
     const res = await getAllNotices()
-    commit('FETCHALLNOTICES', res.data)
+    commit('FETCH_ALLNOTICES', res.data)
   },
-  async fetchHomeDownload ({ commit }) {
+  async fetch_HomeDownload ({ commit }) {
     const res = await getHomeDownload()
-    commit('FETCHHOMEDOWNLOAD', res.data)
+    commit('FETCH_HOMEDOWNLOAD', res.data)
   }
 }
 const getters = {}

@@ -5,6 +5,7 @@ import home from './modeules/home'
 import setting from './modeules/setting'
 import user from './modeules/user'
 import tags from './modeules/tags'
+import draggableSetting from './modeules/draggableSetting'
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
@@ -12,7 +13,8 @@ const store = new Vuex.Store({
     home,
     setting,
     user,
-    tags
+    tags,
+    draggableSetting
   },
   getters
 })
