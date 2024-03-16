@@ -31,7 +31,7 @@
         class="text"
         :style="{
           justifyContent: isOpen ? 'flex-start' : 'flex-end',
-          padding: isOpen ? '0 28px 0 8px' : '0 8px 0 28px',
+          padding: isOpen ? '0 6px 0 5px' : '0 6px 0 5px',
         }"
         >{{ isOpen ? openText : closeText }}</span
       >
@@ -127,12 +127,12 @@ export default {
   .switchCentre {
     display: inline-block;
     width: auto;
-    height: 20px;
+    height: 28px;
     color: #fff;
     background-color: #c4c4c4;
     border: 1px solid;
     outline: 0;
-    border-radius: 10px;
+    border-radius: 14px;
     box-sizing: border-box;
     transition: all 0.3s; // 加上过渡效果
     position: relative;
@@ -140,7 +140,7 @@ export default {
       min-width: 54px; // 设置最小宽度
       width: fit-content; // 使用fit-content属性，让宽度随着内容多少自适应
       height: 100%;
-      font-size: 15px;
+      font-size: 16px;
       display: flex;
       // justify-content: justifyContent; // 注意，这里也是通过:style控制文字靠左还是靠右
       align-items: center;
@@ -151,7 +151,7 @@ export default {
   .circleDotLeft::after {
     content: "";
     position: absolute;
-    top: -4px;
+    top: -1px;
     left: -2px;
     border-radius: 100%;
     width: 24px;

@@ -5,6 +5,7 @@
       <el-input placeholder="请输入内容"></el-input>
     </div>
     <div class="LayoutHeader-container-right_userInfo">
+      <NanSwitch v-model="isNight" active-color="#2F2F2F" inactive-color="#ddd" openText="🌙" closeText="☀️" size="small"></NanSwitch>
       <img class="right-img_userPic" src="https://pic1.zhimg.com/v2-78dc85657c687f2a4a3735be1c5cc162_r.jpg">
       <span class="right-span_userName">一小池勺</span>
       <span class="right-span_line">|</span>
@@ -19,11 +20,14 @@
 
 <script>
 import screenfull from 'screenfull'
+import NanSwitch from '@/components/NanSwitch/index.vue'
 export default {
   name: 'LayoutHeader',
+  components: { NanSwitch },
   data () {
     return {
-      isFullscreen: false
+      isFullscreen: false,
+      isNight: true
     }
   },
   methods: {
@@ -78,6 +82,9 @@ export default {
   .LayoutHeader-container-right_userInfo {
     display: flex;
     align-items: center;
+    .right-img_userPic {
+      margin-left: 28px;
+    }
     .right-span {
       &_userName {
         font: {

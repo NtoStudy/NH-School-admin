@@ -8,8 +8,6 @@
         </div>
         <LayoutMenu></LayoutMenu>
         <div class="el-aside-div_footer">
-          <NanSwitch v-model="isNight" active-color="#2F2F2F" inactive-color="#ddd" openText="🌙" closeText="☀️"
-        size="small"></NanSwitch>
           <i @click="i_CHANGEFLOD" :class="'el-icon-s-' + $store.state.setting.isFold"></i>
         </div>
       </el-aside>
@@ -32,18 +30,14 @@
 import LayoutHeader from './Header'
 import LayoutBread from './Bread'
 import LayoutMenu from './Menu'
-import NanSwitch from '@/components/NanSwitch'
 export default {
   name: 'NanLayout',
   data () {
-    return {
-      isNight: true
-    }
+    return { }
   },
   components: {
     LayoutHeader,
     LayoutMenu,
-    NanSwitch,
     LayoutBread
   },
   methods: {
@@ -84,6 +78,7 @@ export default {
     padding: 10px;
     box-shadow: 1px 5px 10px #f2f2f2;
     border-right: 1px solid #fff;
+    transition: all .2s;
     .el-aside-div_header {
       display: flex;
       align-items: center;
@@ -93,6 +88,8 @@ export default {
         margin-right: 10px;
       }
       .div-div_title {
+        transition: all .2s;
+        white-space: nowrap;
         font: {
           size: 20px;
           weight: 900;
@@ -123,10 +120,10 @@ export default {
       transform: translateX(-50%);
       bottom: 30px;
       .el-icon-s-fold {
-        font-size: 60px;
+        font-size: 30px;
       }
       .el-icon-s-unfold {
-        font-size: 60px;
+        font-size: 30px;
       }
     }
   }
