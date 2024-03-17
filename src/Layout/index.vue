@@ -33,6 +33,9 @@ import LayoutBread from './Bread'
 import LayoutMenu from './Menu'
 export default {
   name: 'NanLayout',
+  created () {
+    this.$store.commit('/globalTheme/getTheme')
+  },
   data () {
     return { }
   },
@@ -50,6 +53,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+* {
+  transition: all 0.2s ease-out;
+}
 // 进入后和离开前保持原位
 .fade-right-enter-to,
 .fade-right-leave-from{

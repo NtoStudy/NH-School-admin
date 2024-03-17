@@ -1,11 +1,14 @@
 <script>
 export default {
-  name: 'AndAwardsNotApplying'
+  name: 'AndAwardsNotApplying',
+  data () {
+    return {}
+  }
 }
 </script>
 
 <template>
-  <div>未申请项目</div>
+  <div class="AndAwardsNotApplying"></div>
 </template>
 
 <style scoped lang="scss">
