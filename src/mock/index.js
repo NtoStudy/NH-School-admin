@@ -78,6 +78,46 @@ Mock.mock('/api/homeShortcut', 'get', () => {
   }
 })
 
+Mock.mock('api/awards', () => {
+  return {
+    data: [
+      {
+        itemTitle: '特等奖学金',
+        limit: [
+          {
+            passing: true,
+            content: '在校期间“2020-2024”没有出现违纪情况'
+          },
+          {
+            passing: true,
+            content: '本学年思想道德素质分需大于等于90分'
+          },
+          {
+            passing: true,
+            content: '本学年身体素质分需大于等于85分'
+          },
+          {
+            passing: false,
+            content: '本学年专业文化成绩需大于等于90分'
+          },
+          {
+            passing: true,
+            content: '综测总分需为年级前5%才能申请'
+          },
+          {
+            passing: false,
+            content: '各项成绩需大于等于85分'
+          },
+          {
+            passing: false,
+            content: '本学年的课外实践分需大于等于5.0分才能申请'
+          }
+        ]
+      }
+    ]
+  }
+})
+
 // 启动 Mock 服务
 Mock.setup({
   timeout: '200-400'
