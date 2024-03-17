@@ -21,6 +21,7 @@
             <router-view></router-view>
           </transition>
         </el-main>
+        <nan-robot></nan-robot>
       </el-container>
     </el-container>
   </div>

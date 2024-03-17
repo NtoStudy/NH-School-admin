@@ -9,6 +9,8 @@ export default {
     <div class="head">
       <div class="eye"></div>
       <div class="eye right-eye"></div>
+      <div class="nose"></div>
+      <div class="mouth"></div>
     </div>
     <div class="body"></div>
     <div class="arm"></div>
@@ -21,8 +23,8 @@ export default {
 <style scoped lang="scss">
 .robot {
   position: fixed;
-  right: 20px;
-  bottom: 20px;
+  right: 40px;
+  bottom: 50px;
   width: 60px;
   height: 100px;
 }
@@ -38,6 +40,7 @@ export default {
   height: 30px;
   border-radius: 50%;
   position: relative;
+  background-color: #D45153;
 }
 
 .eye {
@@ -54,9 +57,32 @@ export default {
   right: 10px;
 }
 
+.nose {
+  position: absolute;
+  top: 15px;
+  left: 25px;
+  height: 5px;
+  width: 5px;
+  border-radius: 50%;
+  background-color: white;
+}
+
+.mouth {
+  position: absolute;
+  top: 23px;
+  left: 18px;
+  height: 0;
+  width: 20px;
+  border: 3px solid;
+  border-color: transparent transparent white;
+  border-radius: 50px / 10px;
+}
+
 .body {
   height: 40px;
   margin-top: 10px;
+  background-color: #C37EF1;
+  border-radius: 5px;
 }
 
 .arm,
@@ -64,6 +90,7 @@ export default {
   width: 20px;
   height: 15px;
   position: absolute;
+  background-color: #F1C47E;
 }
 
 .arm {
