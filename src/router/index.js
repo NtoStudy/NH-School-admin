@@ -86,7 +86,20 @@ export const AsideRoutes = [
         meta: {
           title: '评奖评优',
           icon: { url: require('../assets/评奖评优.png') }
-        }
+        },
+        redirect: '/NanAwardsAndAwards/notApplying',
+        children: [
+          {
+            path: '/NanAwardsAndAwards/requested',
+            name: 'AndAwardsRequested',
+            component: () => import('@/views/NanAwardsAndAwards/children/AndAwardsRequested')
+          },
+          {
+            path: '/NanAwardsAndAwards/notApplying',
+            name: 'AndAwardsNotApplying',
+            component: () => import('@/views/NanAwardsAndAwards/children/AndAwardsNotApplying')
+          }
+        ]
       },
       {
         path: '/NanWorkStudy',

@@ -1,5 +1,7 @@
 <template>
-  <div>评奖评优</div>
+  <div class="NanAwardsAndAwards">
+    <router-view></router-view>
+  </div>
 </template>
 
 <script>
