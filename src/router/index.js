@@ -35,6 +35,15 @@ export const AsideRoutes = [
         }
       },
       {
+        path: '/NanPersonalInformation',
+        name: 'NanPersonalInformation',
+        component: () => import('@/views/NanPersonalInformation'),
+        meta: {
+          title: '个人信息',
+          icon: { url: require('../assets/个人信息.png') }
+        }
+      },
+      {
         path: '/SystemMaintenance',
         name: 'SystemMaintenance',
         component: () => import('@/views/SystemMaintenance'),
@@ -59,15 +68,6 @@ export const AsideRoutes = [
         meta: {
           title: '思政队伍',
           icon: { url: require('../assets/思政队伍.png') }
-        }
-      },
-      {
-        path: '/NanPersonalInformation',
-        name: 'NanPersonalInformation',
-        component: () => import('@/views/NanPersonalInformation'),
-        meta: {
-          title: '个人信息',
-          icon: { url: require('../assets/个人信息.png') }
         }
       },
       {
