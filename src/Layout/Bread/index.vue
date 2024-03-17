@@ -37,7 +37,7 @@ export default {
     <simplebar data-simplebar-auto-hide="true">
       <div class="tagBox">
         <nan-tag :type="$route.path === '/Home' || visitedViews.length === 0 ? 'success' : 'info'" @click="handleClick({ path: '/' })">首页</nan-tag>
-        <nan-tag v-for="(item, index) in visitedViews" :key="index" closable :type="item.path === $route.path ? 'success' : 'info'" @click="handleClick(item)" @close="handleClose(item)">{{ item.name }}</nan-tag>
+        <nan-tag v-for="(item, index) in visitedViews" :key="index" closable :type="$route.path.slice(0, 7) === item.path.slice(0, 7) ? 'success' : 'info'" @click="handleClick(item)" @close="handleClose(item)">{{ item.name }}</nan-tag>
       </div>
     </simplebar>
   </div>

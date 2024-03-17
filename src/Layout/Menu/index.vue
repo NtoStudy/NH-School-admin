@@ -36,7 +36,11 @@ export default {
   },
   watch: {
     $route (to, from) {
-      this.activeIndex = to.path
+      if (to.path === '/NanAwardsAndAwards/notApplying' || to.path === '/NanAwardsAndAwards/requested') {
+        this.activeIndex = '/NanAwardsAndAwards'
+      } else {
+        this.activeIndex = to.path
+      }
     }
   },
   mounted () {
