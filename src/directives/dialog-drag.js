@@ -1,5 +1,5 @@
 export default {
-  bind (el, binding) {
+  bind(el, binding) {
     let isDragging = false
     let startMouseX, startMouseY, startLeft, startTop
 
@@ -34,7 +34,7 @@ export default {
       document.removeEventListener('mouseup', handleMouseUp)
     }
   },
-  unbind (el) {
+  unbind(el) {
     if (typeof el._dragCleanup === 'function') {
       el._dragCleanup()
     }

@@ -1,7 +1,15 @@
 <template>
-  <div :class="{ 'isFlex': flex, 'shortcut-setting-item': !flex }" @click="$emit('click', itemData.title)">
-    <div :class="{ 'shortcut-setting-item__img__add': state === 1, 'shortcut-setting-item__img__del': state === 2 }">
-      <img alt="#" :src="itemData.picUrl">
+  <div
+    :class="{ isFlex: flex, 'shortcut-setting-item': !flex }"
+    @click="$emit('click', itemData.title)"
+  >
+    <div
+      :class="{
+        'shortcut-setting-item__img__add': state === 1,
+        'shortcut-setting-item__img__del': state === 2
+      }"
+    >
+      <img alt="#" :src="itemData.picUrl" />
     </div>
     <p>{{ itemData.title }}</p>
   </div>
@@ -11,15 +19,18 @@
 export default {
   name: 'shortcutSettingItem',
   props: {
-    state: { // 表示新增还是移除的状态 1 代表新增、2 代表移除
+    state: {
+      // 表示新增还是移除的状态 1 代表新增、2 代表移除
       type: Number,
       default: null
     },
-    flex: { // 是否使得图片与文字横向 false 代表纵向、true 代表横向
+    flex: {
+      // 是否使得图片与文字横向 false 代表纵向、true 代表横向
       type: Boolean,
       default: () => false
     },
-    itemData: { // 详情内容
+    itemData: {
+      // 详情内容
       type: Object,
       default: () => {}
     }
@@ -81,7 +92,7 @@ export default {
       padding: 1px 3px;
       border-radius: 50%;
       border: 2px solid #fff;
-      background-color: #F84023;
+      background-color: #f84023;
     }
   }
 }
@@ -140,7 +151,7 @@ export default {
       padding: 1px 3px;
       border-radius: 50%;
       border: 2px solid #fff;
-      background-color: #F84023;
+      background-color: #f84023;
     }
   }
 }

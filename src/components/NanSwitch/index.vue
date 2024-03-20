@@ -20,18 +20,18 @@
       :class="[
         'switchCentre',
         'circleDotLeft',
-        isOpen ? 'changeCircleDotRight' : '',
+        isOpen ? 'changeCircleDotRight' : ''
       ]"
       :style="{
         background: computedBackground,
-        borderColor: computedBackground,
+        borderColor: computedBackground
       }"
     >
       <span
         class="text"
         :style="{
           justifyContent: isOpen ? 'flex-start' : 'flex-end',
-          padding: isOpen ? '0 6px 0 5px' : '0 6px 0 5px',
+          padding: isOpen ? '0 6px 0 5px' : '0 6px 0 5px'
         }"
         >{{ isOpen ? openText : closeText }}</span
       >
@@ -83,20 +83,21 @@ export default {
   },
   computed: {
     // 是否打开切换框取决于外层传递的v-model的值是否为true
-    isOpen () {
+    isOpen() {
       return this.value === this.activeValue
     },
-    computedBackground () {
+    computedBackground() {
       // 若传递了激活颜色和未激活颜色，就根据是否开启状态使用传递的颜色
       if ((this.activeColor.length > 0) & (this.inactiveColor.length > 0)) {
         return this.isOpen ? this.activeColor : this.inactiveColor
-      } else { // 没传递就根据开启使用默认的背景色
+      } else {
+        // 没传递就根据开启使用默认的背景色
         return this.isOpen ? '#409EFF' : '#C0CCDA'
       }
     }
   },
   methods: {
-    changeStatus () {
+    changeStatus() {
       // 禁用情况下，不做状态更改切换
       if (this.disabled) {
         return
@@ -149,7 +150,7 @@ export default {
   }
   // 默认小圆点在左侧的（使用伪元素创建一个小圆点）
   .circleDotLeft::after {
-    content: "";
+    content: '';
     position: absolute;
     top: -1px;
     left: -2px;

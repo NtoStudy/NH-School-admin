@@ -12,11 +12,23 @@ VueRouter.prototype.push = function (location, resolve, reject) {
   if (resolve && reject) {
     originPush.call(this, location, resolve, reject)
   } else {
-    originPush.call(this, location, () => { }, () => { })
+    originPush.call(
+      this,
+      location,
+      () => {},
+      () => {}
+    )
   }
 }
 VueRouter.prototype.replace = function (location, resolve, reject) {
-  (resolve && reject) ? originReplace.call(this, location, resolve, reject) : originReplace.call(this, location, () => { }, () => { })
+  resolve && reject
+    ? originReplace.call(this, location, resolve, reject)
+    : originReplace.call(
+        this,
+        location,
+        () => {},
+        () => {}
+      )
 }
 
 export const AsideRoutes = [
@@ -92,12 +104,14 @@ export const AsideRoutes = [
           {
             path: '/NanAwardsAndAwards/requested',
             name: 'AndAwardsRequested',
-            component: () => import('@/views/NanAwardsAndAwards/children/AndAwardsRequested')
+            component: () =>
+              import('@/views/NanAwardsAndAwards/children/AndAwardsRequested')
           },
           {
             path: '/NanAwardsAndAwards/notApplying',
             name: 'AndAwardsNotApplying',
-            component: () => import('@/views/NanAwardsAndAwards/children/AndAwardsNotApplying')
+            component: () =>
+              import('@/views/NanAwardsAndAwards/children/AndAwardsNotApplying')
           }
         ]
       },

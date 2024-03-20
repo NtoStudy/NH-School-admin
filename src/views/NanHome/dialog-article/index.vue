@@ -1,6 +1,10 @@
 <template>
   <div class="dialog-article">
-    <el-dialog :visible.sync="visibleValue" v-bind="$attrs" @close="handleClose">
+    <el-dialog
+      :visible.sync="visibleValue"
+      v-bind="$attrs"
+      @close="handleClose"
+    >
       <template v-slot:title>
         <div class="articleAttribute">
           <p class="articleAttribute_title">胡常常</p>
@@ -42,25 +46,23 @@ export default {
   },
   computed: {
     visibleValue: {
-      get () {
+      get() {
         return this.value
       },
-      set (value) {
+      set(value) {
         this.$emit('input', value)
       }
     }
   },
   methods: {
-    handleClose () {
+    handleClose() {
       this.visibleValue = false
     }
   }
 }
 </script>
 
-<style scoped lang="scss">
-
-</style>
+<style scoped lang="scss"></style>
 
 <style lang="scss">
 .dialog-article {

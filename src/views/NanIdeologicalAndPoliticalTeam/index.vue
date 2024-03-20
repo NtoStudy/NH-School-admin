@@ -5,12 +5,10 @@
 <script>
 export default {
   name: 'NanIdeologicalAndPoliticalTeam',
-  data () {
+  data() {
     return {}
   }
 }
 </script>
 
-<style>
-
-</style>
+<style></style>

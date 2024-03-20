@@ -6,9 +6,18 @@
       mode="horizontal"
       @select="handleSelect"
       text-color="#333"
-      active-text-color="#F4A0DE">
-      <el-menu-item index="1"><router-link to="/NanAwardsAndAwards/notApplying">可申请项目</router-link></el-menu-item>
-      <el-menu-item index="2"><router-link to="/NanAwardsAndAwards/requested">已申请项目</router-link></el-menu-item>
+      active-text-color="#F4A0DE"
+    >
+      <el-menu-item index="1"
+        ><router-link to="/NanAwardsAndAwards/notApplying"
+          >可申请项目</router-link
+        ></el-menu-item
+      >
+      <el-menu-item index="2"
+        ><router-link to="/NanAwardsAndAwards/requested"
+          >已申请项目</router-link
+        ></el-menu-item
+      >
     </el-menu>
     <router-view></router-view>
   </div>
@@ -17,13 +26,13 @@
 <script>
 export default {
   name: 'NanAwardsAndAwards',
-  data () {
+  data() {
     return {
       activeIndex: '1'
     }
   },
   methods: {
-    handleSelect (key, keyPath) {
+    handleSelect(key, keyPath) {
       console.log(key, keyPath)
     }
   }

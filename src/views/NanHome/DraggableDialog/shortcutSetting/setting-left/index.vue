@@ -7,13 +7,14 @@ export default {
     shortcutSettingItem
   },
   methods: {
-    handle_deleteItem (name) {
+    handle_deleteItem(name) {
       console.log(name)
     }
   },
   computed: {
     ...mapState('draggableSetting', {
-      allChooseItemArray: state => state.allChooseItemArray.filter(item => item.isChoose)
+      allChooseItemArray: (state) =>
+        state.allChooseItemArray.filter((item) => item.isChoose)
     })
   }
 }
@@ -27,7 +28,12 @@ export default {
     </div>
     <div class="setting-left__main">
       <template v-for="(item, index) in allChooseItemArray">
-        <shortcutSettingItem @click="handle_deleteItem" :key="index" :itemData="item" :state="2"></shortcutSettingItem>
+        <shortcutSettingItem
+          @click="handle_deleteItem"
+          :key="index"
+          :itemData="item"
+          :state="2"
+        ></shortcutSettingItem>
       </template>
     </div>
   </div>
@@ -62,5 +68,4 @@ export default {
     box-shadow: 1px 0 5px -2px rgba(0, 0, 0, 0.2);
   }
 }
-
 </style>

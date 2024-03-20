@@ -2,14 +2,18 @@ const state = {
   theme: 'light'
 }
 const mutations = {
-  setTheme (state, theme) {
+  setTheme(state, theme) {
     state.theme = theme
     localStorage.setItem('theme', theme)
-    document.head.querySelector('#theme-link').setAttribute('href', `./static/css/theme-${theme}.css`)
+    document.head
+      .querySelector('#theme-link')
+      .setAttribute('href', `./static/css/theme-${theme}.css`)
   },
-  getTheme (state) {
+  getTheme(state) {
     state.theme = localStorage.getItem('theme') || 'light'
-    document.head.querySelector('#theme-link').setAttribute('href', `./static/css/theme-${state.theme}.css`)
+    document.head
+      .querySelector('#theme-link')
+      .setAttribute('href', `./static/css/theme-${state.theme}.css`)
   }
 }
 const actions = {}

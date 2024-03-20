@@ -11,12 +11,15 @@ request.interceptors.request.use((config) => {
   return config
 })
 
-request.interceptors.response.use((res) => {
-  nprogress.done()
-  return res.data
-}, (error) => {
-  return Promise.reject(error)
-})
+request.interceptors.response.use(
+  (res) => {
+    nprogress.done()
+    return res.data
+  },
+  (error) => {
+    return Promise.reject(error)
+  }
+)
 
 export const getHomeNotices = () => request({ url: '/notices' })
 
@@ -26,4 +29,5 @@ export const getHomeDownload = () => request({ url: '/homeDownload' })
 
 export const getHomeShortcut = () => request({ url: '/homeShortcut' })
 
-export const getAllChooseItemArray = () => request({ url: '/allChooseItemArray' })
+export const getAllChooseItemArray = () =>
+  request({ url: '/allChooseItemArray' })

@@ -4,8 +4,8 @@ const state = {
   visitedViews: []
 }
 const mutations = {
-  DELETE_TAGTEM (state, { name, isCurrent }) {
-    const index = state.visitedViews.findIndex(item => item.path === name)
+  DELETE_TAGTEM(state, { name, isCurrent }) {
+    const index = state.visitedViews.findIndex((item) => item.path === name)
     // 判断用户删除的是否是当前展示的路由
     if (isCurrent) {
       state.visitedViews.splice(index, 1)
@@ -20,8 +20,8 @@ const mutations = {
       state.visitedViews.splice(index, 1)
     }
   },
-  ADD_TAGITEM (state, value) {
-    const isAtVisitedViewsArray = state.visitedViews.find(item => {
+  ADD_TAGITEM(state, value) {
+    const isAtVisitedViewsArray = state.visitedViews.find((item) => {
       return item.path === value.path
     })
     if (isAtVisitedViewsArray || value.path === '/Home') return
@@ -29,10 +29,10 @@ const mutations = {
   }
 }
 const actions = {
-  delete_TagItem ({ commit }, value) {
+  delete_TagItem({ commit }, value) {
     commit('DELETE_TAGTEM', value)
   },
-  add_TagItem ({ commit }, value) {
+  add_TagItem({ commit }, value) {
     commit('ADD_TAGITEM', value)
   }
 }

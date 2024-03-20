@@ -1,11 +1,11 @@
 <script>
 /*
-* @desc: 用以判断是否通过限制条件
-* */
+ * @desc: 用以判断是否通过限制条件
+ * */
 export default {
   name: 'passing-item',
   props: ['itemData'],
-  data () {
+  data() {
     return {}
   }
 }
@@ -13,7 +13,9 @@ export default {
 
 <template>
   <div class="passing-item">
-    <svg-icon :icon-class="itemData.passing ? 'passing' : 'eliminate'"></svg-icon>
+    <svg-icon
+      :icon-class="itemData.passing ? 'passing' : 'eliminate'"
+    ></svg-icon>
     <span>{{ itemData.content }}</span>
   </div>
 </template>

@@ -1,7 +1,7 @@
 <script>
 export default {
   name: 'SystemMaintenance',
-  data () {
+  data() {
     return {}
   }
 }
@@ -11,6 +11,4 @@ export default {
   <div></div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

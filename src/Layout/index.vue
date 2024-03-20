@@ -3,16 +3,21 @@
     <el-container>
       <el-aside :width="$store.state.setting.asideWidth">
         <div class="el-aside-div_header">
-          <img class="div-img_logo" src="../assets/logo.png" alt="">
-          <div v-if="!$store.state.setting.isCollapse" class="div-div_title">智慧校园</div>
+          <img class="div-img_logo" src="../assets/logo.png" alt="" />
+          <div v-if="!$store.state.setting.isCollapse" class="div-div_title">
+            智慧校园
+          </div>
         </div>
         <LayoutMenu></LayoutMenu>
         <div class="el-aside-div_footer">
-          <i @click="i_CHANGEFLOD" :class="'el-icon-s-' + $store.state.setting.isFold"></i>
+          <i
+            @click="i_CHANGEFLOD"
+            :class="'el-icon-s-' + $store.state.setting.isFold"
+          ></i>
         </div>
       </el-aside>
       <el-container class="right_main">
-        <el-header style="height: 65px;">
+        <el-header style="height: 65px">
           <LayoutHeader />
         </el-header>
         <el-main>
@@ -33,11 +38,11 @@ import LayoutBread from './Bread'
 import LayoutMenu from './Menu'
 export default {
   name: 'NanLayout',
-  created () {
+  created() {
     this.$store.commit('globalTheme/getTheme')
   },
-  data () {
-    return { }
+  data() {
+    return {}
   },
   components: {
     LayoutHeader,
@@ -45,7 +50,7 @@ export default {
     LayoutBread
   },
   methods: {
-    i_CHANGEFLOD () {
+    i_CHANGEFLOD() {
       this.$store.commit('setting/theSidebarCollapses')
     }
   }
@@ -58,21 +63,20 @@ export default {
 }
 // 进入后和离开前保持原位
 .fade-right-enter-to,
-.fade-right-leave-from{
+.fade-right-leave-from {
   opacity: 1;
   transform: none;
 }
 
 // 设置进入和离开过程中的动画时长0.5s
 .fade-right-enter-active,
-.fade-right-leave-active
-{
+.fade-right-leave-active {
   transition: all 0.5s;
 }
 
 // 进入前和离开后为透明，并在右侧20px位置
 .fade-right-enter-from,
-.fade-right-leave-to{
+.fade-right-leave-to {
   opacity: 0;
   transform: translateX(20px);
 }
@@ -85,7 +89,7 @@ export default {
     padding: 10px;
     box-shadow: 1px 5px 10px #f2f2f2;
     border-right: 1px solid #fff;
-    transition: all .2s;
+    transition: all 0.2s;
     .el-aside-div_header {
       display: flex;
       align-items: center;
@@ -95,7 +99,7 @@ export default {
         margin-right: 10px;
       }
       .div-div_title {
-        transition: all .2s;
+        transition: all 0.2s;
         white-space: nowrap;
         font: {
           size: 20px;
@@ -134,11 +138,15 @@ export default {
       }
     }
   }
- .right_main {
+  .right_main {
     width: auto;
     background-color: var(--right_main-bg-color);
     .el-header {
-       background: linear-gradient(to right, var(--el-header-bg-color1), var(--el-header-bg-color2));
+      background: linear-gradient(
+        to right,
+        var(--el-header-bg-color1),
+        var(--el-header-bg-color2)
+      );
     }
     .el-main {
       overflow: auto;

@@ -1,7 +1,7 @@
 <template>
   <el-card :style="{ height: height, width: width }" shadow="hover">
     <el-container>
-      <el-header style="height: 40px;">
+      <el-header style="height: 40px">
         <slot name="header"></slot>
       </el-header>
       <el-main>
@@ -24,7 +24,7 @@ export default {
       default: () => '100%'
     }
   },
-  data () {
+  data() {
     return {
       data: '0'
     }

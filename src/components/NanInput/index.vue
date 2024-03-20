@@ -1,5 +1,11 @@
 <template>
-  <input class="nan-input" type="text"  @input="$emit('input', $event.target.value)" :value="value" :placeholder="placeholderText" />
+  <input
+    class="nan-input"
+    type="text"
+    @input="$emit('input', $event.target.value)"
+    :value="value"
+    :placeholder="placeholderText"
+  />
 </template>
 
 <script>
@@ -15,7 +21,7 @@ export default {
       default: ''
     }
   },
-  data () {
+  data() {
     return {}
   }
 }

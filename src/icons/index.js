@@ -7,7 +7,7 @@ import SvgIcon from '@/components/SvgIcon'
 Vue.component('svg-icon', SvgIcon)
 
 // 定义一个函数，用于引入所有 svg 文件
-const requireAll = requireContext => requireContext.keys().map(requireContext)
+const requireAll = (requireContext) => requireContext.keys().map(requireContext)
 // 定义一个上下文，只包含 './svg' 目录下的以 '.svg' 结尾的文件
 const req = require.context('./svg', false, /\.svg$/)
 // 引入 svg 文件

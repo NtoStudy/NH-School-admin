@@ -4,21 +4,24 @@ import 'simplebar-vue/dist/simplebar.min.css'
 import { mapState } from 'vuex'
 export default {
   name: 'LayoutBread',
-  data () {
+  data() {
     return {}
   },
   components: {
     simplebar
   },
   methods: {
-    handleClick (item) {
+    handleClick(item) {
       this.$router.push({ path: item.path })
     },
-    handleClose (item) {
+    handleClose(item) {
       console.log(item)
       const isCurrent = item.path === this.$route.path
       console.log(isCurrent)
-      this.$store.dispatch('tags/delete_TagItem', { name: item.path, isCurrent })
+      this.$store.dispatch('tags/delete_TagItem', {
+        name: item.path,
+        isCurrent
+      })
     }
   },
   computed: {
@@ -26,7 +29,7 @@ export default {
       visitedViews: (state) => state.tags.visitedViews
     })
   },
-  mounted () {
+  mounted() {
     console.log(this.visitedViews)
   }
 }
@@ -36,8 +39,28 @@ export default {
   <div>
     <simplebar data-simplebar-auto-hide="true">
       <div class="tagBox">
-        <nan-tag :type="$route.path === '/Home' || visitedViews.length === 0 ? 'success' : 'info'" @click="handleClick({ path: '/' })">首页</nan-tag>
-        <nan-tag v-for="(item, index) in visitedViews" :key="index" closable :type="$route.path.slice(0, 7) === item.path.slice(0, 7) ? 'success' : 'info'" @click="handleClick(item)" @close="handleClose(item)">{{ item.name }}</nan-tag>
+        <nan-tag
+          :type="
+            $route.path === '/Home' || visitedViews.length === 0
+              ? 'success'
+              : 'info'
+          "
+          @click="handleClick({ path: '/' })"
+          >首页</nan-tag
+        >
+        <nan-tag
+          v-for="(item, index) in visitedViews"
+          :key="index"
+          closable
+          :type="
+            $route.path.slice(0, 7) === item.path.slice(0, 7)
+              ? 'success'
+              : 'info'
+          "
+          @click="handleClick(item)"
+          @close="handleClose(item)"
+          >{{ item.name }}</nan-tag
+        >
       </div>
     </simplebar>
   </div>

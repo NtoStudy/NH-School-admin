@@ -3,7 +3,11 @@
     <el-row :gutter="5">
       <el-col :span="2" v-if="showTop">
         <div class="grid-content left">
-          <img class="grid-content-left_img" src="../../../assets/置顶.png" alt="">
+          <img
+            class="grid-content-left_img"
+            src="../../../assets/置顶.png"
+            alt=""
+          />
         </div>
       </el-col>
       <el-col :span="16">
@@ -34,7 +38,7 @@ export default {
     }
   },
   methods: {
-    HANDLEEVENT () {
+    HANDLEEVENT() {
       this.$emit('custom-event', true)
     }
   }
@@ -46,7 +50,7 @@ export default {
   .el-row {
     position: relative;
     &:hover {
-      background-color: #F4F8F7;
+      background-color: #f4f8f7;
     }
     &:hover .mid {
       font-weight: 600;

@@ -2,18 +2,38 @@
   <div class="AndAwardsRequested">
     <el-button>跟踪申请项目进度</el-button>
     <el-button @click="exportExcel">导出申请记录</el-button>
-    <el-table
-      :data="tableData"
-      style="width: 100%"
-      height="650">
+    <el-table :data="tableData" style="width: 100%" height="650">
       <el-table-column width="60" type="selection"></el-table-column>
       <!-- 这里使用prop属性绑定数据行的字段 -->
-      <el-table-column label="评奖学年" width="200" prop="year"></el-table-column>
-      <el-table-column label="申请奖项" width="200" prop="applicationAward"></el-table-column>
-      <el-table-column label="奖项类别" width="200" prop="awardType"></el-table-column>
-      <el-table-column label="奖项金额" width="180" prop="awardAmount"></el-table-column>
-      <el-table-column label="申请时间" prop="applicationTime"></el-table-column>
-      <el-table-column label="评审结果" width="200" prop="reviewResult"></el-table-column>
+      <el-table-column
+        label="评奖学年"
+        width="200"
+        prop="year"
+      ></el-table-column>
+      <el-table-column
+        label="申请奖项"
+        width="200"
+        prop="applicationAward"
+      ></el-table-column>
+      <el-table-column
+        label="奖项类别"
+        width="200"
+        prop="awardType"
+      ></el-table-column>
+      <el-table-column
+        label="奖项金额"
+        width="180"
+        prop="awardAmount"
+      ></el-table-column>
+      <el-table-column
+        label="申请时间"
+        prop="applicationTime"
+      ></el-table-column>
+      <el-table-column
+        label="评审结果"
+        width="200"
+        prop="reviewResult"
+      ></el-table-column>
     </el-table>
   </div>
 </template>
@@ -23,7 +43,7 @@ import ExportJsonExcel from 'js-export-excel'
 
 export default {
   name: 'AndAwardsRequested',
-  data () {
+  data() {
     return {
       tableData: [
         {
@@ -63,9 +83,9 @@ export default {
     }
   },
   methods: {
-    exportExcel () {
+    exportExcel() {
       const option = {}
-      this.tableData.forEach(item => {
+      this.tableData.forEach((item) => {
         const obj = {}
         for (const k in item) {
           obj[this.propLabel[k]] = item[k]

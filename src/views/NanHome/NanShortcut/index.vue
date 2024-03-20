@@ -3,20 +3,21 @@ import { mapState } from 'vuex'
 
 export default {
   name: 'NanShortcut',
-  data () {
+  data() {
     return {}
   },
   methods: {
-    handleClick () {
+    handleClick() {
       this.$emit('click', true)
     }
   },
   computed: {
     ...mapState('draggableSetting', {
-      allChooseItemArray: state => state.allChooseItemArray.filter(item => item.isChoose)
+      allChooseItemArray: (state) =>
+        state.allChooseItemArray.filter((item) => item.isChoose)
     })
   },
-  mounted () {
+  mounted() {
     this.$store.dispatch('draggableSetting/fetch_AllChoose')
   }
 }
@@ -27,7 +28,10 @@ export default {
     <card-container height="240px" width="500px">
       <template v-slot:header>
         <div>
-          <svg-icon iconClass="shortcut" :svgStyle="{ marginRight: '10px' }"></svg-icon>
+          <svg-icon
+            iconClass="shortcut"
+            :svgStyle="{ marginRight: '10px' }"
+          ></svg-icon>
           <span>快捷方式</span>
         </div>
         <div>
@@ -36,8 +40,12 @@ export default {
         </div>
       </template>
       <template v-slot:main>
-        <div class="main-shortcut__item" v-for="(item, index) in allChooseItemArray" :key="index">
-          <img :src="item.picUrl" alt="">
+        <div
+          class="main-shortcut__item"
+          v-for="(item, index) in allChooseItemArray"
+          :key="index"
+        >
+          <img :src="item.picUrl" alt="" />
           <p>{{ item.title }}</p>
         </div>
       </template>
@@ -46,14 +54,14 @@ export default {
 </template>
 
 <style scoped lang="scss">
-.nan-shortcut{
+.nan-shortcut {
   margin-top: 80px;
   padding-bottom: 100px;
 }
 ::v-deep .el-main {
-   display: flex;
-   flex-wrap: wrap;
-   white-space: nowrap;
+  display: flex;
+  flex-wrap: wrap;
+  white-space: nowrap;
   font-weight: 100;
   font-size: 13px;
   .main-shortcut__item {

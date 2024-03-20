@@ -40,7 +40,7 @@ export default {
   height: 30px;
   border-radius: 50%;
   position: relative;
-  background-color: #D45153;
+  background-color: #d45153;
 }
 
 .eye {
@@ -81,16 +81,16 @@ export default {
 .body {
   height: 40px;
   margin-top: 10px;
-  background-color: #C37EF1;
+  background-color: #c37ef1;
   border-radius: 5px;
 }
 
 .arm,
-.leg{
+.leg {
   width: 20px;
   height: 15px;
   position: absolute;
-  background-color: #F1C47E;
+  background-color: #f1c47e;
 }
 
 .arm {
@@ -111,10 +111,17 @@ export default {
   right: 0;
 }
 @keyframes blink {
-  50% { background: #333; }
+  50% {
+    background: #333;
+  }
 }
 @keyframes wave {
-  0%, 100% { transform: rotate(60deg); }
-  50% { transform: rotate(0deg); }
+  0%,
+  100% {
+    transform: rotate(60deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
 }
 </style>
