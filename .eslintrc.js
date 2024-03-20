@@ -4,9 +4,9 @@ module.exports = {
     node: true
   },
   extends: [
-    'plugin:vue/essential',
-    '@vue/standard',
-    'plugin:prettier/recommended' // 避免 prettier 与 eslint 冲突
+    'plugin:vue/essential'
+    // '@vue/standard',
+    // 'plugin:prettier/recommended'
   ],
   parserOptions: {
     parser: '@babel/eslint-parser'
