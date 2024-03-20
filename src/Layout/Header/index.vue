@@ -42,9 +42,9 @@ export default {
   watch: {
     isFullscreen (newVal) {
       if (newVal) {
-        this.$message.once({ message: '全屏模式', type: 'success' })
+        this.$message({ message: '全屏模式', type: 'success' })
       } else {
-        this.$message.once({ message: '退出全屏', type: 'warning' })
+        this.$message({ message: '退出全屏', type: 'warning' })
       }
     }
   },
