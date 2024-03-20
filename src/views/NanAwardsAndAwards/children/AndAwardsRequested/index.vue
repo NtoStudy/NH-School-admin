@@ -1,42 +1,19 @@
 <template>
   <div class="AndAwardsRequested">
-    <el-button>查看申请进度</el-button>
+    <el-button>跟踪申请项目进度</el-button>
+    <el-button>导出申请记录</el-button>
     <el-table
       :data="tableData"
       style="width: 100%"
-      height="800">
-      <el-table-column
-        label="日期"
-        width="180">
-        <template v-slot="scope">
-          <i class="el-icon-time"></i>
-          <span style="margin-left: 10px">{{ scope.row.date }}</span>
-        </template>
-      </el-table-column>
-      <el-table-column
-        label="姓名"
-        width="180">
-        <template v-slot="scope">
-          <el-popover trigger="hover" placement="top">
-            <p>姓名: {{ scope.row.name }}</p>
-            <p>住址: {{ scope.row.address }}</p>
-            <div slot="reference" class="name-wrapper">
-              <el-tag size="medium">{{ scope.row.name }}</el-tag>
-            </div>
-          </el-popover>
-        </template>
-      </el-table-column>
-      <el-table-column label="操作">
-        <template v-slot="scope">
-          <el-button
-            size="mini"
-            @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
-          <el-button
-            size="mini"
-            type="danger"
-            @click="handleDelete(scope.$index, scope.row)">删除</el-button>
-        </template>
-      </el-table-column>
+      height="650">
+      <el-table-column width="60" type="selection"></el-table-column>
+      <!-- 这里使用prop属性绑定数据行的字段 -->
+      <el-table-column label="评奖学年" width="200" prop="year"></el-table-column>
+      <el-table-column label="申请奖项" width="200" prop="applicationAward"></el-table-column>
+      <el-table-column label="奖项类别" width="200" prop="awardType"></el-table-column>
+      <el-table-column label="奖项金额" width="180" prop="awardAmount"></el-table-column>
+      <el-table-column label="申请时间" prop="applicationTime"></el-table-column>
+      <el-table-column label="评审结果" width="200" prop="reviewResult"></el-table-column>
     </el-table>
   </div>
 </template>
@@ -46,35 +23,32 @@ export default {
   name: 'AndAwardsRequested',
   data () {
     return {
-      tableData: [{
-        date: '2016-05-02',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1518 弄'
-      }, {
-        date: '2016-05-04',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1517 弄'
-      }, {
-        date: '2016-05-01',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1519 弄'
-      }, {
-        date: '2016-05-03',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1516 弄'
-      }, {
-        date: '2016-05-03',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1516 弄'
-      }]
-    }
-  },
-  methods: {
-    handleEdit (index, row) {
-      console.log(index, row)
-    },
-    handleDelete (index, row) {
-      console.log(index, row)
+      tableData: [
+        {
+          year: '2022-2023', // "评奖学年"
+          applicationAward: 'Outstanding Student', // "申请奖项"
+          awardType: 'Scholarship', // "奖项类别"
+          awardAmount: '5000 RMB', // "奖项金额"
+          applicationTime: '2022-09-01', // "申请时间"
+          reviewResult: '通过' // "评审结果"
+        },
+        {
+          year: '2021-2022',
+          applicationAward: 'Academic Excellence',
+          awardType: 'Research Grant',
+          awardAmount: '8000 RMB',
+          applicationTime: '2021-09-01',
+          reviewResult: '审核中'
+        },
+        {
+          year: '2020-2021',
+          applicationAward: 'Outstanding Athlete',
+          awardType: 'Athletic Grant',
+          awardAmount: '7000 RMB',
+          applicationTime: '2020-09-01',
+          reviewResult: '未通过'
+        }
+      ]
     }
   }
 }
@@ -83,7 +57,10 @@ export default {
 <style lang="scss" scoped>
 .AndAwardsRequested {
   .el-button {
-    margin-bottom: 30px;
+    margin-bottom: 25px;
+  }
+  .el-table {
+    border-radius: 25px;
   }
 }
 </style>

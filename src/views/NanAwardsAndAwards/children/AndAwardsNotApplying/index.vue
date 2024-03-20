@@ -2,7 +2,7 @@
   <el-table
     :data="tableData"
     style="width: 100%"
-    height="800">
+    height="650">
     <el-table-column width="60" label="选择">
       <template>
         <el-checkbox></el-checkbox>
@@ -50,6 +50,108 @@ export default {
     return {
       tableData: [{
         itemTitle: '特等奖学金',
+        money: 3000,
+        isOpen: false,
+        limit: [
+          {
+            passing: true,
+            content: '在校期间“2020-2024”没有出现违纪情况,在校期间“2020-2024”没有出现违纪情况在校期间“2020-2024”没有出现违纪情况,在校期间“2020-2024”没有出现违纪情况'
+          },
+          {
+            passing: true,
+            content: '本学年思想道德素质分需大于等于90分'
+          },
+          {
+            passing: true,
+            content: '本学年身体素质分需大于等于85分'
+          },
+          {
+            passing: false,
+            content: '本学年专业文化成绩需大于等于90分'
+          },
+          {
+            passing: true,
+            content: '综测总分需为年级前5%才能申请'
+          },
+          {
+            passing: false,
+            content: '各项成绩需大于等于85分'
+          },
+          {
+            passing: false,
+            content: '本学年的课外实践分需大于等于5.0分才能申请'
+          }
+        ]
+      }, {
+        itemTitle: '一等奖学金',
+        money: 3000,
+        isOpen: false,
+        limit: [
+          {
+            passing: true,
+            content: '在校期间“2020-2024”没有出现违纪情况,在校期间“2020-2024”没有出现违纪情况在校期间“2020-2024”没有出现违纪情况,在校期间“2020-2024”没有出现违纪情况'
+          },
+          {
+            passing: true,
+            content: '本学年思想道德素质分需大于等于90分'
+          },
+          {
+            passing: true,
+            content: '本学年身体素质分需大于等于85分'
+          },
+          {
+            passing: false,
+            content: '本学年专业文化成绩需大于等于90分'
+          },
+          {
+            passing: true,
+            content: '综测总分需为年级前5%才能申请'
+          },
+          {
+            passing: false,
+            content: '各项成绩需大于等于85分'
+          },
+          {
+            passing: false,
+            content: '本学年的课外实践分需大于等于5.0分才能申请'
+          }
+        ]
+      }, {
+        itemTitle: '二等奖学金',
+        money: 3000,
+        isOpen: false,
+        limit: [
+          {
+            passing: true,
+            content: '在校期间“2020-2024”没有出现违纪情况,在校期间“2020-2024”没有出现违纪情况在校期间“2020-2024”没有出现违纪情况,在校期间“2020-2024”没有出现违纪情况'
+          },
+          {
+            passing: true,
+            content: '本学年思想道德素质分需大于等于90分'
+          },
+          {
+            passing: true,
+            content: '本学年身体素质分需大于等于85分'
+          },
+          {
+            passing: false,
+            content: '本学年专业文化成绩需大于等于90分'
+          },
+          {
+            passing: true,
+            content: '综测总分需为年级前5%才能申请'
+          },
+          {
+            passing: false,
+            content: '各项成绩需大于等于85分'
+          },
+          {
+            passing: false,
+            content: '本学年的课外实践分需大于等于5.0分才能申请'
+          }
+        ]
+      }, {
+        itemTitle: '三等奖学金',
         money: 3000,
         isOpen: false,
         limit: [
