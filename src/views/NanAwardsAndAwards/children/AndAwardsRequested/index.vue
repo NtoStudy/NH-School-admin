@@ -1,7 +1,7 @@
 <template>
   <div class="AndAwardsRequested">
     <el-button>跟踪申请项目进度</el-button>
-    <el-button>导出申请记录</el-button>
+    <el-button @click="exportExcel">导出申请记录</el-button>
     <el-table
       :data="tableData"
       style="width: 100%"
@@ -19,6 +19,8 @@
 </template>
 
 <script>
+import ExportJsonExcel from 'js-export-excel'
+
 export default {
   name: 'AndAwardsRequested',
   data () {
@@ -48,7 +50,51 @@ export default {
           applicationTime: '2020-09-01',
           reviewResult: '未通过'
         }
+      ],
+      propLabel: {
+        year: '评奖学年',
+        applicationAward: '申请奖项',
+        awardType: '奖项类别',
+        awardAmount: '奖项金额',
+        applicationTime: '申请时间',
+        reviewResult: '评审结果'
+      },
+      excelTable: []
+    }
+  },
+  methods: {
+    exportExcel () {
+      const option = {}
+      this.tableData.forEach(item => {
+        const obj = {}
+        for (const k in item) {
+          obj[this.propLabel[k]] = item[k]
+        }
+        this.excelTable.push(obj)
+      })
+      option.fileName = '学校学生统计数据'
+      const labelList = []
+      for (const k in this.propLabel) {
+        labelList.push(this.propLabel[k])
+      }
+      option.datas = [
+        {
+          sheetData: this.excelTable,
+          sheetName: 'sheet1',
+          sheetFilter: labelList,
+          sheetHeader: labelList,
+          columnWidths: ['4', '8', '8']
+        },
+        {
+          sheetData: this.tableData,
+          sheetName: 'sheet2',
+          sheetFilter: Object.keys(this.propLabel),
+          sheetHeader: labelList,
+          columnWidths: ['8', '8', '8']
+        }
       ]
+      const toExcel = new ExportJsonExcel(option)
+      toExcel.saveExcel()
     }
   }
 }
