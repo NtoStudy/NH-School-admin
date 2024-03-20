@@ -27,7 +27,6 @@ export default {
   data () {
     return {
       isFullscreen: false,
-      isNight: true,
       theme: localStorage.getItem('theme') || 'light'
     }
   },
@@ -53,6 +52,16 @@ export default {
     screenfull.on('change', () => {
       this.isFullscreen = screenfull.isFullscreen
     })
+  },
+  computed: {
+    isNight: {
+      get () {
+        return this.theme === 'light'
+      },
+      set (value) {
+        this.theme = value ? 'light' : 'dark'
+      }
+    }
   }
 }
 </script>

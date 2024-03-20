@@ -34,7 +34,7 @@ import LayoutMenu from './Menu'
 export default {
   name: 'NanLayout',
   created () {
-    this.$store.commit('/globalTheme/getTheme')
+    this.$store.commit('globalTheme/getTheme')
   },
   data () {
     return { }
