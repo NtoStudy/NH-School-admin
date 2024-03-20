@@ -54,10 +54,12 @@ export default {
     })
   },
   computed: {
+    // 计算依赖值 theme
     isNight: {
       get () {
         return this.theme === 'light'
       },
+      // 非依赖情况下的修改
       set (value) {
         this.theme = value ? 'light' : 'dark'
       }
