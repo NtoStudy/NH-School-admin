@@ -107,3 +107,5 @@ yarn lint
 [前端将table数据导出excel的几种方式](https://juejin.cn/post/7280006996572586043)
 
 [前端导出Excel 表格（js-export-excel）](https://blog.csdn.net/weixin_52277438/article/details/125044056)
+
+[解决VSCode报Delete `␍`eslint(prettier/prettier)问题](https://juejin.cn/post/6979958982291292190)
