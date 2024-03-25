@@ -100,7 +100,7 @@ export default {
 .success {
   background-color: #f0f9eb;
   border-color: #e1f3d8;
-  color: #67c23a;
+  color: #ce70b5;
 }
 .info {
   background-color: #f4f4f5;
