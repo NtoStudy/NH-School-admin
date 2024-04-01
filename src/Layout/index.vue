@@ -150,6 +150,8 @@ export default {
     }
     .el-main {
       overflow: auto;
+      scrollbar-width: none; /* firefox */
+      -ms-overflow-style: none; /* IE 10+ */
     }
   }
 }

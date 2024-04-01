@@ -9,6 +9,11 @@ export default {
   },
   data() {
     return {}
+  },
+  methods: {
+    handleAddRow () {
+      this.$emit('addRow', 1)
+    }
   }
 }
 </script>
@@ -16,12 +21,15 @@ export default {
 <template>
   <div class="information-title">
     <div class="title">{{ informationTitle }}</div>
+    <slot name="addRow"></slot>
   </div>
 </template>
 
 <style scoped lang="scss">
 .information-title {
   padding: 15px 30px;
+  display: flex;
+  align-items: center;
   .title {
     position: relative;
     font-weight: 600;

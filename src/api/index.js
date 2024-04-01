@@ -29,5 +29,4 @@ export const getHomeDownload = () => request({ url: '/homeDownload' })
 
 export const getHomeShortcut = () => request({ url: '/homeShortcut' })
 
-export const getAllChooseItemArray = () =>
-  request({ url: '/allChooseItemArray' })
+export const getAllChooseItemArray = () => request({ url: '/allChooseItemArray' })
