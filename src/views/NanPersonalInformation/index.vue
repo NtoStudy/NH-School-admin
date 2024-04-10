@@ -317,6 +317,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.NanPersonalInformation {
+  padding: 30px;
+}
 .el-row {
   margin-bottom: 20px;
   height: 80vh;

@@ -60,7 +60,7 @@ export const AsideRoutes = [
         name: 'SystemMaintenance',
         component: () => import('@/views/SystemMaintenance'),
         meta: {
-          title: '站内维护',
+          title: '系统管理',
           icon: { url: require('../assets/首页.png') }
         }
       },
