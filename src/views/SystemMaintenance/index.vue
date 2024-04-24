@@ -2,11 +2,20 @@
 export default {
   name: 'SystemMaintenance',
   data() {
-    return {}
+    return {
+      closeTop:'true'
+    }
+  },
+  methods:{
+    changeClose(){
+      this.closeTop = false
+    }
+  },
+  mounted() {
+    // this.$store.dispatch("stu/getScholarship");
   }
 }
 </script>
-
 <template>
   <div class="SystemMaintenance">
     <el-row :gutter="20">
@@ -39,8 +48,23 @@ export default {
       </el-col>
       <el-col :span="15">
         <div class="right">
-          111
-        </div>
+          <div class="prompt" v-show="closeTop">
+            <span class="blue">提示：</span>
+            <span class="red">新密码长度为8~20位数且不可为连续的数字或者相同字符</span>
+            <div class="close" @click="changeClose"><i>X</i></div>
+          </div>
+
+          <div class="content">
+            <div class="modify"><i class="el-icon-edit"></i>密码修改</div>
+
+
+            <div class="text">
+              <span class="left">原密码</span>
+              <span class="right"><input></span>
+            </div>
+            <div class="Footer">3</div>
+          </div>
+         </div>
       </el-col>
     </el-row>
   </div>
@@ -61,5 +85,51 @@ export default {
   background-color: #ffffff;
   height: 570px;
   padding: 15px;
+  .prompt{
+    display: flex;
+    line-height: 40px;
+    margin-bottom: 20px;
+    height: 40px;
+    width: 780px;
+    background-color: #fffee2;
+    .blue{
+      margin-left: 10px;
+      color: skyblue;
+    }
+    .red{
+      margin-right: 330px;
+      font-size: 14px;
+      color: red;
+    }
+    .close{
+      margin-top: 11px;
+      background-color: #d89634;
+      line-height: normal;
+      width: 20px;
+      height: 20px;
+      i{
+        color: #F7F7F7;
+        margin-left: 5px;
+      }
+    }
+
+}
+
+
+
+}
+
+.content{
+  flex-direction: column;
+  display: flex;
+  background-color: pink;
+  height: 400px;
+  width: 780px;
+  .modify{
+    line-height: 30px;
+    height: 30px;
+    background-color: #f5f5f5;
+  }
+
 }
 </style>

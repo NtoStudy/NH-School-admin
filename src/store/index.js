@@ -7,6 +7,8 @@ import user from './modeules/user'
 import tags from './modeules/tags'
 import draggableSetting from './modeules/draggableSetting'
 import globalTheme from '@/store/modeules/globalTheme'
+import stu from '@/store/modeules/stu'
+import Disciplinary from '@/store/modeules/Disciplinary'
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
@@ -16,7 +18,9 @@ const store = new Vuex.Store({
     user,
     tags,
     draggableSetting,
-    globalTheme
+    globalTheme,
+    stu,
+    Disciplinary
   },
   getters
 })

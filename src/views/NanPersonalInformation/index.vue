@@ -65,22 +65,23 @@
             </template>
           </informationTitle>
           <el-table
+            :row-style="{ height: '40px' }"
             :data="tableData_c"
             style="width: 100%"
             border
           >
-            <el-table-column label="姓名"></el-table-column>
-            <el-table-column label="年龄"></el-table-column>
-            <el-table-column label="关系"></el-table-column>
-            <el-table-column label="工作单位"></el-table-column>
-            <el-table-column label="工作地址"></el-table-column>
-            <el-table-column label="单位邮编"></el-table-column>
-            <el-table-column label="身份号码"></el-table-column>
-            <el-table-column label="联系电话"></el-table-column>
-            <el-table-column label="职业"></el-table-column>
-            <el-table-column label="年收入"></el-table-column>
-            <el-table-column label="健康状况"></el-table-column>
-            <el-table-column label="操作"></el-table-column>
+            <el-table-column prop="name" label="姓名" width="80"></el-table-column>
+            <el-table-column prop="age" label="年龄" width="60"></el-table-column>
+            <el-table-column prop="relationship" label="关系" width="80"></el-table-column>
+            <el-table-column prop="workplace" label="工作单位" width="140"></el-table-column>
+            <el-table-column prop="city" label="工作地址" width="140"></el-table-column>
+            <el-table-column prop="zip" label="单位邮编" width="80"></el-table-column>
+            <el-table-column prop="identity" label="身份号码" width="200"></el-table-column>
+            <el-table-column prop="ContactPhone" label="联系电话" width="140"></el-table-column>
+            <el-table-column prop="occupation" label="职业" width="100"></el-table-column>
+            <el-table-column prop="income" label="年收入" width="80"></el-table-column>
+            <el-table-column prop="health" label="健康状况" width="120"></el-table-column>
+            <el-table-column prop="operation" label="操作" width="80"></el-table-column>
           </el-table>
           <informationTitle information-title="其它信息"></informationTitle>
           <el-table></el-table>
@@ -111,7 +112,7 @@ export default {
           tag_r: '姓名',
           formControls: {
             row1: { type: 'input', value: '' },
-            row2: { type: 'datepicker', value: '' },
+            row2: { type: 'input', value: '' },
             isUpload: true
           }
         }, {
@@ -126,53 +127,53 @@ export default {
         tag_r: '学年',
         formControls: {
           row1: { type: 'select', value: '' },
-          row2: { type: 'button', value: '' },
+          row2: { type: 'select', value: '' },
         }
       }, {
         tag_l: '学部',
         tag_r: '政治面貌',
         formControls: {
           row1: { type: 'select', value: '' },
-          row2: { type: 'button', value: '' },
+          row2: { type: 'select', value: '' },
         }
       }, {
         tag_l: '专业',
         tag_r: '民族',
         formControls: {
           row1: { type: 'select', value: '' },
-          row2: { type: 'button', value: '' },
+          row2: { type: 'select', value: '' },
         }
       }, {
         tag_l: '班级',
         tag_r: '学籍异动',
         formControls: {
           row1: { type: 'select', value: '' },
-          row2: { type: 'button', value: '' },
+          row2: { type: 'select', value: '' },
         }
       }, {
         tag_l: '入学时间',
         tag_r: '身份证号',
         formControls: {
           row1: { type: 'select', value: '' },
-          row2: { type: 'button', value: '' },
+          row2: { type: 'input', value: '' },
         }
       }, {
         tag_l: '籍贯',
         formControls: {
           row1: { type: 'select', value: '' },
-          row2: { type: 'button', value: '' },
+          row2: { type: 'select', value: '' },
         }
       }, {
         tag_l: '户口',
         formControls: {
           row1: { type: 'select', value: '' },
-          row2: { type: 'button', value: '' },
+          row2: { type: 'select', value: '' },
         }
       }, {
         tag_l: '生源地',
         formControls: {
           row1: { type: 'select', value: '' },
-          row2: { type: 'button', value: '' },
+          row2: { type: 'input', value: '' },
         }
       }],
       tableData_b: [
@@ -202,11 +203,12 @@ export default {
         city: '',
         zip: '',
         identity: '',
+        ContactPhone:'',
         occupation: '',
         income: '',
         health: '',
         operation: ''
-      }, {
+      },{
         name: '',
         age: '',
         relationship: '',
@@ -214,11 +216,12 @@ export default {
         city: '',
         zip: '',
         identity: '',
+        ContactPhone:'',
         occupation: '',
         income: '',
         health: '',
         operation: ''
-      }, {
+      },{
         name: '',
         age: '',
         relationship: '',
@@ -226,11 +229,12 @@ export default {
         city: '',
         zip: '',
         identity: '',
+        ContactPhone:'',
         occupation: '',
         income: '',
         health: '',
         operation: ''
-      }, {
+      },{
         name: '',
         age: '',
         relationship: '',
@@ -238,6 +242,7 @@ export default {
         city: '',
         zip: '',
         identity: '',
+        ContactPhone:'',
         occupation: '',
         income: '',
         health: '',
