@@ -1,19 +1,19 @@
 <template>
   <div class="footer">
     <div class="left">
-      <span>第 0 / </span>
-      <span class="red">0 </span>
-      <span>页,</span>
-      <span> 每 页 显 示 </span>
+      <span> 第 0 /</span>
+      <span class="red"> 0 </span>
+      <span> 页,</span>
+      <span> 每 页 显 示</span>
       <select>
         <option value="语文">10</option>
         <option value="数学">20</option>
         <option value="英语">50</option>
         <option value="物理">100</option>
       </select>
-      <span>条 / 共</span>
+      <span> 条 / 共</span>
       <span class="red"> 0 </span>
-      <span>条 记 录</span>
+      <span> 条 记 录 </span>
     </div>
     <div class="right">
       <el-button-group>
@@ -36,6 +36,7 @@ export default {
 <style lang="scss" scoped>
 .footer{
   display: flex;
+  justify-content: space-between;
   background-color: #f5f5f7;
   height: 50px;
   line-height: 50px;
@@ -48,7 +49,6 @@ export default {
 }
 .right{
   margin-top: 10px;
-  margin-left: 220px;
   display: flex;
 
 }

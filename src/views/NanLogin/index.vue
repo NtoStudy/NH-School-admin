@@ -53,9 +53,12 @@
 </template>
 
 <script>
+import { setLocalStorage } from '@/utils/catch'
 export default {
   name: 'NanLogin',
   data() {
+
+
     const isAgree = (rule, value, callback) => {
       // rule 校验规则
       // value 校验的值
@@ -65,7 +68,10 @@ export default {
       console.log(rule)
       console.log(value)
       value ? callback() : callback(new Error(rule.message))
+
+      //
     }
+
     return {
       form: {
         userCount: '',
@@ -79,9 +85,9 @@ export default {
         password: [
           { required: true, message: '请输入密码', trigger: 'blur' },
           {
-            min: 10,
+            min: 4,
             max: 16,
-            message: '密码的长度应该为10~16位之间',
+            message: '密码的长度应该为4~16位之间',
             trigger: 'blur'
           }
         ],
@@ -103,15 +109,20 @@ export default {
       try {
         await this.$refs.form.validate((value, obj) => {
           if (value) {
+            // 获取登录用户的token
+            let userCount = this.form.userCount
+            let password = this.form.password
+            this.$store.dispatch('UserLogin' ,{userCount,password})
             this.$router.push('/')
           } else {
+            this.$message.error('检查密码规则是否填写正确')
             throw new Error('校验未通过')
           }
         })
       } catch (error) {
         console.error(error)
       }
-    }
+    },
   },
   watch: {
     activeName(newVal) {

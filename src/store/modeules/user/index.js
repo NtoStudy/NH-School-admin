@@ -1,3 +1,7 @@
+import { getUserLogin } from '@/api'
+
+
+
 const state = {
   userInfo: {
     name: '一小池勺',
@@ -5,7 +9,12 @@ const state = {
   }
 }
 const mutations = {}
-const actions = {}
+const actions = {
+  async UserLogin({commit},data){
+    const res = await getUserLogin(data)
+    console.log(res)
+  }
+}
 const getters = {}
 
 export default {
