@@ -1,15 +1,31 @@
-import axios, { post } from 'axios'
+import axios from 'axios'
 import nprogress from 'nprogress'
 import 'nprogress/nprogress.css'
+import { getLocalStorage } from '@/utils/catch'
+
 const request = axios.create({
-  baseURL: '/api',
+  baseURL: 'http://localhost:8080',
   timeout: 5000
 })
 
 request.interceptors.request.use((config) => {
   nprogress.start()
+  // const token = getLocalStorage('token')
+  // if (token) {
+  //   config.headers.token = token
+    // config.headers = {
+    //   'token': token
+    // }
+    // config.headers = {
+    //   'authentication': token
+    // }
+  // } else {
+  //   console.log('没有 Token ')
+  // }
+  console.log(config)
+  console.log(config.headers)
   return config
-})
+});
 
 request.interceptors.response.use(
   (res) => {
@@ -21,26 +37,15 @@ request.interceptors.response.use(
   }
 )
 
-export const getHomeNotices = () => request({ url: '/notices' })
-
-export const getAllNotices = () => request({ url: '/allNoticesList' })
-
-export const getHomeDownload = () => request({ url: '/homeDownload' })
-
-export const getHomeShortcut = () => request({ url: '/homeShortcut' })
-
-export const getAllChooseItemArray = () => request({ url: '/allChooseItemArray' })
-
 // 登录接口
-
-export const getUserLogin = (stuId, password) => request({
+export const getUserLogin = (stuId = '220206636', password = '123456') => request({
   url: '/student/login',
+  method:'POST',
   data: {
     stuId: stuId,
     password: password
   }
 })
-
 
 
 // 处分操作

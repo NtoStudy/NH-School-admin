@@ -1,8 +1,12 @@
 <script>
-import { mapState } from 'vuex'
 import shortcutSettingItem from '../shortcutSettingItem'
 export default {
   name: 'SettingLight',
+  data() {
+    return {
+      allChooseItemArray: []
+    }
+  },
   components: {
     shortcutSettingItem
   },
@@ -12,10 +16,7 @@ export default {
     }
   },
   computed: {
-    ...mapState('draggableSetting', {
-      allChooseItemArray: (state) =>
-        state.allChooseItemArray.filter((item) => item.isChoose)
-    })
+
   }
 }
 </script>

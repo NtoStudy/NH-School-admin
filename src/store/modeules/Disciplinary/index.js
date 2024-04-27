@@ -1,27 +1,25 @@
-import {GetDisciplinary} from '@/api'
+import {getPunishmentList} from '@/api'
 //home 的小仓库
 
 // state: 仓库存储数据的地方
 const state = {
-  Disciplinary: []
+  // PunishmentList: []
 }
 
 // mutations：修改state的唯一手段
 const mutations ={
-  GETDISCIPLINARY(state,Disciplinary){
-    state.Disciplinary = Disciplinary
-  }
-
+  // GETPUNISHMENTLIST(state,PunishmentList){
+  //   state.PunishmentList = PunishmentList
+  // }
 }
 
 //action 处理action可以书写自己的业务逻辑 也可以处理异步
 const actions = {
-  async DisciplinarySanctions ({commit}){
-    const res = await GetDisciplinary()
+  async DisciplinaryAppeal ({commit}){
+    const res = await getPunishmentList()
     console.log(res)
-    commit("GETDISCIPLINARY",res.data)
+    // commit("GETPUNISHMENTLIST",res.data)
   }
-
 }
 
 //getters：可以理解为计算属性

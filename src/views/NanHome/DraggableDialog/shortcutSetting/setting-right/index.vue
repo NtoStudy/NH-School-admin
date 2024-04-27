@@ -1,5 +1,4 @@
 <script>
-import { mapState, mapGetters } from 'vuex'
 import shortcutSettingItem from '../shortcutSettingItem'
 export default {
   name: 'SettingRight',
@@ -21,15 +20,7 @@ export default {
     shortcutSettingItem
   },
   computed: {
-    ...mapState('draggableSetting', {
-      allChooseItemArray: (state) => state.allChooseItemArray
-    }),
-    ...mapGetters({
-      firstTab: 'draggableSetting/firstTab',
-      secondTab: 'draggableSetting/secondTab',
-      thirdTab: 'draggableSetting/thirdTab',
-      fourthTab: 'draggableSetting/fourthTab'
-    })
+
   }
 }
 </script>

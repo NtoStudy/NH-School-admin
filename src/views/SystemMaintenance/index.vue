@@ -4,7 +4,9 @@ export default {
   data() {
     return {
       closeTop:'true',
-      input: ''
+      inputOld: '',
+      inputNew:'',
+      inputNewAgain:''
     }
   },
   methods:{
@@ -68,7 +70,7 @@ export default {
               <el-col :span="8"><div class="grid-contentLeft bg-purple"><i class="red">* </i>原 密 码 </div></el-col>
               <el-col :span="16">
                 <div class="grid-content bg-purple-light">
-                  <span class="size"><span><el-input  size="mini" show-password v-model="input"></el-input></span></span>
+                  <span class="size"><span><el-input  size="mini" show-password v-model="inputOld"></el-input></span></span>
                 </div>
               </el-col>
             </el-row>
@@ -79,7 +81,7 @@ export default {
               <el-col :span="8"><div class="grid-contentLeft bg-purple"><i class="red">* </i> 新 密 码 </div></el-col>
               <el-col :span="16">
                 <div class="grid-content bg-purple-light">
-                  <span class="size"><span><el-input  size="mini" show-password v-model="input"></el-input></span></span>
+                  <span class="size"><span><el-input  size="mini" show-password v-model="inputNew"></el-input></span></span>
                 </div>
               </el-col>
             </el-row>
@@ -90,7 +92,7 @@ export default {
               <el-col :span="8"><div class="grid-contentLeft bg-purple"><i class="red">* </i> 重 复 新 密 码 </div></el-col>
               <el-col :span="16">
                 <div class="grid-content bg-purple-light">
-                  <span class="size"><span><el-input  size="mini" show-password v-model="input"></el-input></span></span>
+                  <span class="size"><span><el-input  size="mini" show-password v-model="inputNewAgain"></el-input></span></span>
                 </div>
               </el-col>
             </el-row>

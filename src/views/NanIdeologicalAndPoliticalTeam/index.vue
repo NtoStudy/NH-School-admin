@@ -21,6 +21,11 @@
         </el-col>
         <el-col :span="15">
           <div class="right">
+            <el-button type="primary" size="small" icon="el-icon-plus" >申请</el-button>
+            <el-button type="primary" size="small" icon="el-icon-edit" >修改</el-button>
+            <el-button type="primary" size="small" icon="el-icon-delete" >删除</el-button>
+            <el-button type="primary" size="small" icon="el-icon-s-promotion" >提交</el-button>
+            <el-button type="primary" size="small" icon="el-icon-s-release" >撤销</el-button>
             <StuButton></StuButton>
             <el-table
               :row-style="{ height: '40px' }"

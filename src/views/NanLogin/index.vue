@@ -112,7 +112,7 @@ export default {
             // 获取登录用户的token
             let userCount = this.form.userCount
             let password = this.form.password
-            this.$store.dispatch('UserLogin' ,{userCount,password})
+            this.$store.dispatch('UserLogin')
             this.$router.push('/')
           } else {
             this.$message.error('检查密码规则是否填写正确')
@@ -123,6 +123,24 @@ export default {
         console.error(error)
       }
     },
+    ajaxLogin() {
+      let xhr = new XMLHttpRequest();
+      xhr.open('POST', 'http://localhost:8080/student/login', true);
+      xhr.setRequestHeader('Content-Type', 'application/json');
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+
+          console.log(JSON.parse(xhr.responseText));
+        }
+      };
+      xhr.onerror = function () {
+        console.error('Request failed.');
+      };
+      xhr.send(JSON.stringify({
+        "stuId": "220206636",
+        "password": "123456"
+      }));
+    }
   },
   watch: {
     activeName(newVal) {

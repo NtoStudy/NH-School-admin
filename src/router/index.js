@@ -35,7 +35,7 @@ export const AsideRoutes = [
   {
     path: '/',
     component: Layout,
-    redirect: '/Home',
+    redirect: '/home',
     children: [
       {
         path: '/Home',
@@ -122,7 +122,22 @@ export const AsideRoutes = [
         meta: {
           title: '勤工俭学',
           icon: { url: require('../assets/勤工俭学.png') }
-        }
+        },
+        redirect: '/NanWorkStudy/requested',
+        children: [
+          {
+            path: '/NanWorkStudy/requested',
+            name: 'AllPositions',
+            component: () =>
+              import('@/views/NanWorkStudy/AllPositions')
+          },
+          {
+            path: '/NanWorkStudy/notApplying',
+            name: 'PositionPersonnel',
+            component: () =>
+              import('@/views/NanWorkStudy/PositionPersonnel')
+          }
+        ]
       },
       {
         path: '/NanDisciplinarySanctions',
@@ -131,7 +146,23 @@ export const AsideRoutes = [
         meta: {
           title: '违纪处分',
           icon: { url: require('../assets/违纪处分.png') }
-        }
+        },
+        redirect: '/NanDisciplinarySanctions/requested',
+        children: [
+          {
+            path: '/NanDisciplinarySanctions/requested',
+            name: 'DisciplinaryAppeal',
+            component: () =>
+              import('@/views/NanDisciplinarySanctions/children/DisciplinaryAppeal')
+          },
+
+          {
+            path: '/NanDisciplinarySanctions/notApplying',
+            name: 'TerminationDisciplinaryAction',
+            component: () =>
+              import('@/views/NanDisciplinarySanctions/children/TerminationDisciplinaryAction')
+          }
+        ]
       },
       {
         path: '/NanCondominiumManagement',
@@ -149,9 +180,52 @@ export const AsideRoutes = [
         meta: {
           title: '日常事务',
           icon: { url: require('../assets/日常事务.png') }
-        }
-      }
-    ]
+        },
+        redirect: '/NanDisciplinarySanctions/behavior',
+        children: [
+          {
+            path: '/NanDisciplinarySanctions/behavior',
+            name: 'DailyBehavior',
+            component: () =>
+              import('@/views/NanEverydayMatters/children/DailyBehavior')
+          },
+
+          {
+            path: '/NanDisciplinarySanctions/activity',
+            name: 'groupActivity',
+            component: () =>
+              import('@/views/NanEverydayMatters/children/groupActivity')
+          },
+
+          {
+            path: '/NanDisciplinarySanctions/management',
+            name: 'LeaveManagement',
+            component: () =>
+              import('@/views/NanEverydayMatters/children/LeaveManagement')
+          },
+
+          {
+            path: '/NanDisciplinarySanctions/site',
+            name: 'SiteManagement',
+            component: () =>
+              import('@/views/NanEverydayMatters/children/SiteManagement')
+          },
+
+          {
+            path: '/NanDisciplinarySanctions/stay',
+            name: 'StayCampus',
+            component: () =>
+              import('@/views/NanEverydayMatters/children/StayCampus')
+          }
+        ]
+      },
+    ],
+  },
+  {
+    path: '*' ,
+    name:'404NotFind',
+    component: () => import('@/views/404.vue'),
+    redirect: '/404.vue'
   }
 ]
 

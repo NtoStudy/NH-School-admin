@@ -1,11 +1,5 @@
 <template>
   <div>
-    <!--  上方按钮  -->
-    <el-button type="primary" icon="el-icon-plus">申请</el-button>
-    <el-button type="primary" icon="el-icon-edit">修改</el-button>
-    <el-button type="primary" icon="el-icon-delete">删除</el-button>
-    <el-button type="primary" icon="el-icon-s-promotion">提交</el-button>
-    <el-button type="primary" icon="el-icon-s-release">撤销</el-button>
     <!--    个人信息-->
     <div class="headName" >
       <span class="name">姓名：一小池勺</span>
@@ -20,21 +14,7 @@ export default {
 
 
   data() {
-    return {
-      tableData: [{
-        StudentID: '20202020',
-        name: '王小虎',
-        college: '一加一学院',
-        class:'20202020',
-        schoolYear:'2020',
-        semester:'4',
-        DisciplinaryCategories:'无',
-        DisciplinaryReason:'无',
-        appeal:'123456',
-        Auditing:'审核中',
-        AuditingResult:'无'
-
-      }]
+    return{
     }
   },
 
