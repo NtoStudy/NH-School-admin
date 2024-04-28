@@ -63,7 +63,7 @@
 import Footer from '@/components/Footer/index.vue'
 import StuButton from '@/components/Stu-Button/index.vue'
 export default {
-name:'SiteManagementIndex',
+  name:'SiteManagement',
   components: { Footer,StuButton },
   data(){
     return {
@@ -76,7 +76,8 @@ name:'SiteManagementIndex',
         ReviewStatus:''
       }]
     }
-  }
+  },
+
 }
 </script>
 

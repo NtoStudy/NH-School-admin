@@ -1,22 +1,22 @@
 <template>
   <div>
-
-    <!--    这是留校申请   -->
     <el-button type="primary" size="small" icon="el-icon-plus" >申请</el-button>
     <el-button type="primary" size="small" icon="el-icon-edit" >修改</el-button>
     <el-button type="primary" size="small" icon="el-icon-delete" >删除</el-button>
     <el-button type="primary" size="small" icon="el-icon-s-promotion" >提交</el-button>
     <el-button type="primary" size="small" icon="el-icon-s-release" >撤销</el-button>
     <el-button type="primary" size="small" icon="el-icon-magic-stick" >流程跟踪</el-button>
-    <stuButton></stuButton>
+
+    <StuButton></StuButton>
+
     <el-table
       :row-style="{ height: '40px' }"
       :data="columns"
       border
       style="width: 100%">
       <el-table-column
-        v-for="(item,index) in StayCampusList"
-        :key="index"
+        v-for="item in DormitoryStatusList"
+        :key="item.prop"
         :prop="item.prop"
         :label="item.label"
         width="180">
@@ -24,45 +24,46 @@
 
       <Footer></Footer>
     </el-table>
+    <!--            下方的导航栏-->
+    <Footer></Footer>
   </div>
 </template>
 
 <script>
-import StuButton from '@/components/Stu-Button/index.vue'
 import Footer from '@/components/Footer/index.vue'
+import StuButton from '@/components/Stu-Button/index.vue'
 import { mapState } from 'vuex'
-
 export default {
-  name:'StayCampus',
+name:'ChangeApplication',
   components: { Footer,StuButton },
   data(){
     return {
-      StayCampusList:[
-        { prop: "id", label: "序列号" },
-        { prop: "stuId", label: "第几位申请人" },
-        { prop: "stuBasicId" ,label:"学号"},
-        { prop: "nation" ,label:"申请地点"},
-        { prop: "gender" , label:"性别" },
-        { prop: "classInfo" , label:"班级" },
-        { prop: "applicationTime", label: "申请时间" },
-        { prop: "stayBegin", label: "开始时间" },
-        { prop: "stayEnd" ,label:"截止时间"},
-        { prop: "status" ,label:"审核状态"},
-
+      DormitoryStatusList:[
+        {prop:'dormitoryAddress',label:'宿舍地址'},
+        {prop:'requestContext',label:'请求内容'},
+        {prop:'requestTime',label:'请求时间'},
+        {prop:'reply',label:'回复'},
+        {prop:'handleResult',label:'处理结果'},
+        {prop:'handleTime',label:'处理时间'},
       ]
     }
   },
+  methods:{
+    handleChangeIndex_1(){
+      this.$router.push('/NanCondominiumManagement/requested')
+    }
+  },
   mounted() {
-    this.$store.dispatch('StayCampus')
+    this.$store.dispatch('ChangeApplication')
   },
   computed:{
     ...mapState({
-      columns: state => state.dailyMatter.StayCampusList
+      columns: state => state.Dormitory.DormitoryStatusList
     })
   }
 }
 </script>
 
-<style>
+<style scoped lang="scss">
 
 </style>

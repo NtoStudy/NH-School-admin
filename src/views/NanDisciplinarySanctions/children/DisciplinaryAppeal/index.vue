@@ -10,74 +10,18 @@
     <stuButton></stuButton>
     <el-table
       :row-style="{ height: '40px' }"
-      :data="tableData"
+      :data="columns"
       border
-      style="width: 100%">
+      style="width: 100%"
+    >
       <el-table-column
-        prop="StudentID"
-        label="学号"
-        width="140">
-      </el-table-column>
-
-      <el-table-column
-        prop="name"
-        label="姓名"
-        width="100">
-      </el-table-column>
-
-      <el-table-column
-        prop="college"
-        label="学院"
-        width="140">
-      </el-table-column>
-
-      <el-table-column
-        prop="class"
-        label="班级"
-        width="120">
-      </el-table-column>
-
-      <el-table-column
-        prop="schoolYear"
-        label="学年"
-        width="100">
-      </el-table-column>
-
-      <el-table-column
-        prop="semester"
-        label="学期"
-        width="100">
-      </el-table-column>
-
-      <el-table-column
-        prop="DisciplinaryCategories"
-        label="处分类别"
+        v-for="(item,index) in PunishmentList"
+        :key="index"
+        :prop="item.prop"
+        :label="item.label"
         width="180">
       </el-table-column>
 
-      <el-table-column
-        prop="DisciplinaryReason"
-        label="处分原因"
-        width="180">
-      </el-table-column>
-
-      <el-table-column
-        prop="AppealNumber"
-        label="申诉文号"
-        width="180">
-      </el-table-column>
-
-      <el-table-column
-        prop="ReviewStatus"
-        label="审核状态"
-        width="100">
-      </el-table-column>
-
-      <el-table-column
-        prop="findingsAudit"
-        label="核审结果"
-        width="100">
-      </el-table-column>
     </el-table>
     <Footer></Footer>
 
@@ -87,38 +31,38 @@
 <script>
 import Footer from '@/components/Footer/index.vue'
 import StuButton from '@/components/Stu-Button/index.vue'
-import TerminationDisciplinaryAction from '@/views/NanDisciplinarySanctions/children/TerminationDisciplinaryAction/index.vue'
-// import { getPunishmentList } from '@/api/index'
+import { mapState } from 'vuex'
 export default {
   name: 'DisciplinaryAppeal',
   components:{StuButton,Footer},
   data() {
+
     return {
-      tableData:[{
-        StudentID:'202002020',
-        name:'腐恶阿奴',
-        college:'带娃打完对哇',
-        class:'2020202',
-        schoolYear:'2020020',
-        semester:'23',
-        DisciplinaryCategories:'160',
-        DisciplinaryReason:'160',
-        AppealNumber:'2121212',
-        ReviewStatus:'正在审核',
-        findingsAudit:'正在审核',
-      }]
 
-
+      PunishmentList: [
+        { prop: "id", label: "序列号" },
+        { prop: "stuName", label: "姓名" },
+        { prop: "violationType" ,label:"违规类型"},
+        { prop: "violationReason" ,label:"违规原因"},
+        { prop: "violationEnd" , label:"截止时间" },
+        { prop: "examineStatus" , label:"检查状态" },
+        // ...其他列
+      ],
+      // columns: [{}]
     }
   },
+
   mounted() {
-    // this.$store.dispatch('Disciplinary/DisciplinaryAppeal')
-    // getPunishmentList().then(res =>{
-    //   console.log(res)
-    // })
-  },
+    this.$store.dispatch('Disciplinary/DisciplinaryAppeal')
+},
+computed:{
+  ...mapState({
+    columns: state => state.Disciplinary.PunishmentList
+  })
+}
 
 }
+
 </script>
 
 <style scoped lang="scss">

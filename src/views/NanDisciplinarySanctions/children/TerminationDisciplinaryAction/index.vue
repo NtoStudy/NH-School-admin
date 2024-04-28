@@ -9,67 +9,15 @@
     <StuButton></StuButton>
     <el-table
       :row-style="{ height: '40px' }"
-      :data="tableData"
+      :data="columns"
       border
       style="width: 100%">
       <el-table-column
-        prop="StudentID"
-        label="学号"
-        width="120">
-      </el-table-column>
-
-      <el-table-column
-        prop="schoolYear"
-        label="学年"
-        width="100">
-      </el-table-column>
-
-      <el-table-column
-        prop="semester"
-        label="学期"
-        width="60">
-      </el-table-column>
-
-      <el-table-column
-        prop="college"
-        label="学院"
-        width="140">
-      </el-table-column>
-
-      <el-table-column
-        prop="class"
-        label="班级"
-        width="100">
-      </el-table-column>
-
-      <el-table-column
-        prop="DisciplinaryCategories"
-        label="处分类别"
-        width="160">
-      </el-table-column>
-
-      <el-table-column
-        prop="DisciplinaryReason"
-        label="处分原因"
-        width="160">
-      </el-table-column>
-
-      <el-table-column
-        prop="ReleaseDocumentNumber"
-        label="解除文号"
-        width="120">
-      </el-table-column>
-
-      <el-table-column
-        prop="ReleaseTime"
-        label="解除时间"
-        width="100">
-      </el-table-column>
-
-      <el-table-column
-        prop="ReleaseStatus"
-        label="解除状态"
-        width="160">
+        v-for="(item,index) in RelievePunishmentList"
+        :key="index"
+        :prop="item.prop"
+        :label="item.label"
+        width="180">
       </el-table-column>
 
     </el-table>
@@ -80,32 +28,33 @@
 <script>
 import Footer from '@/components/Footer/index.vue'
 import StuButton from '@/components/Stu-Button/index.vue'
+import { mapState } from 'vuex'
+
 export default {
   name: 'TerminationDisciplinaryAction',
   components:{StuButton,Footer},
   data() {
     return {
-      tableData:[{
-        StudentID:'2020202020',
-        schoolYear:'2020-2020',
-        semester:'2',
-        college:'一二三四五学院',
-        class:'2020202',
-        DisciplinaryCategories:'五分熟个玩法分',
-        DisciplinaryReason:'五分熟个玩法分',
-        ReleaseDocumentNumber:'12345',
-        ReleaseTime:'12122121',
-        ReleaseStatus:'五分熟个玩法分',
 
-      }]
-
+      RelievePunishmentList:[
+        { prop: 'id', label:'序列号'},
+        { prop: 'stuId', label:'学号'},
+        { prop: 'violationId', label:'违规账号'},
+        { prop: 'status', label:'审核状态'},
+        { prop: 'counsellorId', label:'顾问Id'},
+        { prop: 'adminId', label:'管理员Id'},
+      ]
 
     }
   },
   mounted() {
-
-    // this.$store.dispatch('Disciplinary/DisciplinarySanctions')
+    this.$store.dispatch('Disciplinary/TerminationDisciplinaryAction')
   },
+  computed:{
+    ...mapState({
+      columns: state => state.Disciplinary.RelievePunishmentList
+    })
+  }
 }
 </script>
 

@@ -1,24 +1,41 @@
-import {getPunishmentList} from '@/api'
+import { getProgressQuery, getPunishmentList, } from '@/api'
 //home 的小仓库
 
 // state: 仓库存储数据的地方
 const state = {
-  // PunishmentList: []
+  // 处分查询数据
+  PunishmentList: [],
+  RelievePunishmentList: []
 }
 
 // mutations：修改state的唯一手段
 const mutations ={
-  // GETPUNISHMENTLIST(state,PunishmentList){
-  //   state.PunishmentList = PunishmentList
-  // }
+  //  处分查询接口
+  GETPUNISHMENTLIST(state,PunishmentList){
+    state.PunishmentList = PunishmentList
+  },
+
+  // 处分解除查询接口
+  GETPROGRESSQUERY(state,RelievePunishmentList){
+    state.RelievePunishmentList = RelievePunishmentList
+  }
 }
 
 //action 处理action可以书写自己的业务逻辑 也可以处理异步
 const actions = {
+  //  处分查询接口
   async DisciplinaryAppeal ({commit}){
     const res = await getPunishmentList()
-    console.log(res)
-    // commit("GETPUNISHMENTLIST",res.data)
+    // console.log(res)
+    // console.log(res.data)
+    commit("GETPUNISHMENTLIST",res.data)
+  },
+
+  // 处分解除查询接口
+  async TerminationDisciplinaryAction({commit}){
+    const res = await getProgressQuery()
+    // console.log(res.data)
+    commit('GETPROGRESSQUERY',res.data)
   }
 }
 

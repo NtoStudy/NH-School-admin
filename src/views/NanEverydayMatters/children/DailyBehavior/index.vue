@@ -67,7 +67,7 @@
       </el-table-column>
 
 
-    <Footer></Footer>
+      <Footer></Footer>
     </el-table>
 
   </div>

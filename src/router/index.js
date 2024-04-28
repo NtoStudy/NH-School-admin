@@ -129,13 +129,13 @@ export const AsideRoutes = [
             path: '/NanWorkStudy/requested',
             name: 'AllPositions',
             component: () =>
-              import('@/views/NanWorkStudy/AllPositions')
+              import('@/views/NanWorkStudy/children/AllPositions')
           },
           {
             path: '/NanWorkStudy/notApplying',
             name: 'PositionPersonnel',
             component: () =>
-              import('@/views/NanWorkStudy/PositionPersonnel')
+              import('@/views/NanWorkStudy/children/PositionPersonnel')
           }
         ]
       },
@@ -171,7 +171,23 @@ export const AsideRoutes = [
         meta: {
           title: '公寓管理',
           icon: { url: require('../assets/公寓管理.png') }
-        }
+        },
+        redirect: '/NanCondominiumManagement/requested',
+        children: [
+          {
+            path: '/NanCondominiumManagement/requested',
+            name: 'ApartmentDiscipline',
+            component: () =>
+              import('@/views/NanCondominiumManagement/children/ApartmentDiscipline')
+          },
+
+          {
+            path: '/NanCondominiumManagement/notApplying',
+            name: 'ChangeApplication',
+            component: () =>
+              import('@/views/NanCondominiumManagement/children/ChangeApplication')
+          },
+        ]
       },
       {
         path: '/NanEverydayMatters',
@@ -181,38 +197,38 @@ export const AsideRoutes = [
           title: '日常事务',
           icon: { url: require('../assets/日常事务.png') }
         },
-        redirect: '/NanDisciplinarySanctions/behavior',
+        redirect: '/NanEverydayMatters/behavior',
         children: [
           {
-            path: '/NanDisciplinarySanctions/behavior',
+            path: '/NanEverydayMatters/behavior',
             name: 'DailyBehavior',
             component: () =>
               import('@/views/NanEverydayMatters/children/DailyBehavior')
           },
 
           {
-            path: '/NanDisciplinarySanctions/activity',
+            path: '/NanEverydayMatters/activity',
             name: 'groupActivity',
             component: () =>
               import('@/views/NanEverydayMatters/children/groupActivity')
           },
 
           {
-            path: '/NanDisciplinarySanctions/management',
+            path: '/NanEverydayMatters/management',
             name: 'LeaveManagement',
             component: () =>
               import('@/views/NanEverydayMatters/children/LeaveManagement')
           },
 
           {
-            path: '/NanDisciplinarySanctions/site',
+            path: '/NanEverydayMatters/site',
             name: 'SiteManagement',
             component: () =>
               import('@/views/NanEverydayMatters/children/SiteManagement')
           },
 
           {
-            path: '/NanDisciplinarySanctions/stay',
+            path: '/NanEverydayMatters/stay',
             name: 'StayCampus',
             component: () =>
               import('@/views/NanEverydayMatters/children/StayCampus')
@@ -221,12 +237,12 @@ export const AsideRoutes = [
       },
     ],
   },
-  {
-    path: '*' ,
-    name:'404NotFind',
-    component: () => import('@/views/404.vue'),
-    redirect: '/404.vue'
-  }
+  // {
+  //   path: '*' ,
+  //   name:'404NotFind',
+  //   component: () => import('@/views/404.vue'),
+  //   redirect: '/404.vue'
+  // }
 ]
 
 const router = new VueRouter({

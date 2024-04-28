@@ -43,6 +43,8 @@
 
 <script>
 
+import { Axios } from 'axios'
+
 export default {
   name: 'NanDisciplinarySanctions',
   methods:{
@@ -51,8 +53,10 @@ export default {
     },
     handleChangeIndex_1(){
       this.$router.push('/NanDisciplinarySanctions/notApplying')
-    }
+    },
+
   }
+
 }
 </script>
 

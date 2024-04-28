@@ -2,30 +2,28 @@ import axios from 'axios'
 import nprogress from 'nprogress'
 import 'nprogress/nprogress.css'
 import { getLocalStorage } from '@/utils/catch'
-
+const token = getLocalStorage('token')
 const request = axios.create({
   baseURL: 'http://localhost:8080',
-  timeout: 5000
+  timeout: 5000,
+  headers: {
+    'Content-Type': 'application/json;charset=utf-8',
+    'token': token
+  }
 })
 
 request.interceptors.request.use((config) => {
+  if (!config.data) {
+    config.data = true // 解决请求没有参数时添加不上Content-Type问题
+  }
+  // console.log(config)
+  // console.log(config.headers)
+  // config.headers.token = token
+  // config.headers['Content-Type'] = 'application/json;charset=utf-8'
   nprogress.start()
-  // const token = getLocalStorage('token')
-  // if (token) {
-  //   config.headers.token = token
-    // config.headers = {
-    //   'token': token
-    // }
-    // config.headers = {
-    //   'authentication': token
-    // }
-  // } else {
-  //   console.log('没有 Token ')
-  // }
-  console.log(config)
-  console.log(config.headers)
   return config
 });
+
 
 request.interceptors.response.use(
   (res) => {
@@ -36,6 +34,7 @@ request.interceptors.response.use(
     return Promise.reject(error)
   }
 )
+
 
 // 登录接口
 export const getUserLogin = (stuId = '220206636', password = '123456') => request({
@@ -54,12 +53,10 @@ export const getUserLogin = (stuId = '220206636', password = '123456') => reques
 export const getPunishmentList = () => request({ url: '/student/violationInformation'})
 
 // 解除处分信息接口
-export const getRelievePunishment = () => request.post('/student/violationApplication')
+// export const getRelievePunishment = () => request.post('/student/violationApplication')
 
 // 解除处分申请查询
 export const getProgressQuery = () => request({url:'/student/violationApplication'})
-
-
 
 
 // 个人信息
@@ -95,13 +92,12 @@ export const getApplyingScholarships = () => request.post('/student/scholarshipI
 // 勤工俭学
 
 // 查询工作信息
-export const getWorkInformation = () => request({url:'/student/jobInformation'})
+export const getWorkInformation = () => request({ url:'/student/jobInformation'})
 
 // 新增工作申请
 export const getJobApplication = () => request.post('/student/jobInformation')
 
 // 查询已完成工作
-
 export const getCompletedWork = () => request({url:'/student/jobApplication'})
 
 

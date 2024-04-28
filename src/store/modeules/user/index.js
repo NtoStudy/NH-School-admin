@@ -13,6 +13,7 @@ const mutations = {}
 const actions = {
   async UserLogin({commit},data){
     const res = await getUserLogin()
+    // console.log(res.data)
     if(res.data) {
       setLocalStorage('token', res.data)
     }

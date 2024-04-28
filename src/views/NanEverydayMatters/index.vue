@@ -53,75 +53,6 @@
       <el-col :span="15">
         <div class="right">
           <router-view></router-view>
-<!--          <stuButton></stuButton>-->
-<!--          <el-table-->
-<!--            :row-style="{ height: '40px' }"-->
-<!--            :data="tableData"-->
-<!--            border-->
-<!--            style="width: 100%">-->
-<!--            <el-table-column-->
-<!--              prop="StudentID"-->
-<!--              label="学号"-->
-<!--              width="140">-->
-<!--            </el-table-column>-->
-
-<!--            <el-table-column-->
-<!--              prop="name"-->
-<!--              label="姓名"-->
-<!--              width="100">-->
-<!--            </el-table-column>-->
-
-<!--            <el-table-column-->
-<!--              prop="college"-->
-<!--              label="学院" width="140">-->
-<!--            </el-table-column>-->
-
-<!--            <el-table-column-->
-<!--              prop="class"-->
-<!--              label="班级" width="120">-->
-<!--            </el-table-column>-->
-
-<!--            <el-table-column-->
-<!--              prop="schoolYear"-->
-<!--              label="学年"-->
-<!--              width="100">-->
-<!--            </el-table-column>-->
-
-<!--            <el-table-column-->
-<!--              prop="semester"-->
-<!--              label="学期"-->
-<!--              width="100">-->
-<!--            </el-table-column>-->
-
-<!--            <el-table-column-->
-<!--              prop="DisciplinaryCategories"-->
-<!--              label="处分类别"-->
-<!--              width="180">-->
-<!--            </el-table-column>-->
-
-<!--            <el-table-column-->
-<!--              prop="DisciplinaryReason"-->
-<!--              label="处分原因"-->
-<!--              width="180">-->
-<!--            </el-table-column>-->
-
-<!--            <el-table-column-->
-<!--              prop="appeal"-->
-<!--              label="申诉文号"-->
-<!--              width="100">-->
-<!--            </el-table-column>-->
-
-<!--            <el-table-column-->
-<!--              prop="Auditing"-->
-<!--              label="审核状态">-->
-<!--            </el-table-column>-->
-
-<!--            <el-table-column-->
-<!--              prop="AuditingResult"-->
-<!--              label="审核结果">-->
-<!--            </el-table-column>-->
-<!--          </el-table>-->
-<!--          <Footer></Footer>-->
         </div>
 
       </el-col>
@@ -139,19 +70,24 @@ export default {
   },
   methods:{
     handleChangeIndex_1(){
-      this.$router.push('/NanDisciplinarySanctions/behavior')
+      this.$router.push('/NanEverydayMatters/behavior')
     },
     handleChangeIndex_2(){
-      this.$router.push('/NanDisciplinarySanctions/activity')
+      this.$router.push('/NanEverydayMatters/management')
     },
     handleChangeIndex_3(){
-      this.$router.push('/NanDisciplinarySanctions/management')
+      this.$router.push('/NanEverydayMatters/stay')
     },
     handleChangeIndex_4(){
-      this.$router.push('/NanDisciplinarySanctions/site')
+      this.$router.push('/NanEverydayMatters/site')
     },handleChangeIndex_5(){
-      this.$router.push('/NanDisciplinarySanctions/stay')
+
+      this.$router.push('/NanEverydayMatters/activity')
     }
+
+
+
+
 
   },
   data() {
