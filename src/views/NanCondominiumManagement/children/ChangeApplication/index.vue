@@ -5,8 +5,10 @@
     <el-button type="primary" size="small" icon="el-icon-delete" >删除</el-button>
     <el-button type="primary" size="small" icon="el-icon-s-promotion" >提交</el-button>
     <el-button type="primary" size="small" icon="el-icon-s-release" >撤销</el-button>
-    <el-button type="primary" size="small" icon="el-icon-magic-stick" >流程跟踪</el-button>
-
+    <el-button type="primary" size="small" icon="el-icon-magic-stick" @click="DialogCase">流程跟踪</el-button>
+    <el-dialog :visible.sync="showDialogCase">
+      <project-progress-tracker></project-progress-tracker>
+    </el-dialog>
     <StuButton></StuButton>
 
     <el-table
@@ -60,6 +62,7 @@ name:'ChangeApplication',
   components: { Footer,StuButton },
   data(){
     return {
+      showDialogCase:false,
       dialogVisible:false,
       requestContext:'',
       dormitoryAddress:'',
@@ -108,6 +111,9 @@ name:'ChangeApplication',
          type: 'error'
        })
       }
+    },
+    DialogCase(){
+      this.showDialogCase = !this.showDialogCase
     }
 
   },

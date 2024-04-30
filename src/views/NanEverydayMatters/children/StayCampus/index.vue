@@ -6,7 +6,10 @@
     <el-button type="primary" size="small" icon="el-icon-delete" >删除</el-button>
     <el-button type="primary" size="small" icon="el-icon-s-promotion" >提交</el-button>
     <el-button type="primary" size="small" icon="el-icon-s-release" >撤销</el-button>
-    <el-button type="primary" size="small" icon="el-icon-magic-stick" >流程跟踪</el-button>
+    <el-button type="primary" size="small" icon="el-icon-magic-stick" @click="ShowDialogCase">流程跟踪</el-button>
+    <el-dialog :visible.sync="DialogCase">
+      <project-progress-tracker></project-progress-tracker>
+    </el-dialog>
     <stuButton></stuButton>
     <el-table
       :row-style="{ height: '40px' }"
@@ -56,6 +59,7 @@ export default {
   data(){
     return {
       dialogVisible:false,
+      DialogCase:'',
       stayBegin:'',
       stayEnd:'',
       StayCampusList:[
@@ -81,6 +85,9 @@ export default {
     })
   },
   methods:{
+    ShowDialogCase(){
+      this.DialogCase = !this.DialogCase
+    },
     HandleOpen(){
       this.dialogVisible = true
     },

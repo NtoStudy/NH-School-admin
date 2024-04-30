@@ -5,7 +5,6 @@
     <el-button type="primary" size="small" icon="el-icon-delete" >删除</el-button>
     <el-button type="primary" size="small" icon="el-icon-s-promotion" >提交</el-button>
     <el-button type="primary" size="small" icon="el-icon-s-release" >撤销</el-button>
-    <el-button type="primary" size="small" icon="el-icon-magic-stick" >流程跟踪</el-button>
     <stuButton></stuButton>
     <el-table
       :row-style="{ height: '40px' }"

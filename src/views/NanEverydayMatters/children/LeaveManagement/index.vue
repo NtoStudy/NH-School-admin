@@ -6,7 +6,10 @@
     <el-button type="primary" size="small" icon="el-icon-delete" >删除</el-button>
     <el-button type="primary" size="small" icon="el-icon-s-promotion" >提交</el-button>
     <el-button type="primary" size="small" icon="el-icon-s-release" >撤销</el-button>
-    <el-button type="primary" size="small" icon="el-icon-magic-stick" >流程跟踪</el-button>
+    <el-button type="primary" size="small" icon="el-icon-magic-stick" @click="showDialogCase">流程跟踪</el-button>
+    <el-dialog :visible.sync="DialogCase">
+      <project-progress-tracker></project-progress-tracker>
+    </el-dialog>
     <stuButton></stuButton>
     <el-table
       :row-style="{ height: '40px' }"
@@ -60,6 +63,7 @@ export default {
   components: { StuButton , Footer},
   data(){
     return {
+      DialogCase:false,
       dialogVisible:false,
       excuseDays:'',
       excuseType:'',
@@ -82,6 +86,9 @@ export default {
     }
   },
   methods:{
+    showDialogCase(){
+      this.DialogCase = !this.DialogCase
+    },
     showCase(){
       this.dialogVisible = true
     },
