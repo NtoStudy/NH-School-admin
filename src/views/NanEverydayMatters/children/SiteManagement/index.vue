@@ -11,7 +11,12 @@
       :row-style="{ height: '40px' }"
       :data="tableData"
       border
+      height="420"
       style="width: 100%">
+      <el-table-column
+        width="60"
+        type="selection">
+      </el-table-column>
       <el-table-column
         prop="stuId"
         label="学号"
@@ -37,7 +42,7 @@
       </el-table-column>
 
       <el-table-column
-        prop="class"
+        prop="classUsingTime"
         label="申请使用时间段"
         width="140">
       </el-table-column>
@@ -53,9 +58,8 @@
         label="审核状态"
         width="100">
       </el-table-column>
-
-      <Footer></Footer>
     </el-table>
+    <Footer></Footer>
   </div>
 </template>
 
@@ -68,12 +72,13 @@ export default {
   data(){
     return {
       tableData:[{
-        stuId:'',
-        name:'',
-        collage:'',
-        ApplyVenue:'',
-        ApplicationTimePeriod:'',
-        ReviewStatus:''
+        stuId:'20200202',
+        name:'挖到哇发',
+        collage:'风格啊额发我',
+        classUsingTime:'3234132',
+        ApplyVenue:'哇大公司',
+        ApplicationTimePeriod:'202002',
+        ReviewStatus:'打完'
       }]
     }
   },

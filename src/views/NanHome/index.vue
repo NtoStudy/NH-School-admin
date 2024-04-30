@@ -115,6 +115,7 @@ import TableHeader from './table-header'
 import DialogArticle from './dialog-article'
 import NanShortcut from '@/views/NanHome/NanShortcut/index.vue'
 import DraggableDialog from '@/views/NanHome/DraggableDialog/index.vue'
+import { mapState } from 'vuex'
 
 export default {
   name: 'NanHome',
@@ -124,9 +125,6 @@ export default {
       dialogVisible: false,
       innerVisible: false,
       theme: 'light',
-      allNotices: [],
-      homeDownLoad: [],
-      homeNotices: [],
       formInline: {
         user: '',
         region: ''
@@ -143,10 +141,15 @@ export default {
     NanShortcut
   },
   async created() {
-
+    // await this.$store.dispatch('home/fetch_HomeNotices')
+    // await this.$store.dispatch('home/fetch_HomeDownload')
   },
   computed: {
-
+    ...mapState('home', {
+      homeNotices: (state) => state.homeNotices,
+      allNotices: (state) => state.allNotices,
+      homeDownLoad: (state) => state.homeDownLoad
+    })
   },
   methods: {
     async CLICKLOOKMORE() {

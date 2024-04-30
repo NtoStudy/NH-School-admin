@@ -9,9 +9,14 @@
       :row-style="{ height: '40px' }"
       :data="columns"
       border
+      height="420"
       style="width: 100%"
     >
 
+      <el-table-column
+        width="60"
+        type="selection">
+      </el-table-column>
       <el-table-column
         v-for="(item,index) in EndWorkList"
         :key="index"

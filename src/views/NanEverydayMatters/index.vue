@@ -54,7 +54,6 @@
         <div class="right">
           <router-view></router-view>
         </div>
-
       </el-col>
     </el-row>
   </div>

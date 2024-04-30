@@ -8,16 +8,13 @@
       text-color="#333"
       active-text-color="#F4A0DE"
     >
-      <el-menu-item index="1"
-        ><router-link to="/NanAwardsAndAwards/notApplying"
-          >可申请项目</router-link
-        ></el-menu-item
-      >
-      <el-menu-item index="2"
-        ><router-link to="/NanAwardsAndAwards/requested"
-          >已申请项目</router-link
-        ></el-menu-item
-      >
+      <el-menu-item index="1" @click="handleChangeIndex_1">
+        可申请项目
+      </el-menu-item>
+
+      <el-menu-item index="2" @click="handleChangeIndex_2">
+        已申请项目
+       </el-menu-item>
     </el-menu>
     <router-view></router-view>
   </div>
@@ -33,7 +30,13 @@ export default {
   },
   methods: {
     handleSelect(key, keyPath) {
-      console.log(key, keyPath)
+      // console.log(key, keyPath)
+    },
+    handleChangeIndex_1(){
+      this.$router.push('/NanAwardsAndAwards/notApplying')
+    },
+    handleChangeIndex_2(){
+      this.$router.push('/NanAwardsAndAwards/requested')
     }
   }
 }

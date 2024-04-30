@@ -26,6 +26,7 @@
           </el-menu>
         </div>
       </el-col>
+
       <el-col class="right" style="padding-right: 0" :span="20">
         <div class="right_scrollView">
           <informationTitle information-title="基本信息"></informationTitle>
@@ -52,13 +53,19 @@
               </template>
             </el-table-column>
           </el-table>
+
+
+
           <informationTitle information-title="联系方式"></informationTitle>
           <el-table border :data="tableData_b" :show-header="false">
             <el-table-column prop="tag_l"></el-table-column>
-            <el-table-column></el-table-column>
+            <el-table-column label="Data_l"></el-table-column>
             <el-table-column prop="tag_r"></el-table-column>
-            <el-table-column></el-table-column>
+            <el-table-column label="Data_r"></el-table-column>
           </el-table>
+
+
+
           <informationTitle information-title="家庭成员信息">
             <template #addRow>
               <div class="addRow" @click="addRow">新增成员信息</div>
@@ -68,8 +75,7 @@
             :row-style="{ height: '40px' }"
             :data="tableData_c"
             style="width: 100%"
-            border
-          >
+            border>
             <el-table-column prop="name" label="姓名" width="80"></el-table-column>
             <el-table-column prop="age" label="年龄" width="60"></el-table-column>
             <el-table-column prop="relationship" label="关系" width="80"></el-table-column>
@@ -88,6 +94,68 @@
         </div>
       </el-col>
     </el-row>
+
+
+
+    <el-dialog :visible.sync="ShowCase" class="flex">
+      <template #title>
+        <h3>请根据你的真实情况输入你的个人信息</h3>
+      </template>
+
+      <el-form :label-position="labelPosition" label-width="80px" :model="formLabelAlign" >
+
+        <el-form-item label="姓名" >
+          <el-input v-model="formLabelAlign.name" size="mini"></el-input>
+        </el-form-item>
+
+        <el-form-item label="年龄">
+          <el-input v-model="formLabelAlign.age" size="mini"></el-input>
+        </el-form-item>
+
+        <el-form-item label="关系">
+          <el-input v-model="formLabelAlign.relationship" size="mini"></el-input>
+        </el-form-item>
+
+        <el-form-item label="工作单位">
+          <el-input v-model="formLabelAlign.workplace" size="mini"></el-input>
+        </el-form-item>
+
+        <el-form-item label="工作地址">
+          <el-input v-model="formLabelAlign.city" size="mini"></el-input>
+        </el-form-item>
+
+        <el-form-item label="邮政编码">
+          <el-input v-model="formLabelAlign.zip" size="mini"></el-input>
+        </el-form-item>
+
+        <el-form-item label="身份证号">
+          <el-input v-model="formLabelAlign.identity" size="mini"></el-input>
+        </el-form-item>
+
+        <el-form-item label="联系电话">
+          <el-input v-model="formLabelAlign.ContactPhone" size="mini"></el-input>
+        </el-form-item>
+        <el-form-item label="职业">
+          <el-input v-model="formLabelAlign.occupation" size="mini"></el-input>
+        </el-form-item>
+        <el-form-item label="年收入">
+          <el-input v-model="formLabelAlign.income" size="mini"></el-input>
+        </el-form-item>
+        <el-form-item label="健康状态">
+          <el-input v-model="formLabelAlign.health" size="mini"></el-input>
+        </el-form-item>
+
+      </el-form>
+
+<!--      <template #default>-->
+<!--        <el-input placeholder="请输入你的内容" v-model="jobId"></el-input>-->
+<!--        <el-input placeholder="请输入你的内容" v-model="jobName"></el-input>-->
+<!--      </template>-->
+      <template #footer>
+        <el-button round size="small" @click="cancel">取消</el-button>
+        <el-button round size="small" @click="handleApply">确定</el-button>
+      </template>
+    </el-dialog>
   </div>
 </template>
 
@@ -107,6 +175,7 @@ export default {
   },
   data() {
     return {
+
       tableData: [{
           tag_l: '学号',
           tag_r: '姓名',
@@ -119,7 +188,13 @@ export default {
         tag_l: '性别',
         tag_r: '出生日期',
         formControls: {
-          row1: { type: 'input', value: '' },
+          row1: { type: 'select',
+            value: '',
+            options: [
+              { label: '男', value: '男'},
+              { label: '女', value: '女' }
+            ]},
+
           row2: { type: 'datepicker', value: '' },
         }
       }, {
@@ -179,7 +254,7 @@ export default {
       tableData_b: [
         {
           tag_l: '联系电话',
-          tag_r: '电子邮箱'
+          tag_r: '电子邮箱',
         },
         {
           tag_l: 'QQ账号',
@@ -196,10 +271,23 @@ export default {
         }
       ],
       tableData_c: [{
-        name: '',
-        age: '',
-        relationship: '',
-        workplace: '',
+        name: '一小池勺',
+        age: '11',
+        relationship: '1122',
+        workplace: '41231',
+        city: '23123',
+        zip: '2313',
+        identity: '1234214131231',
+        ContactPhone:'23123',
+        occupation: '12313',
+        income: '23213',
+        health: '13213',
+        operation: '1313414'
+      }],
+      ShowCase: false,
+      labelPosition: 'left',
+      formLabelAlign: {
+        name:'',
         city: '',
         zip: '',
         identity: '',
@@ -207,47 +295,7 @@ export default {
         occupation: '',
         income: '',
         health: '',
-        operation: ''
-      },{
-        name: '',
-        age: '',
-        relationship: '',
-        workplace: '',
-        city: '',
-        zip: '',
-        identity: '',
-        ContactPhone:'',
-        occupation: '',
-        income: '',
-        health: '',
-        operation: ''
-      },{
-        name: '',
-        age: '',
-        relationship: '',
-        workplace: '',
-        city: '',
-        zip: '',
-        identity: '',
-        ContactPhone:'',
-        occupation: '',
-        income: '',
-        health: '',
-        operation: ''
-      },{
-        name: '',
-        age: '',
-        relationship: '',
-        workplace: '',
-        city: '',
-        zip: '',
-        identity: '',
-        ContactPhone:'',
-        occupation: '',
-        income: '',
-        health: '',
-        operation: ''
-      }]
+      }
     }
   },
   methods: {
@@ -258,7 +306,15 @@ export default {
       console.log(index, row)
     },
     addRow () {
-      console.log(1)
+      this.ShowCase = !this.ShowCase
+    },
+    cancel(){
+      this.ShowCase = !this.ShowCase
+    },
+    handleApply(){
+      this.tableData_c.push(this.formLabelAlign)
+      this.ShowCase = !this.ShowCase
+        this.$message.success('添加成功')
     },
     columnStyle ({ row, column, rowIndex, columnIndex }) {
       if (columnIndex === 0 || columnIndex === 2) {
@@ -369,5 +425,15 @@ export default {
       }
     }
   }
+}
+
+/* 在您的样式文件中添加 */
+.el-form--custom {
+  display: flex;
+  flex-direction: column;
+}
+
+.el-form--custom .el-form-item {
+  margin-bottom: 10px; /* 根据需要调整间距 */
 }
 </style>

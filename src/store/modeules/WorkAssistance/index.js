@@ -4,7 +4,10 @@ const state = {
   // 用于存放所有的快捷访问方式
   // 工作信息
   workList:[],
-  EndWorkList: []
+  EndWorkList: [],
+  page:'',
+  pageSize:'',
+  key:''
 }
 const mutations = {
   // 查询工作信息
@@ -22,14 +25,16 @@ const mutations = {
 const actions = {
 
   // 查询工作信息
- async AllPositions({commit}){
-   const res = await getWorkInformation()
+ async AllPositions({commit}, data){
+   // console.log(data)
+   const res = await getWorkInformation(data)
    // console.log(res)
    // console.log(res.data)
    commit('GETWORKINFORMATION',res.data)
  },
 
  // 查询已经完成的工作信息
+
   async PositionPersonnel({commit}){
    const res = await  getCompletedWork()
     // console.log(res)

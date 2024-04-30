@@ -2,7 +2,7 @@
   <div class="DisciplinaryAppeal">
 
     <!--  上方按钮  -->
-    <el-button type="primary" size="small" icon="el-icon-plus" >申诉申请</el-button>
+    <el-button type="primary" size="small" icon="el-icon-plus" @click="showCase">申诉申请</el-button>
     <el-button type="primary" size="small" icon="el-icon-edit" >申诉修改</el-button>
     <el-button type="primary" size="small" icon="el-icon-delete" >删除</el-button>
     <el-button type="primary" size="small" icon="el-icon-s-promotion" >提交</el-button>
@@ -12,11 +12,17 @@
       :row-style="{ height: '40px' }"
       :data="columns"
       border
+      height="420"
       style="width: 100%"
     >
       <el-table-column
-        v-for="(item,index) in PunishmentList"
-        :key="index"
+        width="60"
+        type="selection">
+      </el-table-column>
+
+      <el-table-column
+        v-for="item in PunishmentList"
+        :key="item.id"
         :prop="item.prop"
         :label="item.label"
         width="180">
@@ -38,9 +44,7 @@ export default {
   data() {
 
     return {
-
       PunishmentList: [
-        { prop: "id", label: "序列号" },
         { prop: "stuName", label: "姓名" },
         { prop: "violationType" ,label:"违规类型"},
         { prop: "violationReason" ,label:"违规原因"},

@@ -1,8 +1,7 @@
 <template>
   <div>
-
     <!--    这是留校申请   -->
-    <el-button type="primary" size="small" icon="el-icon-plus" >申请</el-button>
+    <el-button type="primary" size="small" icon="el-icon-plus" @click="HandleOpen">申请</el-button>
     <el-button type="primary" size="small" icon="el-icon-edit" >修改</el-button>
     <el-button type="primary" size="small" icon="el-icon-delete" >删除</el-button>
     <el-button type="primary" size="small" icon="el-icon-s-promotion" >提交</el-button>
@@ -13,17 +12,35 @@
       :row-style="{ height: '40px' }"
       :data="columns"
       border
+      height="420"
       style="width: 100%">
       <el-table-column
-        v-for="(item,index) in StayCampusList"
-        :key="index"
+        width="60"
+        type="selection">
+      </el-table-column>
+      <el-table-column
+        v-for="item in StayCampusList"
+        :key="item.id"
         :prop="item.prop"
         :label="item.label"
         width="180">
       </el-table-column>
-
-      <Footer></Footer>
     </el-table>
+    <Footer></Footer>
+    <el-dialog :visible.sync="dialogVisible">
+      <template #title>
+        <h3>输入你要留校的时间段</h3>
+      </template>
+      <template>
+        <el-input placeholder="留校的开始时间" v-model="stayBegin"></el-input>
+        <el-input placeholder="留校的截至时间" v-model="stayEnd"></el-input>
+      </template>
+      <template #footer>
+        <el-button round size="small" @click="cancel">取消</el-button>
+        <el-button round size="small" @click="AddChange">确定</el-button>
+      </template>
+    </el-dialog>
+
   </div>
 </template>
 
@@ -31,14 +48,17 @@
 import StuButton from '@/components/Stu-Button/index.vue'
 import Footer from '@/components/Footer/index.vue'
 import { mapState } from 'vuex'
+import { getApplicationCampus } from '@/api'
 
 export default {
   name:'StayCampus',
-  components: { Footer,StuButton },
+  components: { StuButton,Footer},
   data(){
     return {
+      dialogVisible:false,
+      stayBegin:'',
+      stayEnd:'',
       StayCampusList:[
-        { prop: "id", label: "序列号" },
         { prop: "stuId", label: "第几位申请人" },
         { prop: "stuBasicId" ,label:"学号"},
         { prop: "nation" ,label:"申请地点"},
@@ -59,10 +79,49 @@ export default {
     ...mapState({
       columns: state => state.dailyMatter.StayCampusList
     })
+  },
+  methods:{
+    HandleOpen(){
+      this.dialogVisible = true
+    },
+    cancel(){
+      this.dialogVisible = false
+    },
+    async AddChange(){
+      const res = await getApplicationCampus(this.stayBegin,this.stayEnd)
+      // console.log(res)
+      if(res.role === 2){
+        const newData = {
+          stuId:'20202020',
+          stuBasicId:this.StayCampusList.length+1,
+          nation:'officia',
+          gender:'男',
+          classInfo:'202020',
+          applicationTime:'22029',
+          stayBegin:this.stayBegin,
+          stayEnd:this.stayEnd,
+          status:'等待处理',
+        }
+        this.StayCampusList.push(newData)
+        this.dialogVisible= false
+        this.$message({
+          message: '申请成功',
+          type: 'success'
+        })
+       await this.$store.dispatch('StayCampus')
+      }
+      else{
+        this.$message({
+          message: '申请失败',
+          type: 'error'
+        })
+      }
+    }
+
   }
 }
 </script>
 
-<style>
+<style scoped lang="scss">
 
 </style>

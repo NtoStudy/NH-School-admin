@@ -21,7 +21,7 @@
         </el-col>
         <el-col :span="15">
           <div class="right">
-            <el-button type="primary" size="small" icon="el-icon-plus" >申请</el-button>
+            <el-button type="primary" size="small" icon="el-icon-plus" @click="open">申请</el-button>
             <el-button type="primary" size="small" icon="el-icon-edit" >修改</el-button>
             <el-button type="primary" size="small" icon="el-icon-delete" >删除</el-button>
             <el-button type="primary" size="small" icon="el-icon-s-promotion" >提交</el-button>
@@ -29,58 +29,100 @@
             <StuButton></StuButton>
             <el-table
               :row-style="{ height: '40px' }"
-              :data="tableData"
+              :data="columns"
               border
+              height="420"
               style="width: 100%">
               <el-table-column
-                prop="StudentID"
-                label="学号"
+                v-for="item in monitorList"
+                :key="item.id"
+                :prop="item.prop"
+                :label="item.label"
                 width="140">
               </el-table-column>
 
-              <el-table-column
-                prop="name"
-                label="姓名"
-                width="100">
-              </el-table-column>
+<!--              <el-table-column-->
+<!--                prop="name"-->
+<!--                label="姓名"-->
+<!--                width="100">-->
+<!--              </el-table-column>-->
 
-              <el-table-column
-                prop="college"
-                label="学院" width="140">
-              </el-table-column>
+<!--              <el-table-column-->
+<!--                prop="college"-->
+<!--                label="学院" width="140">-->
+<!--              </el-table-column>-->
 
-              <el-table-column
-                prop="major"
-                label="专业" width="120">
-              </el-table-column>
+<!--              <el-table-column-->
+<!--                prop="major"-->
+<!--                label="专业" width="120">-->
+<!--              </el-table-column>-->
 
-              <el-table-column
-                prop="ApplyPosition"
-                label="申请职务"
-                width="100">
-              </el-table-column>
+<!--              <el-table-column-->
+<!--                prop="ApplyPosition"-->
+<!--                label="申请职务"-->
+<!--                width="100">-->
+<!--              </el-table-column>-->
 
-              <el-table-column
-                prop="JobType"
-                label="职务类型"
-                width="100">
-              </el-table-column>
+<!--              <el-table-column-->
+<!--                prop="JobType"-->
+<!--                label="职务类型"-->
+<!--                width="100">-->
+<!--              </el-table-column>-->
 
-              <el-table-column
-                prop="ApplicationTime"
-                label="申请时间"
-                width="180">
-              </el-table-column>
+<!--              <el-table-column-->
+<!--                prop="ApplicationTime"-->
+<!--                label="申请时间"-->
+<!--                width="180">-->
+<!--              </el-table-column>-->
 
-              <el-table-column
-                prop="ReviewStatus"
-                label="审核状态"
-                width="180">
-              </el-table-column>
+<!--              <el-table-column-->
+<!--                prop="ReviewStatus"-->
+<!--                label="审核状态"-->
+<!--                width="180">-->
+<!--              </el-table-column>-->
 
             </el-table>
-            <Footer></Footer>
+            <div class="footer">
+              <div class="left_Footer">
+                <span> 第 1 /</span>
+                <span class="red"> 1 </span>
+                <span> 页,</span>
+                <span> 每 页 显 示</span>
+                <select>
+                  <option value="语文">10</option>
+                  <option value="数学">20</option>
+                  <option value="英语">50</option>
+                  <option value="物理">100</option>
+                </select>
+                <span> 条 / 共</span>
+                <span class="red"> 100 </span>
+                <span> 条 记 录 </span>
+              </div>
+              <div class="right_Footer">
+                <el-button-group>
+                  <el-button type="success" plain  icon="el-icon-arrow-left" size="mini">上一页</el-button>
+                  <el-button type="success" plain  size="mini">下一页<i class="el-icon-arrow-right el-icon--right"></i></el-button>
+                </el-button-group>
+              </div>
+            </div>
           </div>
+
+
+
+          <el-dialog :visible.sync="dialogVisible">
+            <template #title>
+              <h3>确定申请该岗位？</h3>
+            </template>
+            <template #default>
+              <el-input placeholder="请输入你要申请的岗位" v-model="classJob"></el-input>
+            </template>
+            <template #footer>
+              <el-button round size="small" @click="cancel">取消</el-button>
+              <el-button round size="small" @click="AddChange">确定</el-button>
+            </template>
+          </el-dialog>
+
+
         </el-col>
       </el-row>
     </div>
@@ -90,25 +132,79 @@
 <script>
 import StuButton from '@/components/Stu-Button/index.vue'
 import Footer from '@/components/Footer/index.vue'
+import { getCommitteeApplication } from '@/api/index.js'
+import { mapState } from 'vuex'
 export default {
   name: 'NanIdeologicalAndPoliticalTeam',
   components:{
     StuButton,
-    Footer
   },
   data() {
     return {
-      tableData:[{
-        StudentID:'',
-        name:'',
-        college:'',
-        major:'',
-        ApplyPosition:'',
-        JobType:'',
-        ApplicationTime:'',
-        ReviewStatus:''
-      }]
+      dialogVisible: false,
+      classJob: '',
+      // tableData:[{
+      //   StudentID:'232323232',
+      //   name:'一小池勺',
+      //   college:'电子信息学部',
+      //   major:'软件工程',
+      //   ApplyPosition:'团支书',
+      //   JobType:'班委',
+      //   ApplicationTime:'20201',
+      //   ReviewStatus:'审核中'
+      // }]
+      monitorList:[
+        { prop:'stuId', label:'学号'},
+        { prop:'classJob', label:'职位'},
+        { prop:'applicationTime', label:'申请时间'},
+        { prop:'classId', label:'班级'},
+        { prop:'status', label:'审核状态'},
+      ]
     }
+  },
+  methods:{
+    open() {
+      this.dialogVisible = true
+    },
+    async AddChange() {
+      const res = await getCommitteeApplication(this.classJob)
+      // console.log(res)
+      if(res.role === 2){
+        const newData = {
+          StudentID:'232323232',
+          classJob:this.classJob,
+          applicationTime:'202011',
+          classId:'202011231',
+          status:'审核中'
+        }
+        this.monitorList.push(newData)
+        this.dialogVisible = false
+        this.$message({
+          message: '申请成功',
+          type: 'success'
+        })
+        await this.$store.dispatch('NanIdeologicalAndPoliticalTeam')
+        this.classJob = ''
+
+      }else{
+        this.$message({
+          message: '申请失败',
+          type: 'error'
+        })
+      }
+    },
+    cancel() {
+      this.classJob = ''
+      this.dialogVisible = false
+    }
+  },
+  mounted() {
+    this.$store.dispatch('NanIdeologicalAndPoliticalTeam')
+  },
+  computed:{
+    ...mapState({
+      columns: state => state.monitor.monitorList
+    })
   }
 }
 </script>
@@ -129,4 +225,25 @@ export default {
   height: 570px;
   padding: 15px;
 }
+
+.footer{
+  display: flex;
+  justify-content: space-between;
+  background-color: #f5f5f7;
+  height: 50px;
+  line-height: 50px;
+  .left_Footer{
+    margin-left: 20px;
+  }
+  .red {
+    color: red;
+  }
+  .right_Footer{
+    margin-top: 10px;
+    display: flex;
+
+  }
+}
+
+
 </style>

@@ -1,8 +1,8 @@
 <template>
   <div class="footer">
     <div class="left">
-      <span> 第 0 /</span>
-      <span class="red"> 0 </span>
+      <span> 第 1 /</span>
+      <span class="red"> 1 </span>
       <span> 页,</span>
       <span> 每 页 显 示</span>
       <select>
@@ -12,7 +12,7 @@
         <option value="物理">100</option>
       </select>
       <span> 条 / 共</span>
-      <span class="red"> 0 </span>
+      <span class="red"> 1 </span>
       <span> 条 记 录 </span>
     </div>
     <div class="right">

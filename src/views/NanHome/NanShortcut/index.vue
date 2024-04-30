@@ -1,10 +1,10 @@
 <script>
+import { mapState } from 'vuex'
+
 export default {
   name: 'NanShortcut',
   data() {
-    return {
-      allChooseItemArray: []
-    }
+    return {}
   },
   methods: {
     handleClick() {
@@ -12,10 +12,13 @@ export default {
     }
   },
   computed: {
-
+    ...mapState('draggableSetting', {
+      allChooseItemArray: (state) =>
+        state.allChooseItemArray.filter((item) => item.isChoose)
+    })
   },
   mounted() {
-
+    // this.$store.dispatch('draggableSetting/fetch_AllChoose')
   }
 }
 </script>

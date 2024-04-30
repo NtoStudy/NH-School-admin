@@ -11,7 +11,14 @@
       :row-style="{ height: '40px' }"
       :data="tableData"
       border
+      height="420"
       style="width: 100%">
+
+      <el-table-column
+        width="60"
+        type="selection">
+      </el-table-column>
+
       <el-table-column
         prop="StudentID"
         label="学号"
@@ -60,18 +67,13 @@
         width="180">
       </el-table-column>
 
-
       <el-table-column
         prop="ReviewStatus"
         label="审核状态">
       </el-table-column>
-
-
-      <Footer></Footer>
     </el-table>
-
+    <Footer></Footer>
   </div>
-
 </template>
 
 <script>
@@ -85,15 +87,15 @@ export default {
     return {
       tableData:[
         {
-          StudentID:'',
-          name:'',
-          sexy:'',
-          class:'',
-          BehavioralCategories:'',
-          BehaviorType:'',
-          OccurrenceTime:'',
-          ApplicationEvaluation:'',
-          ReviewStatus:'',
+          StudentID:'230202020',
+          name:'反复无动',
+          sexy:'男',
+          class:'20202020',
+          BehavioralCategories:'福海你发我的',
+          BehaviorType:'万家名城',
+          OccurrenceTime:'2020202',
+          ApplicationEvaluation:'202020',
+          ReviewStatus:'无',
         }
       ]
     }

@@ -62,7 +62,21 @@ export const AsideRoutes = [
         meta: {
           title: '系统管理',
           icon: { url: require('../assets/首页.png') }
-        }
+        },
+        redirect: '/SystemMaintenance/Password',
+        children: [
+          {
+            path: '/SystemMaintenance/Password',
+            name: 'PasswordModification',
+            component: () => import('@/views/SystemMaintenance/children/PasswordModification'),
+          },
+
+          {
+            path: '/SystemMaintenance/com',
+            name: 'complain',
+            component: () => import('@/views/SystemMaintenance/children/complain'),
+          }
+        ]
       },
       {
         path: '/NanAssessmentManagement',

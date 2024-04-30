@@ -1,7 +1,7 @@
 <template>
   <div>
 
-  <el-button type="primary" size="small" icon="el-icon-plus" >申请</el-button>
+  <el-button type="primary" size="small" icon="el-icon-plus" @click="AddOpen">申请</el-button>
   <el-button type="primary" size="small" icon="el-icon-edit" >修改</el-button>
   <el-button type="primary" size="small" icon="el-icon-delete" >删除</el-button>
   <el-button type="primary" size="small" icon="el-icon-s-promotion" >提交</el-button>
@@ -16,7 +16,15 @@
             :row-style="{ height: '40px' }"
             :data="tableData_A"
             border
-            style="width: 100%">
+            height="420"
+            style="width: 100%"
+            @selection-change="AddCount">
+
+    <el-table-column
+      width="60"
+      type="selection">
+    </el-table-column>
+
     <el-table-column
       prop="Employers"
       label="用人单位"
@@ -83,7 +91,15 @@
     :row-style="{ height: '40px' }"
     :data="tableData_B"
     border
+    height="420"
     style="width: 100%">
+
+
+    <el-table-column
+      width="60"
+      type="selection">
+    </el-table-column>
+
     <el-table-column
       prop="schoolYear"
       label="学年"
@@ -134,6 +150,20 @@
     </el-table-column>
   </el-table>
   <Footer></Footer>
+
+    <el-dialog :visible.sync="dialogVisible">
+      <template #title>
+        <h3>请输入你申请该项目的理由</h3>
+      </template>
+      <template #default>
+        <el-input placeholder="请输入你的内容" v-model="jobId"></el-input>
+        <el-input placeholder="请输入你的内容" v-model="jobName"></el-input>
+      </template>
+      <template #footer>
+        <el-button round size="small" @click="cancel">取消</el-button>
+        <el-button round size="small" @click="handleApply">确定</el-button>
+      </template>
+    </el-dialog>
   </div>
 
 </template>
@@ -141,6 +171,7 @@
 <script>
 import StuButton from '@/components/Stu-Button/index.vue'
 import Footer from '@/components/Footer/index.vue'
+import { getJobApplication } from '@/api/index.js'
 import axios from 'axios'
 export default {
   name: 'AllPositions',
@@ -150,6 +181,9 @@ export default {
   },
   data() {
     return {
+      numberCount:0,
+      dialogVisible:false,
+      applicationReason:'',
       tableData_A:[{
         Employers:'计划与财务办公室',
         JobTitle:'多媒体及机房兼职设备维护员',
@@ -204,11 +238,10 @@ export default {
         applicantsPeople:'20',
         applicantsTime:'20202020',
         ApplicationStatus:'已申请'
-
-
-
       }],
       ifShow:'true',
+      jobId:'',
+      jobName:'',
 
     }
   },
@@ -219,10 +252,39 @@ export default {
     changeButtonEnd(){
       this.ifShow = false
     },
+    AddOpen(){
+      if(this.numberCount !== 0){
+        this.dialogVisible = true
+        // console.log(this.numberCount)
+      }else{
+        alert('请选择你要申请的项目')
+      }
+    },
+    AddCount(){
+      this.numberCount++
+      console.log(this.numberCount)
+    },
+    cancel() {
+      this.classJob = ''
+      this.dialogVisible = false
+    },
+    async handleApply(){
+      const jobApplications = [{
+        "jobId": this.jobId,
+        "jobName": this.jobName
+      }]
+      const res = await getJobApplication(jobApplications)
+      console.log(res)
+      // if(res.role === 2){
+      //   alert('等待审核该项目')
+      //   this.dialogVisible = false
+      // }else{
+      //   alert('暂时不能申请')
+      // }
+    }
   },
-  mounted() {
-    // this.$store.dispatch('WorkAssistance/AllPositions')
-  },
+
+
 }
 </script>
 

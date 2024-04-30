@@ -12,6 +12,8 @@ import globalTheme from './modeules/globalTheme'
 import WorkAssistance from '@/store/modeules/WorkAssistance'
 import dailyMatter from '@/store/modeules/dailyMatter'
 import Dormitory from '@/store/modeules/Dormitory'
+import Awards from '@/store/modeules/Awards'
+import monitor from '@/store/modeules/monitor'
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
@@ -26,7 +28,9 @@ const store = new Vuex.Store({
     stu,
     WorkAssistance,
     dailyMatter,
-    Dormitory
+    Dormitory,
+    Awards,
+    monitor
   },
   getters
 })

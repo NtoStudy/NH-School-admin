@@ -15,7 +15,13 @@
               :row-style="{ height: '40px' }"
               :data="tableData_A"
               border
+              height="420"
               style="width: 100%">
+
+      <el-table-column
+        width="60"
+        type="selection">
+      </el-table-column>
       <el-table-column
         prop="entryName"
         label="项目名称"
@@ -54,6 +60,10 @@
       :data="tableData_B"
       border
       style="width: 100%">
+      <el-table-column
+        width="60"
+        type="selection">
+      </el-table-column>
       <el-table-column
         prop="entryName"
         label="项目名称"
@@ -122,20 +132,20 @@ export default {
     return {
       ifShow: 'true',
       tableData_A:[{
-        entryName:'',
-        ActivityTime:'',
-        ActivityPosition:'',
-        RemainingQuota:'',
-        ApplicationStatus:'',
+        entryName:'我点奥',
+        ActivityTime:'2020322',
+        ActivityPosition:'打完打得过',
+        RemainingQuota:'发我',
+        ApplicationStatus:'额发四大',
       }],
       tableData_B:[{
-        entryName:'',
-        ActivityTime:'',
-        EventLocation:'',
-        limitsPeople:'',
-        applicantsNumber:'',
-        applicantsTime:'',
-        ApplicationStatus:'',
+        entryName:'的娃娃方法',
+        ActivityTime:'202002',
+        EventLocation:'哇打完饭个',
+        limitsPeople:'21',
+        applicantsNumber:'12',
+        applicantsTime:'23223212',
+        ApplicationStatus:'覅觉得挖的',
 
       }]
     }
