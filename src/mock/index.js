@@ -1,7 +1,7 @@
 import Mock from 'mockjs'
 
 // 通知通告
-Mock.mock('http://localhost:8080/notices', 'get', () => {
+Mock.mock('/notices', 'get', () => {
   return {
     data: [
       {
@@ -44,7 +44,7 @@ Mock.mock('http://localhost:8080/notices', 'get', () => {
   }
 })
 
-Mock.mock('http://localhost:8080/allNoticesList', 'get', () => {
+Mock.mock('/allNoticesList', 'get', () => {
   return {
     data: [
       {
@@ -201,7 +201,7 @@ Mock.mock('http://localhost:8080/allNoticesList', 'get', () => {
   }
 })
 
-Mock.mock('http://localhost:8080/homeDownload', 'get', () => {
+Mock.mock('/homeDownload', 'get', () => {
   return {
     data: [
       {
@@ -218,7 +218,7 @@ Mock.mock('http://localhost:8080/homeDownload', 'get', () => {
 /*
  * 后台返回 用户选中的快捷方式
  * */
-Mock.mock('http://localhost:8080/homeShortcut', 'get', () => {
+Mock.mock('/homeShortcut', 'get', () => {
   return {
     data: [
       {
@@ -297,7 +297,7 @@ Mock.mock('http://localhost:8080/homeShortcut', 'get', () => {
   }
 })
 
-Mock.mock('http://localhost:8080/awards', () => {
+Mock.mock('/awards', () => {
   return {
     data: [
       {

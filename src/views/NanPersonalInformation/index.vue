@@ -1,5 +1,6 @@
 <template>
   <div class="NanPersonalInformation">
+    <el-button @click.native="isOk">保存</el-button>
     <el-row :gutter="20">
       <el-col class="left" style="padding-left: 0" :span="4">
         <!--   基本信息， 联系方式， 家庭成员信息， 其它信息     -->
@@ -180,16 +181,16 @@ export default {
           tag_l: '学号',
           tag_r: '姓名',
           formControls: {
-            row1: { type: 'input', value: '' },
-            row2: { type: 'input', value: '' },
+            row1: { type: 'input', value: '220207435' },
+            row2: { type: 'input', value: '小' },
             isUpload: true
           }
         }, {
         tag_l: '性别',
         tag_r: '出生日期',
         formControls: {
-          row1: { type: 'select',
-            value: '',
+          row1: { type: 'input',
+            value: '男',
             options: [
               { label: '男', value: '男'},
               { label: '女', value: '女' }
@@ -201,53 +202,53 @@ export default {
         tag_l: '年级',
         tag_r: '学年',
         formControls: {
-          row1: { type: 'select', value: '' },
-          row2: { type: 'select', value: '' },
+          row1: { type: 'input', value: '22级' },
+          row2: { type: 'input', value: '23年' },
         }
       }, {
         tag_l: '学部',
         tag_r: '政治面貌',
         formControls: {
-          row1: { type: 'select', value: '' },
-          row2: { type: 'select', value: '' },
+          row1: { type: 'input', value: '电子学部' },
+          row2: { type: 'input', value: '群众' },
         }
       }, {
         tag_l: '专业',
         tag_r: '民族',
         formControls: {
-          row1: { type: 'select', value: '' },
-          row2: { type: 'select', value: '' },
+          row1: { type: 'input', value: '软件工程' },
+          row2: { type: 'input', value: '回' },
         }
       }, {
         tag_l: '班级',
         tag_r: '学籍异动',
         formControls: {
-          row1: { type: 'select', value: '' },
-          row2: { type: 'select', value: '' },
+          row1: { type: 'input', value: '2202074' },
+          row2: { type: 'input', value: '' },
         }
       }, {
         tag_l: '入学时间',
         tag_r: '身份证号',
         formControls: {
-          row1: { type: 'select', value: '' },
+          row1: { type: 'input', value: '' },
           row2: { type: 'input', value: '' },
         }
       }, {
         tag_l: '籍贯',
         formControls: {
-          row1: { type: 'select', value: '' },
-          row2: { type: 'select', value: '' },
+          row1: { type: 'input', value: '' },
+          row2: { type: 'input', value: '' },
         }
       }, {
         tag_l: '户口',
         formControls: {
-          row1: { type: 'select', value: '' },
-          row2: { type: 'select', value: '' },
+          row1: { type: 'input', value: '' },
+          row2: { type: 'input', value: '' },
         }
       }, {
         tag_l: '生源地',
         formControls: {
-          row1: { type: 'select', value: '' },
+          row1: { type: 'input', value: '' },
           row2: { type: 'input', value: '' },
         }
       }],
@@ -301,6 +302,9 @@ export default {
   methods: {
     handleEdit(index, row) {
       console.log(index, row)
+    },
+    isOk() {
+      this.$message.success('修改成功')
     },
     handleDelete(index, row) {
       console.log(index, row)

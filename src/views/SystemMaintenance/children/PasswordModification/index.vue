@@ -54,7 +54,7 @@
           <span><i class="red">* </i> 为 必 选 项 </span>
         </div>
 
-        <div class="bc">
+        <div class="bc" @click="isOk">
           保存
         </div>
         <div class="cz">
@@ -80,6 +80,9 @@ name:'PasswordModification',
   methods:{
     changeClose(){
       this.closeTop = false
+    },
+    isOk() {
+      this.$message.success('修改成功')
     }
   },
 }

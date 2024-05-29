@@ -9,6 +9,7 @@ import './style/index.scss'
 import './icons'
 import './components'
 import '@/directives'
+
 Vue.config.productionTip = false
 Vue.use(ElementUI)
 

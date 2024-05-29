@@ -12,7 +12,7 @@
         <option value="物理">100</option>
       </select>
       <span> 条 / 共</span>
-      <span class="red"> 1 </span>
+      <span class="red"> 2 </span>
       <span> 条 记 录 </span>
     </div>
     <div class="right">
@@ -40,17 +40,18 @@ export default {
   background-color: #f5f5f7;
   height: 50px;
   line-height: 50px;
-}
-.left{
-  margin-left: 20px;
-}
-.red {
-  color: red;
-}
-.right{
-  margin-top: 10px;
-  display: flex;
+  .left{
+    margin-left: 20px;
+  }
+  .red {
+    color: red;
+  }
+  .right{
+    margin-top: 10px;
+    display: flex;
 
+  }
 }
+
 
 </style>

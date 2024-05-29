@@ -37,15 +37,15 @@ request.interceptors.response.use(
 
 
 
-// export const getHomeNotices = () => request({ url: '/notices' })
-//
-// export const getAllNotices = () => request({ url: '/allNoticesList' })
-//
-// export const getHomeDownload = () => request({ url: '/homeDownload' })
-//
-// export const getHomeShortcut = () => request({ url: '/homeShortcut' })
-//
-// export const getAllChooseItemArray = () => request({ url: '/allChooseItemArray' })
+export const getHomeNotices = () => request({ url: '/notices' })
+
+export const getAllNotices = () => request({ url: '/allNoticesList' })
+
+export const getHomeDownload = () => request({ url: '/homeDownload' })
+
+export const getHomeShortcut = () => request({ url: '/homeShortcut' })
+
+export const getAllChooseItemArray = () => request({ url: '/allChooseItemArray' })
 //
 
 

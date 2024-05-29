@@ -29,7 +29,9 @@
         width="180">
       </el-table-column>
     </el-table>
+
     <Footer></Footer>
+
     <el-dialog :visible.sync="dialogVisible">
       <template #title>
         <h3>输入你要留校的时间段</h3>
@@ -59,7 +61,7 @@ export default {
   data(){
     return {
       dialogVisible:false,
-      DialogCase:'',
+      DialogCase:false,
       stayBegin:'',
       stayEnd:'',
       StayCampusList:[

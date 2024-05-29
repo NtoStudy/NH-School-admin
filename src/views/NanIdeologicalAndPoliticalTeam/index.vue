@@ -95,7 +95,7 @@
                   <option value="物理">100</option>
                 </select>
                 <span> 条 / 共</span>
-                <span class="red"> 100 </span>
+                <span class="red"> 5 </span>
                 <span> 条 记 录 </span>
               </div>
               <div class="right_Footer">
@@ -152,7 +152,7 @@ export default {
       //   JobType:'班委',
       //   ApplicationTime:'20201',
       //   ReviewStatus:'审核中'
-      // }]
+      // }],
       monitorList:[
         { prop:'stuId', label:'学号'},
         { prop:'classJob', label:'职位'},

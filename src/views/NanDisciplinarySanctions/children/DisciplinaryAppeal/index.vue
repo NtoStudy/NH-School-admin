@@ -45,7 +45,7 @@ export default {
 
     return {
       PunishmentList: [
-        { prop: "stuName", label: "姓名" },
+        { prop: "name", label: "姓名" },
         { prop: "violationType" ,label:"违规类型"},
         { prop: "violationReason" ,label:"违规原因"},
         { prop: "violationEnd" , label:"截止时间" },
@@ -59,6 +59,11 @@ export default {
   mounted() {
     this.$store.dispatch('Disciplinary/DisciplinaryAppeal')
 },
+  methods: {
+    showCase(){
+      this.dialogVisible = true
+    },
+  },
 computed:{
   ...mapState({
     columns: state => state.Disciplinary.PunishmentList
