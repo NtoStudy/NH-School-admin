@@ -22,7 +22,7 @@
         </div>
       </template>
       <div class="articleContent">
-        <slot>内容</slot>
+        <slot>更多相关内容请联系辅导员进行查询</slot>
       </div>
       <template v-slot:footer>
         <button @click="handleClose">关闭</button>
@@ -67,7 +67,7 @@ export default {
 <style lang="scss">
 .dialog-article {
   .el-dialog {
-    background-color: pink;
+    background-color: #f7f7f7;
     .el-dialog__header {
       text-align: center;
       padding: 10px 10px 5px 10px;
