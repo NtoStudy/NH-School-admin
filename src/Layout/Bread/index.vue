@@ -30,7 +30,7 @@ export default {
     })
   },
   mounted() {
-    console.log(this.visitedViews)
+    // console.log(this.visitedViews)
   }
 }
 </script>

@@ -18,32 +18,46 @@ export default {
           date: '2015-08-02'
         },{
           data: '关于我校2018年学生中选拔实习辅导员招聘的通知',
-          date: '2018-09-12'
+          date: '2018-05-02'
         },
-      ]
+      ],
+      dialogVisible: false
     }
   },
   methods: {
     formatter(row, column) {
       return row.address
-    }
+    },
+    handleRowClick(row) { // 定义点击事件的处理函数
+      // console.log(row.data,row.date); // 这里可以添加你希望执行的代码
+      // this.dialogVisible = true;
+      this.$emit('show-dialog');
+
+    },
+
+
   }
 }
 </script>
 
 <template>
-  <el-table
-    :data="tableData"
-    style="width: 100%"
-    height="250"
-    :default-sort="{ prop: 'date', order: 'descending' }"
-  >
-    <el-table-column prop="data" label="事件名称" width="400">
+ <div>
+   <el-table
+     :data="tableData"
+     style="width: 100%"
+     height="250"
+     :default-sort="{ prop: 'date', order: 'descending' }"
+     @row-click="handleRowClick"
+   >
+     <el-table-column prop="data" label="事件名称" width="400">
 
-    </el-table-column>
-    <el-table-column prop="date" label="日期" sortable> </el-table-column>
+     </el-table-column>
+     <el-table-column prop="date" label="日期" sortable> </el-table-column>
 
-  </el-table>
+   </el-table>
+
+
+ </div>
 </template>
 
 <style scoped></style>

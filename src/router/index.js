@@ -35,7 +35,7 @@ export const AsideRoutes = [
   {
     path: '/',
     component: Layout,
-    redirect: '/home',
+    redirect: '/login',
     children: [
       {
         path: '/Home',
@@ -46,6 +46,7 @@ export const AsideRoutes = [
           icon: { url: require('../assets/首页.png') }
         }
       },
+      // 学生和管理员公用的页面
       {
         path: '/NanPersonalInformation',
         name: 'NanPersonalInformation',
@@ -249,14 +250,111 @@ export const AsideRoutes = [
           }
         ]
       },
+      // 管理员的页面
+      {
+        path: '/NanInfoProcess',
+        name: 'NanInfoProcess',
+        component: () => import('@/views/NanInfoProcessing'),
+        meta: {
+          title: '信息处理',
+          icon: { url: require('../assets/考核管理.png') }
+        },
+        redirect: '/NanInfoProcess/DormitoryInfo',
+       children: [
+         {
+           path: '/NanInfoProcess/DormitoryInfo',
+           name: 'DormitoryInfo',
+           component: () =>
+             import('@/views/NanInfoProcessing/children/DormitoryInformation')
+         },
+         {
+           path: '/NanInfoProcess/FinancialInfo',
+           name: 'FinancialInfo',
+           component: () =>
+             import('@/views/NanInfoProcessing/children/FinancialInformation')
+         },
+         {
+           path: '/NanInfoProcess/LeaveInfo',
+           name: 'LeaveInfo',
+           component: () =>
+             import('@/views/NanInfoProcessing/children/LeaveInformation')
+         },
+         {
+           path: '/NanInfoProcess/StayInfo',
+           name: 'StayInfo',
+           component: () =>
+             import('@/views/NanInfoProcessing/children/StayInformation')
+         }
+       ]
+      }
     ],
   },
-  // {
-  //   path: '*' ,
-  //   name:'404NotFind',
-  //   component: () => import('@/views/404.vue'),
-  //   redirect: '/404.vue'
-  // }
+]
+
+
+export const AdminAsideRoutes = [
+  {
+    path: '/',
+    component: Layout,
+    redirect: '/login',
+    children: [
+      {
+        path: '/home',
+        name: 'Home',
+        component: () => import('@/views/NanHome'),
+        meta: {
+          title: '首页',
+          icon: { url: require('../assets/首页.png') }
+        }
+      },
+      {
+        path: '/NanInfoProcess',
+        name: 'NanInfoProcess',
+        component: () => import('@/views/NanInfoProcessing'),
+        meta: {
+          title: '信息处理',
+          icon: { url: require('../assets/考核管理.png') }
+        },
+        redirect: '/NanInfoProcess/DormitoryInfo',
+        children: [
+          {
+            path: '/NanInfoProcess/DormitoryInfo',
+            name: 'DormitoryInfo',
+            component: () =>
+              import('@/views/NanInfoProcessing/children/DormitoryInformation')
+          },
+          {
+            path: '/NanInfoProcess/FinancialInfo',
+            name: 'FinancialInfo',
+            component: () =>
+              import('@/views/NanInfoProcessing/children/FinancialInformation')
+          },
+          {
+            path: '/NanInfoProcess/LeaveInfo',
+            name: 'LeaveInfo',
+            component: () =>
+              import('@/views/NanInfoProcessing/children/LeaveInformation')
+          },
+          {
+            path: '/NanInfoProcess/StayInfo',
+            name: 'StayInfo',
+            component: () =>
+              import('@/views/NanInfoProcessing/children/StayInformation')
+          }
+        ]
+      },
+      {
+        path: '/NanPersonalInformation',
+        name: 'NanPersonalInformation',
+        component: () => import('@/views/NanPersonalInformation'),
+        meta: {
+          title: '个人信息',
+          icon: { url: require('../assets/个人信息.png') }
+        }
+      },
+    ]
+
+  }
 ]
 
 const router = new VueRouter({

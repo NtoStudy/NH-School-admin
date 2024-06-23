@@ -43,7 +43,7 @@
               >
             </el-form-item>
             <el-form-item style="margin-top: 40px">
-              <el-button type="primary" @click.native="login">登录</el-button>
+              <el-button type="primary" @click.native="Login">登录</el-button>
             </el-form-item>
           </el-form>
         </el-card>
@@ -57,19 +57,8 @@ import { setLocalStorage } from '@/utils/catch'
 export default {
   name: 'NanLogin',
   data() {
-
-
     const isAgree = (rule, value, callback) => {
-      // rule 校验规则
-      // value 校验的值
-      // callback 函数  【 promise 】
-      // callback() => 通过该自定义校验
-      // callback(new Error('您必须勾选用户的使用协议')) => 未通过自定义校验
-      console.log(rule)
-      console.log(value)
       value ? callback() : callback(new Error(rule.message))
-
-      //
     }
 
     return {
@@ -105,42 +94,69 @@ export default {
     }
   },
   methods: {
-    async login() {
-      try {
-        await this.$refs.form.validate((value, obj) => {
-          if (value) {
-            // 获取登录用户的token
-            let userCount = this.form.userCount
-            let password = this.form.password
-            this.$store.dispatch('UserLogin')
-            this.$router.push('/')
-          } else {
-            this.$message.error('检查密码规则是否填写正确')
-            throw new Error('校验未通过')
-          }
-        })
-      } catch (error) {
-        console.error(error)
-      }
-    },
-    ajaxLogin() {
-      let xhr = new XMLHttpRequest();
-      xhr.open('POST', 'http://localhost:8080/student/login', true);
-      xhr.setRequestHeader('Content-Type', 'application/json');
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-
-          console.log(JSON.parse(xhr.responseText));
+    // 如果登录的是学生账号 此时返回的res.role的值为2
+    async Login() {
+      if(this.activeName === 'student'){
+        try {
+          await this.$refs.form.validate((value, obj) => {
+            if (value) {
+              // 获取登录用户的token
+              let userCount = this.form.userCount
+              let password = this.form.password
+              this.$store.dispatch('UserLogin')
+              this.$router.push({path: '/home' ,query: {id: '1'}})
+            } else {
+              this.$message.error('检查密码规则是否填写正确')
+              throw new Error('校验未通过')
+            }
+          })
+        } catch (error) {
+          console.error(error)
         }
-      };
-      xhr.onerror = function () {
-        console.error('Request failed.');
-      };
-      xhr.send(JSON.stringify({
-        "stuId": "220206636",
-        "password": "123456"
-      }));
-    }
+      }
+
+
+      // 如果登录的是管理员账号 此时返回的res.role的值为1
+      if(this.activeName === 'administrator'){
+        try{
+          await this.$refs.form.validate((value, obj) => {
+            if (value) {
+              // 获取登录用户的token
+              let userCount = this.form.userCount
+              let password = this.form.password
+              this.$store.dispatch('AdminLogin')
+              this.$router.push({ path:'/home' ,query: {id: '2'}})
+            } else {
+              this.$message.error('检查密码规则是否填写正确')
+              throw new Error('校验未通过')
+            }
+          })
+        } catch (error){
+          console.error(error)
+        }
+      }
+
+
+    },
+    // async
+    // ajaxLogin() {
+    //   let xhr = new XMLHttpRequest();
+    //   xhr.open('POST', 'http://localhost:8080/student/login', true);
+    //   xhr.setRequestHeader('Content-Type', 'application/json');
+    //   xhr.onreadystatechange = function () {
+    //     if (xhr.readyState === 4 && xhr.status === 200) {
+    //
+    //       console.log(JSON.parse(xhr.responseText));
+    //     }
+    //   };
+    //   xhr.onerror = function () {
+    //     console.error('Request failed.');
+    //   };
+    //   xhr.send(JSON.stringify({
+    //     "stuId": "220206636",
+    //     "password": "123456"
+    //   }));
+    // }
   },
   watch: {
     activeName(newVal) {

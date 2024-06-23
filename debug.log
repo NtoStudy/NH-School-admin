@@ -1,1 +1,3 @@
 [0621/111822.613:ERROR:directory_reader_win.cc(43)] FindFirstFile +C:\Users\鐗涙枃淇奬AppData\Local\Chrome\User Data\Crashpad\attachments: 系统找不到指定的路径。 (0x3)
+[0622/151310.432:ERROR:directory_reader_win.cc(43)] FindFirstFile +C:\Users\鐗涙枃淇奬AppData\Local\Chrome\User Data\Crashpad\attachments: 系统找不到指定的路径。 (0x3)
+[0623/091427.835:ERROR:directory_reader_win.cc(43)] FindFirstFile +C:\Users\鐗涙枃淇奬AppData\Local\Chrome\User Data\Crashpad\attachments: 系统找不到指定的路径。 (0x3)

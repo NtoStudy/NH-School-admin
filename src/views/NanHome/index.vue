@@ -21,14 +21,7 @@
 
           <template v-slot:main>
             <template>
-                <NotificationNotice></NotificationNotice>
-<!--            <template v-for="item in homeNotices">-->
-<!--              <ListItem-->
-<!--                @custom-event="HANDLEEVENT"-->
-<!--                :item="item"-->
-<!--                :showTop="item.showTop"-->
-<!--                :key="item.id"-->
-<!--              ></ListItem>-->
+                <NotificationNotice @show-dialog="dialogVisible = true"></NotificationNotice>
             </template>
           </template>
         </card-container>
@@ -51,9 +44,6 @@
           </template>
           <template v-slot:main>
             <HomeDownload></HomeDownload>
-<!--            <template v-for="item in homeDownLoad">-->
-<!--              <ListItem :item="item" :key="item.id"></ListItem>-->
-<!--            </template>-->
           </template>
         </card-container>
       </el-carousel-item>
@@ -85,28 +75,23 @@
 
     <!-- 弹出层 -->
     <el-dialog :visible.sync="dialogVisible" width="70%">
-<!--      <table-header></table-header>-->
-<!--      <el-table :data="allNotices" border height="50vh">-->
-<!--        <el-table-column property="context" label="标题" width="1069">-->
-<!--          <template v-slot="scope">-->
-<!--            <div class="el-table-column-div_box" @click="TOTHISNOTICEDETAILD">-->
-<!--              <img-->
-<!--                v-if="scope.row.showTop"-->
-<!--                src="../../assets/置顶.png"-->
-<!--                class="div-img_top"-->
-<!--              />-->
-<!--              <p class="div-p_context">{{ scope.row.context }}</p>-->
-<!--            </div>-->
-<!--          </template>-->
-<!--        </el-table-column>-->
-<!--        <el-table-column-->
-<!--          property="time"-->
-<!--          label="发布时间"-->
-<!--          width="200"-->
-<!--        ></el-table-column>-->
-<!--      </el-table>-->
-      <!-- 分页器 -->
-<!--      <paginator-box></paginator-box>-->
+    </el-dialog>
+
+
+<!--     用来管理点击任务栏弹出 -->
+<!--    <NotificationNotice @show-dialog="dialogVisible = true"></NotificationNotice>-->
+    <!-- el-dialog 组件 -->
+    <el-dialog
+      title="通知通告"
+      :visible.sync="dialogVisible"
+      width="30%"
+      :before-close="handleClose">
+      <span>更多详情内容请联系辅导员查看</span>
+      <!-- 其他内容 -->
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="dialogVisible = false">取 消</el-button>
+        <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
+      </span>
     </el-dialog>
 
     <!--文章展示弹层组件 -->
@@ -122,13 +107,9 @@
 
 <script>
 import ApplicationTable from './application-table'
-import ListItem from './list-item'
-import PaginatorBox from './paginator-box'
-import TableHeader from './table-header'
 import DialogArticle from './dialog-article'
 import NanShortcut from '@/views/NanHome/NanShortcut/index.vue'
 import DraggableDialog from '@/views/NanHome/DraggableDialog/index.vue'
-import { mapState } from 'vuex'
 import NotificationNotice from '@/views/NanHome/NotificationNotice/index.vue'
 import HomeDownload from '@/views/NanHome/HomeDownload/index.vue'
 
@@ -158,39 +139,22 @@ export default {
     ApplicationTable,
     NanShortcut
   },
-  async created() {
-    // await this.$store.dispatch('home/fetch_HomeNotices')
-    // await this.$store.dispatch('home/fetch_HomeDownload')
-  },
-  computed: {
-    ...mapState('home', {
-      homeNotices: (state) => state.homeNotices,
-      allNotices: (state) => state.allNotices,
-      homeDownLoad: (state) => state.homeDownLoad
-    })
-  },
   methods: {
-    // async CLICKLOOKMORE() {
-    //   this.dialogVisible = true
-    //   try {
-    //     await this.$store.dispatch('home/fetch_AllNotices')
-    //   } catch (error) {
-    //     console.log(error)
-    //   }
-    // },
     showInnerVisible(){
       this.innerVisible = true
     },
-    TOTHISNOTICEDETAILD() {
-      this.innerVisible = true
-    },
-    // HANDLEEVENT(value) {
-    //   this.innerVisible = value
-    // },
     handleDialogVisibilityChange(visible) {
       this.showDialog = visible
     },
-  }
+    handleClose(done) {
+      this.$confirm('确认关闭？')
+        .then(_ => {
+          done();
+        })
+        .catch(_ => {});
+    }
+  },
+
 }
 </script>
 

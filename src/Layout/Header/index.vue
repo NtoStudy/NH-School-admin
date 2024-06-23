@@ -16,9 +16,9 @@
       ></NanSwitch>
       <img
         class="right-img_userPic"
-        src="https://pic1.zhimg.com/v2-78dc85657c687f2a4a3735be1c5cc162_r.jpg"
+        :src="pic"
       />
-      <span class="right-span_userName">一小池勺</span>
+      <span class="right-span_userName">{{ name }}</span>
       <span class="right-span_line">|</span>
       <img class="right-img_message" src="../../assets/村委信箱.png" alt="" />
       <img class="right-img_setting" src="../../assets/设置.png" alt="" />
@@ -51,7 +51,11 @@ export default {
   data() {
     return {
       isFullscreen: false,
-      theme: localStorage.getItem('theme') || 'light'
+      theme: localStorage.getItem('theme') || 'light',
+      // 动态绑定头像以及名称信息
+      activeId: null,
+      name: '',
+      pic: ''
     }
   },
   methods: {
@@ -61,6 +65,14 @@ export default {
     switchTheme(value) {
       const checkTheme = value ? 'light' : 'dark'
       this.$store.commit('globalTheme/setTheme', checkTheme)
+    },
+    // 动态绑定用户信息和头像信息
+    getUserInfoById(activeId){
+      const userInfo = {
+        '1': {name:'一小池勺', pic: 'https://pic1.zhimg.com/v2-78dc85657c687f2a4a3735be1c5cc162_r.jpg' },
+        '2': {name:'管理员', pic: 'https://pic.imgdb.cn/item/66778ee9d9c307b7e90815fd.jpg'}
+      }
+      return userInfo[activeId]
     }
   },
   watch: {
@@ -76,6 +88,17 @@ export default {
     screenfull.on('change', () => {
       this.isFullscreen = screenfull.isFullscreen
     })
+    this.activeIndex = this.$route.path
+    // 获取当前路由的id
+    const id = this.$route.query.id
+    if(id){
+      this.activeId = id
+    }
+    if(this.activeId){
+      const userInfo = this.getUserInfoById(this.activeId)
+      this.name = userInfo.name
+      this.pic = userInfo.pic
+    }
   },
   computed: {
     // 计算依赖值 theme
@@ -87,7 +110,8 @@ export default {
       set(value) {
         this.theme = value ? 'light' : 'dark'
       }
-    }
+    },
+
   }
 }
 </script>

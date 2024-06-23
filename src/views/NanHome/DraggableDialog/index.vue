@@ -17,10 +17,9 @@
             class="dialog-content__header"
             @mousedown.prevent="startDragging($event)"
           >
-            <span class="dialog-content__header__left"
-              ><strong>{{ headTitle }}</strong
-              >{{ tailTitle }}</span
-            >
+            <span class="dialog-content__header__left">
+              <strong>{{ headTitle }}</strong>{{ tailTitle }}
+            </span>
             <div class="dialog-content__header__right">
               <button>保存设置</button>
               <button @click="close">关闭</button>

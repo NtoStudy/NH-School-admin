@@ -16,10 +16,6 @@ request.interceptors.request.use((config) => {
   if (!config.data) {
     config.data = true // 解决请求没有参数时添加不上Content-Type问题
   }
-  // console.log(config)
-  // console.log(config.headers)
-  // config.headers.token = token
-  // config.headers['Content-Type'] = 'application/json;charset=utf-8'
   nprogress.start()
   return config
 });
@@ -36,26 +32,20 @@ request.interceptors.response.use(
 )
 
 
-
-export const getHomeNotices = () => request({ url: '/notices' })
-
-export const getAllNotices = () => request({ url: '/allNoticesList' })
-
-export const getHomeDownload = () => request({ url: '/homeDownload' })
-
-export const getHomeShortcut = () => request({ url: '/homeShortcut' })
-
-export const getAllChooseItemArray = () => request({ url: '/allChooseItemArray' })
+// 开始时期定义的mock数据
+// export const getHomeNotices = () => request({ url: '/notices' })
 //
+// export const getAllNotices = () => request({ url: '/allNoticesList' })
+//
+// export const getHomeDownload = () => request({ url: '/homeDownload' })
+//
+// export const getHomeShortcut = () => request({ url: '/homeShortcut' })
+//
+// export const getAllChooseItemArray = () => request({ url: '/allChooseItemArray' })
 
 
 
-
-
-
-
-
-// 登录接口
+// 学生登录接口
 export const getUserLogin = (stuId = '220206636', password = '123456') => request({
   url: '/student/login',
   method:'POST',
@@ -64,6 +54,17 @@ export const getUserLogin = (stuId = '220206636', password = '123456') => reques
     password: password
   }
 })
+
+// 管理员登录接口
+export const getAdminLogin = (username = 'jinyong', password = '123456') => request({
+  url: '/admin/login',
+  method:'POST',
+  data: {
+    username: username,
+    password: password
+  }
+})
+
 
 // 处分操作
 
@@ -88,11 +89,9 @@ export const getQueryPersonalInformation = () => request({url:'/student/informat
 export const getAddPersonalInformation = () => request.post('/student/information')
 
 // 修改个人信息
-
 export const getModifyPersonalInformation = () => request.put('/student/information')
 
 // 学生修改密码
-
 export const getChangePassword = () => request.put('/student/passwordAlter')
 
 
@@ -169,7 +168,6 @@ export const getProgressCampus = () => request({url:'/student/stayApplication'})
 
 
 
-
 // 请假申请
 
 // 添加请假申请
@@ -187,7 +185,6 @@ export const getLeaveApplication = (excuseDays,excuseType,excuseBegin,excuseEnd,
 
 // 查询请假申请信息
 export const getLeaveInformation = () => request({url:'/student/excuseApplication'})
-
 
 
 
@@ -213,10 +210,6 @@ export const getComplaintProgress = (complaintTarget,complaintReason) => request
   }
 })
 
-
-
-
-
 // 宿舍维修
 
 // 添加宿舍维修
@@ -231,5 +224,8 @@ export const getAddRepair = (requestContext,dormitoryAddress) => request({
 
 // 查看维修进度
 export const getMaintenanceProgress = () => request({url:'/student/dormitoryRepair'})
+
+
+
 
 

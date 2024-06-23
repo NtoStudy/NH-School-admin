@@ -1,6 +1,8 @@
 <script>
+
 import { mapState } from 'vuex'
 import shortcutSettingItem from '../shortcutSettingItem'
+import SettingRight from '@/views/NanHome/DraggableDialog/shortcutSetting/setting-right/index.vue'
 export default {
   name: 'SettingLight',
   data(){
@@ -49,8 +51,11 @@ export default {
     shortcutSettingItem
   },
   methods: {
-    handle_deleteItem(name) {
-      console.log(name)
+    handle_deleteItem(item) {
+      const index = this.allChooseItemArray.indexOf(item)
+      if (index > -1) {
+        this.allChooseItemArray.splice(index, 1)
+      }
     }
   },
   // computed: {
@@ -71,12 +76,13 @@ export default {
     <div class="setting-left__main">
       <template v-for="(item, index) in allChooseItemArray">
         <shortcutSettingItem
-          @click="handle_deleteItem"
+          @click="handle_deleteItem(item)"
           :key="index"
           :itemData="item"
           :state="2"
         ></shortcutSettingItem>
       </template>
+
     </div>
   </div>
 </template>

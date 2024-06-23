@@ -1,5 +1,5 @@
 <template>
-  <dir>404NOTFIND</dir>
+  <dir>404NOTFOUND</dir>
 </template>
 
 <script>
