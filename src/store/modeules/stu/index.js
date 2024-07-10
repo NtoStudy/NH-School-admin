@@ -1,4 +1,4 @@
-
+// 这里是发起投诉请求的接口
 // state: 仓库存储数据的地方
 import { getComplaintProgress } from '@/api'
 
@@ -8,17 +8,21 @@ const state = {
 
 // mutations：修改state的唯一手段
 const mutations ={
-  GETCOMPLAINTPROGRESS(data,complainList){
-    data.complainList = complainList
+  GETCOMPLAINTPROGRESS(state,complainList){
+    state.complainList = complainList
   }
 }
 
 //action 处理action可以书写自己的业务逻辑 也可以处理异步
 const actions = {
   async complain ({commit},complaintTarget,complaintReason) {
-    const res = await getComplaintProgressgetComplaintProgress(complaintTarget,complaintReason)
-    // console.log(res)
-    commit('GETCOMPLAINTPROGRESS',res.data)
+    const res = await getComplaintProgress(complaintTarget,complaintReason)
+    console.log(res)
+    if(res.role === 2){
+      commit('GETCOMPLAINTPROGRESS',res.data)
+
+    }
+
 
   },
 }

@@ -14,7 +14,9 @@ import dailyMatter from '@/store/modeules/dailyMatter'
 import Dormitory from '@/store/modeules/Dormitory'
 import Awards from '@/store/modeules/Awards'
 import monitor from '@/store/modeules/monitor'
+import complaint from '@/store/modeules/complaint'
 import adminScholarship from '@/store/modeules/adminScholarship'
+
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
@@ -32,7 +34,8 @@ const store = new Vuex.Store({
     Dormitory,
     Awards,
     monitor,
-    adminScholarship
+    adminScholarship,
+    complaint
   },
   getters
 })
