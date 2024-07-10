@@ -38,7 +38,7 @@
                 :key="item.id"
                 :prop="item.prop"
                 :label="item.label"
-                width="140">
+                width="180">
               </el-table-column>
 
             </el-table>
@@ -55,7 +55,7 @@
                   <option value="物理">100</option>
                 </select>
                 <span> 条 / 共</span>
-                <span class="red"> 5 </span>
+                <span class="red"> {{this.columns.length}} </span>
                 <span> 条 记 录 </span>
               </div>
               <div class="right_Footer">
@@ -103,22 +103,11 @@ export default {
     return {
       dialogVisible: false,
       classJob: '',
-      // tableData:[{
-      //   StudentID:'232323232',
-      //   name:'一小池勺',
-      //   college:'电子信息学部',
-      //   major:'软件工程',
-      //   ApplyPosition:'团支书',
-      //   JobType:'班委',
-      //   ApplicationTime:'20201',
-      //   ReviewStatus:'审核中'
-      // }],
       monitorList:[
-        { prop:'stuId', label:'学号'},
         { prop:'classJob', label:'职位'},
         { prop:'applicationTime', label:'申请时间'},
-        { prop:'classId', label:'班级'},
         { prop:'status', label:'审核状态'},
+        { prop:'classId', label:'班级'},
       ]
     }
   },
@@ -131,11 +120,10 @@ export default {
       // console.log(res)
       if(res.role === 2){
         const newData = {
-          StudentID:'232323232',
           classJob:this.classJob,
           applicationTime:'202011',
-          classId:'202011231',
-          status:'审核中'
+          classId:'23020',
+          status:'等待审核'
         }
         this.monitorList.push(newData)
         this.dialogVisible = false

@@ -1,4 +1,4 @@
-//searchs 的小仓库
+// 申请班委信息
 
 // state: 仓库存储数据的地方
 import { getCommitteeInformation } from '@/api'
