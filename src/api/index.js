@@ -82,7 +82,6 @@ export const getChangePassword = () => request.put('/student/passwordAlter')
 
 
 
-
 // 奖学金
 
 // 查询奖学金基础信息

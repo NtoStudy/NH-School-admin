@@ -49,7 +49,7 @@ export default {
   mounted() {
     this.activeIndex = this.$route.path
     // 获取当前路由的id
-    console.log(this.$route.query.id)
+
     // 让id的值为本地存储的activeId
     if (this.$route.query.id) {
       this.activeId = this.$route.query.id
@@ -57,13 +57,10 @@ export default {
     } else {
       this.activeId = localStorage.getItem('activeId')
     }
-    console.log(this.activeId, '此时对应的是ActiveId的值')
     if (this.activeId) {
-
       // 将activeId存储到本地中
       localStorage.setItem('activeId', this.activeId)
       // 将本地的id值赋值给activeId
-
       this.activeId = localStorage.getItem('activeId')
     }
   },

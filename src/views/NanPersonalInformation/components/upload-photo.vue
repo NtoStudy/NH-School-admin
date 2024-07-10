@@ -1,46 +1,45 @@
+<template>
+  <div class="upload-photo-container">
+    <!-- 使用 el-avatar 显示图片 -->
+    <el-avatar shape="square" :size="140" fit="fill" :src="imageUrl"></el-avatar>
+    <!-- 文件输入用于选择图片 -->
+    <input type="file" @change="handleFileChange" ref="fileInput" style="display: none;" />
+    <!-- 按钮用来触发文件选择 -->
+    <el-button type="primary" @click="triggerFileInput">上传头像</el-button>
+  </div>
+</template>
+
 <script>
 export default {
   name: 'upload-photo',
   data() {
     return {
-      imageUrl: null
-    }
+      imageUrl: null, // 用于存储图片的 URL
+    };
   },
   methods: {
-    handleAvatarSuccess(res, file) {
-      this.imageUrl = URL.createObjectURL(file.raw)
+    handleFileChange(event) {
+      const file = event.target.files[0]; // 获取选择的文件
+      if (file && (file.type === 'image/jpeg' || file.type === 'image/png')) {
+        const reader = new FileReader(); // 创建 FileReader 对象
+        reader.onload = (e) => {
+          // 当文件被读取时，将其结果（数据 URL）赋值给 imageUrl
+          this.imageUrl = e.target.result;
+        };
+        reader.readAsDataURL(file); // 读取文件内容
+      } else {
+        this.$message.error('上传头像图片只能是 JPG、PNG 格式!');
+      }
     },
-    beforeAvatarUpload(file) {
-      const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png'
-      const isLt2M = file.size / 1024 / 1024 < 2
-      if (!isJpgOrPng) {
-        this.$message.error('上传头像图片只能是 JPG、PNG 格式!')
-      }
-      if (!isLt2M) {
-        this.$message.error('上传头像图片大小不能超过 2MB!')
-      }
-      return isJpgOrPng && isLt2M
-    }
-  }
-}
+    triggerFileInput() {
+      this.$refs.fileInput.click(); // 触发文件输入的点击事件
+    },
+  },
+};
 </script>
 
-<template>
-    <el-upload
-      class="avatar-uploader"
-      action="http://localhost:8080/student/information"
-      :show-file-list="false"
-      :on-success="handleAvatarSuccess"
-      :before-upload="beforeAvatarUpload">
-      <div class="upload-photo">
-        <el-avatar shape="square" :size="140" fit="fill" :src="imageUrl ? imageUrl : ''"></el-avatar>
-        <el-button type="primary">上传头像</el-button>
-      </div>
-    </el-upload>
-</template>
-
 <style scoped lang="scss">
-.upload-photo {
+.upload-photo-container {
   display: flex;
   flex-direction: column;
   align-items: center;

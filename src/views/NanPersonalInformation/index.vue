@@ -59,10 +59,10 @@
 
           <informationTitle information-title="联系方式"></informationTitle>
           <el-table border :data="tableData_b" :show-header="false">
-            <el-table-column prop="tag_l"></el-table-column>
-            <el-table-column label="Data_l"></el-table-column>
-            <el-table-column prop="tag_r"></el-table-column>
-            <el-table-column label="Data_r"></el-table-column>
+            <el-table-column prop="tag_l" width="234px" align="center"></el-table-column>
+            <el-table-column prop="Data_l" label="Data_l" width="234px" align="center"></el-table-column>
+            <el-table-column prop="tag_r" width="234px" align="center"></el-table-column>
+            <el-table-column prop="Data_r" label="Data_r" width="234px" align="center"></el-table-column>
           </el-table>
 
 
@@ -97,7 +97,7 @@
     </el-row>
 
 
-
+    <!--点击新增按钮 弹窗显示内容-->
     <el-dialog :visible.sync="ShowCase" class="flex">
       <template #title>
         <h3>请根据你的真实情况输入你的个人信息</h3>
@@ -145,13 +145,9 @@
         <el-form-item label="健康状态">
           <el-input v-model="formLabelAlign.health" size="mini"></el-input>
         </el-form-item>
-
       </el-form>
 
-<!--      <template #default>-->
-<!--        <el-input placeholder="请输入你的内容" v-model="jobId"></el-input>-->
-<!--        <el-input placeholder="请输入你的内容" v-model="jobName"></el-input>-->
-<!--      </template>-->
+
       <template #footer>
         <el-button round size="small" @click="cancel">取消</el-button>
         <el-button round size="small" @click="handleApply">确定</el-button>
@@ -255,20 +251,34 @@ export default {
       tableData_b: [
         {
           tag_l: '联系电话',
+          Data_l:'123456781111',
           tag_r: '电子邮箱',
+          Data_r:'123456781@qq.com'
         },
         {
           tag_l: 'QQ账号',
-          tag_r: '监护人电话'
+          tag_r: '监护人电话',
+          Data_l:'123456781',
+          Data_r:'123456781123'
         },
         {
-          tag_l: '邮政编码'
+          tag_l: '邮政编码',
+          tag_r: '通讯地址',
+          Data_l:'123456781',
+          Data_r:'123456781123'
+
         },
         {
-          tag_l: '身份证地址'
+          tag_l: '身份证地址',
+          tag_r: '家庭住址',
+          Data_l:'123456781',
+          Data_r:'123456781123'
         },
         {
-          tag_l: '微信号'
+          tag_l: '微信号',
+          tag_r: '紧急联系人',
+          Data_l:'123456781',
+          Data_r:'123456781123'
         }
       ],
       tableData_c: [{

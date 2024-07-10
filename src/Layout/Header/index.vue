@@ -53,7 +53,7 @@ export default {
       isFullscreen: false,
       theme: localStorage.getItem('theme') || 'light',
       // 动态绑定头像以及名称信息
-      activeId: null,
+      activeId: '',
       name: '',
       pic: ''
     }
@@ -90,15 +90,26 @@ export default {
     })
     this.activeIndex = this.$route.path
     // 获取当前路由的id
-    const id = this.$route.query.id
-    if(id){
-      this.activeId = id
+    // 让id的值为本地存储的activeId
+    if (this.$route.query.id) {
+      this.activeId = this.$route.query.id
+      // 将此时的RouteId动态存储到本地
+    } else {
+      this.activeId = localStorage.getItem('activeId')
     }
-    if(this.activeId){
+    if (this.activeId) {
+      // 将activeId存储到本地中
+      localStorage.setItem('activeId', this.activeId)
+      // 将本地的id值赋值给activeId
+      this.activeId = localStorage.getItem('activeId')
+
+      // 根据id获取用户信息
       const userInfo = this.getUserInfoById(this.activeId)
       this.name = userInfo.name
       this.pic = userInfo.pic
+
     }
+
   },
   computed: {
     // 计算依赖值 theme
