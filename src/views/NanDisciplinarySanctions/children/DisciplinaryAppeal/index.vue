@@ -1,6 +1,5 @@
 <template>
   <div class="DisciplinaryAppeal">
-
     <!--  上方按钮  -->
     <el-button type="primary" size="small" icon="el-icon-plus" @click="showCase">申诉申请</el-button>
     <el-button type="primary" size="small" icon="el-icon-edit" >申诉修改</el-button>

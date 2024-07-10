@@ -7,8 +7,6 @@
       <div class="login-container_right">
         <el-tabs class="top-tab" v-model="activeName">
           <el-tab-pane label="学生登入" name="student"></el-tab-pane>
-          <el-tab-pane label="教师登入" name="teacher"></el-tab-pane>
-          <el-tab-pane label="导员登入" name="instructor"></el-tab-pane>
           <el-tab-pane label="管理员登入" name="administrator"></el-tab-pane>
         </el-tabs>
         <h1 class="user-name">{{ UserLogin }}</h1>

@@ -46,7 +46,7 @@
           <option value="物理">100</option>
         </select>
         <span> 条 / 共</span>
-        <span class="red"> {{totalRecords }} </span>
+        <span class="red"> {{this.columns.length }} </span>
         <span> 条 记 录 </span>
       </div>
       <div class="right">
@@ -129,8 +129,6 @@ name:'ChangeApplication',
         const newData = {
           dormitoryAddress:this.dormitoryAddress,
           requestContext:this.requestContext,
-          // requestTime:'2020-01-01',
-          // reply:'adipisicing officia non deserunt dolore',
           handleResult:'et in cupidatat nisi',
           handleTime:'2024-04-23T22:59:57',
         }
@@ -145,10 +143,21 @@ name:'ChangeApplication',
         this.$store.dispatch('ChangeApplication')
 
       }else{
-       this.$message({
-         message: '申请失败',
-         type: 'error'
-       })
+        const newData = {
+          dormitoryAddress:this.dormitoryAddress,
+          requestContext:this.requestContext,
+          handleResult:'et in cupidatat nisi',
+          handleTime:'2024-04-23T22:59:57',
+        }
+        this.DormitoryStatusList.push(newData)
+        this.dialogVisible = false
+        this.$message({
+          message: '申请成功',
+          type: 'success'
+        })
+        this.requestContext = ''
+        this.dormitoryAddress = ''
+        this.$store.dispatch('ChangeApplication')
       }
     },
     DialogCase(){

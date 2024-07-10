@@ -12,7 +12,7 @@
         <option value="物理">100</option>
       </select>
       <span> 条 / 共</span>
-      <span class="red"> 2 </span>
+      <span class="red"> 1 </span>
       <span> 条 记 录 </span>
     </div>
     <div class="right">
@@ -20,9 +20,7 @@
         <el-button type="success" plain  icon="el-icon-arrow-left" size="mini">上一页</el-button>
         <el-button type="success" plain  size="mini">下一页<i class="el-icon-arrow-right el-icon--right"></i></el-button>
       </el-button-group>
-
     </div>
-
   </div>
 </template>
 

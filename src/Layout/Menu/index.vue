@@ -1,5 +1,4 @@
 <template>
-
   <div class="LayoutMenu-container">
     <el-menu
       class="el-menu-vertical-demo"
@@ -31,7 +30,7 @@ export default {
       menuList: AsideRoutes[0].children,
       AdminMenuList: AdminAsideRoutes[0].children,
       activeIndex: '',
-      activeId: null // 初始化为null 表示没有id
+      activeId: '' // 初始化为null 表示没有id
 
     }
   },
@@ -43,28 +42,30 @@ export default {
       }
       this.$router.push(TargetObj.path)
       this.$store.dispatch('tags/add_TagItem', TargetObj)
-    }
+    },
+
   },
-  watch: {
-    $route(to, from) {
-      if (
-        to.path === '/NanAwardsAndAwards/notApplying' ||
-        to.path === '/NanAwardsAndAwards/requested'
-      ) {
-        this.activeIndex = '/NanAwardsAndAwards'
-      } else {
-        this.activeIndex = to.path
-      }
-    }
-  },
+
   mounted() {
     this.activeIndex = this.$route.path
     // 获取当前路由的id
-    const id = this.$route.query.id
-    if(id){
-      this.activeId = id
+    console.log(this.$route.query.id)
+    // 让id的值为本地存储的activeId
+    if (this.$route.query.id) {
+      this.activeId = this.$route.query.id
+      // 将此时的RouteId动态存储到本地
+    } else {
+      this.activeId = localStorage.getItem('activeId')
     }
-    // console.log(this.activeId)
+    console.log(this.activeId, '此时对应的是ActiveId的值')
+    if (this.activeId) {
+
+      // 将activeId存储到本地中
+      localStorage.setItem('activeId', this.activeId)
+      // 将本地的id值赋值给activeId
+
+      this.activeId = localStorage.getItem('activeId')
+    }
   },
   computed: {
     // 根据activeId的值决定使用哪个菜单列表
@@ -72,6 +73,7 @@ export default {
       return this.activeId === '1' ? this.menuList : this.AdminMenuList;
     }
   },
+
 }
 </script>
 <style lang="scss" scoped>

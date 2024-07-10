@@ -1,6 +1,5 @@
 <template>
   <div>
-
     <el-button type="primary" size="small" icon="el-icon-plus" @click="showCase">申请</el-button>
     <el-button type="primary" size="small" icon="el-icon-edit" >修改</el-button>
     <el-button type="primary" size="small" icon="el-icon-delete" >删除</el-button>
@@ -31,7 +30,32 @@
 
 
     </el-table>
-    <Footer></Footer>
+    <template>
+      <div class="footer">
+        <div class="left">
+          <span> 第 1 /</span>
+          <span class="red"> 1 </span>
+          <span> 页,</span>
+          <span> 每 页 显 示</span>
+          <select>
+            <option value="语文">10</option>
+            <option value="数学">20</option>
+            <option value="英语">50</option>
+            <option value="物理">100</option>
+          </select>
+          <span> 条 / 共</span>
+          <span class="red"> {{this.columns.length}} </span>
+          <span> 条 记 录 </span>
+        </div>
+        <div class="right">
+          <el-button-group>
+            <el-button type="success" plain  icon="el-icon-arrow-left" size="mini">上一页</el-button>
+            <el-button type="success" plain  size="mini">下一页<i class="el-icon-arrow-right el-icon--right"></i></el-button>
+          </el-button-group>
+        </div>
+      </div>
+    </template>
+
     <el-dialog :visible.sync="dialogVisible">
       <template #title>
         <h3>请假申请表</h3>
@@ -60,7 +84,7 @@ import { getLeaveApplication } from '@/api'
 
 export default {
   name:'LeaveManagement',
-  components: { StuButton , Footer},
+  components: { StuButton },
   data(){
     return {
       DialogCase:false,
@@ -145,4 +169,24 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.footer{
+  display: flex;
+  justify-content: space-between;
+  background-color: #f5f5f7;
+  height: 50px;
+  line-height: 50px;
+  .left{
+    margin-left: 20px;
+  }
+  .red {
+    color: red;
+  }
+  .right{
+    margin-top: 10px;
+    display: flex;
+
+  }
+}
+
+
 </style>

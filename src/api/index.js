@@ -31,20 +31,6 @@ request.interceptors.response.use(
   }
 )
 
-
-// 开始时期定义的mock数据
-// export const getHomeNotices = () => request({ url: '/notices' })
-//
-// export const getAllNotices = () => request({ url: '/allNoticesList' })
-//
-// export const getHomeDownload = () => request({ url: '/homeDownload' })
-//
-// export const getHomeShortcut = () => request({ url: '/homeShortcut' })
-//
-// export const getAllChooseItemArray = () => request({ url: '/allChooseItemArray' })
-
-
-
 // 学生登录接口
 export const getUserLogin = (stuId = '220206636', password = '123456') => request({
   url: '/student/login',
@@ -228,4 +214,28 @@ export const getMaintenanceProgress = () => request({url:'/student/dormitoryRepa
 
 
 
+// 以下是管理员的api接口
 
+// 审核奖学金
+export const ReviewScholarships = (result,id) => request({
+  url: 'admin/examineScholarship',
+  method:'POST',
+  data:{
+    result: result,
+    id: id
+  }
+})
+
+
+// 宿舍维修通知
+export const DormitoryRepair = (id,handleResult,reply) => ({
+  url:'admin/dormitoryRepair',
+  method:'POST',
+  data:{
+    id: id,
+    handleResult: handleResult,
+    reply: reply
+  }
+})
+
+// 发布勤工助信息

@@ -164,7 +164,7 @@
 import informationTitle from '@/views/NanPersonalInformation/components/information-title.vue'
 import uploadPhoto from '@/views/NanPersonalInformation/components/upload-photo.vue'
 export default {
-  name: 'NanPersonalInformation',
+  name: 'NanAdminInfo',
   computed: {
     uploadPhoto () {
       return uploadPhoto
@@ -182,7 +182,7 @@ export default {
           tag_r: '姓名',
           formControls: {
             row1: { type: 'input', value: '220207435' },
-            row2: { type: 'input', value: '一小池勺' },
+            row2: { type: 'input', value: '小' },
             isUpload: true
           }
         }, {
@@ -230,7 +230,7 @@ export default {
         tag_l: '入学时间',
         tag_r: '身份证号',
         formControls: {
-          row1: { type: 'datepicker', value: '' },
+          row1: { type: 'input', value: '' },
           row2: { type: 'input', value: '' },
         }
       }, {

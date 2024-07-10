@@ -26,7 +26,6 @@
           </template>
         </card-container>
       </el-carousel-item>
-
       <!--文件下载一栏-->
       <el-carousel-item class="el-carousel-item_download">
         <card-container>
@@ -115,7 +114,7 @@ import NotificationNotice from '@/views/NanHome/NotificationNotice/index.vue'
 import HomeDownload from '@/views/NanHome/HomeDownload/index.vue'
 
 export default {
-  name: 'NanHome',
+  name: 'NanAdminHome',
   data() {
     return {
       showDialog: false,

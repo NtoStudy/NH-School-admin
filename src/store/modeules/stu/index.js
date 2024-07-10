@@ -16,7 +16,7 @@ const mutations ={
 //action 处理action可以书写自己的业务逻辑 也可以处理异步
 const actions = {
   async complain ({commit},complaintTarget,complaintReason) {
-    const res = await getComplaintProgress(complaintTarget,complaintReason)
+    const res = await getComplaintProgressgetComplaintProgress(complaintTarget,complaintReason)
     // console.log(res)
     commit('GETCOMPLAINTPROGRESS',res.data)
 

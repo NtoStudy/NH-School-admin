@@ -15,7 +15,9 @@ const actions = {
   // 学生的登录接口请求
   async UserLogin({commit},data){
     const res = await getUserLogin()
-    // console.log(res.role)
+    // console.log(res)
+    // console.log(res.data)
+    console.log("此时登录的是学生 对应的Id为",res.role)
     if(res.data) {
       setLocalStorage('token', res.data)
     }
@@ -23,7 +25,9 @@ const actions = {
   // 管理端的登录接口请求
   async AdminLogin({commit},data){
     const res = await getAdminLogin()
-    // console.log(res.role)
+    // console.log(res)
+    // console.log(res.data)
+    console.log("此时登录的是管理员 对应的Id为",res.role)
     if(res.data) {
       setLocalStorage('token', res.data)
     }

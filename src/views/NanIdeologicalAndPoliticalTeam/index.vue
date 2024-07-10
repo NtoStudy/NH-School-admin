@@ -41,46 +41,6 @@
                 width="140">
               </el-table-column>
 
-<!--              <el-table-column-->
-<!--                prop="name"-->
-<!--                label="姓名"-->
-<!--                width="100">-->
-<!--              </el-table-column>-->
-
-<!--              <el-table-column-->
-<!--                prop="college"-->
-<!--                label="学院" width="140">-->
-<!--              </el-table-column>-->
-
-<!--              <el-table-column-->
-<!--                prop="major"-->
-<!--                label="专业" width="120">-->
-<!--              </el-table-column>-->
-
-<!--              <el-table-column-->
-<!--                prop="ApplyPosition"-->
-<!--                label="申请职务"-->
-<!--                width="100">-->
-<!--              </el-table-column>-->
-
-<!--              <el-table-column-->
-<!--                prop="JobType"-->
-<!--                label="职务类型"-->
-<!--                width="100">-->
-<!--              </el-table-column>-->
-
-<!--              <el-table-column-->
-<!--                prop="ApplicationTime"-->
-<!--                label="申请时间"-->
-<!--                width="180">-->
-<!--              </el-table-column>-->
-
-<!--              <el-table-column-->
-<!--                prop="ReviewStatus"-->
-<!--                label="审核状态"-->
-<!--                width="180">-->
-<!--              </el-table-column>-->
-
             </el-table>
             <div class="footer">
               <div class="left_Footer">
