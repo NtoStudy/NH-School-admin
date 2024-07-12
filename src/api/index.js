@@ -41,17 +41,6 @@ export const getUserLogin = (stuId = '220206636', password = '123456') => reques
   }
 })
 
-// 管理员登录接口
-export const getAdminLogin = (username = 'jinyong', password = '123456') => request({
-  url: '/admin/login',
-  method:'POST',
-  data: {
-    username: username,
-    password: password
-  }
-})
-
-
 // 处分操作
 
 // 处分查询接口
@@ -106,11 +95,14 @@ export const getWorkInformation = (page, pageSize, key) => request({
     key: key
   }
 })
+
 // 新增工作申请
 export const getJobApplication = (jobs) => request({
   url: '/student/jobApplication',
   method: 'POST',
-  data: jobs
+  data: {
+    jobs: jobs
+  }
 })
 
 // 查询已完成工作
@@ -169,7 +161,9 @@ export const getLeaveApplication = (excuseDays,excuseType,excuseBegin,excuseEnd,
 })
 
 // 查询请假申请信息
-export const getLeaveInformation = () => request({url:'/student/excuseApplication'})
+export const getLeaveInformation = () => request({
+  url:'/student/excuseApplication'
+})
 
 
 
@@ -215,8 +209,25 @@ export const getMaintenanceProgress = () => request({url:'/student/dormitoryRepa
 
 // 以下是管理员的api接口
 
+// 管理员登录接口
+export const getAdminLogin = (username = 'jinyong', password = '123456') => request({
+  url: '/admin/login',
+  method:'POST',
+  data: {
+    username: username,
+    password: password
+  }
+})
+
+// 查询奖学金信息
+export const getAdminScholarshipInfo = () => request({
+  url:'adminCommon/scholarshipStuInformationAll',
+  method:'GET',
+})
+
+
 // 审核奖学金
-export const ReviewScholarships = (result,id) => request({
+export const getAdminReviewScholarships = (result,id) => request({
   url: 'admin/examineScholarship',
   method:'POST',
   data:{
@@ -225,16 +236,124 @@ export const ReviewScholarships = (result,id) => request({
   }
 })
 
-
-// 宿舍维修通知
-export const DormitoryRepair = (id,handleResult,reply) => ({
-  url:'admin/dormitoryRepair',
-  method:'POST',
+// 查询辅导员信息
+export const getAdminQueryInfo = (gender,name) => request({
+  url:'admin/counsellorInformation',
+  method:'GET',
   data:{
-    id: id,
-    handleResult: handleResult,
-    reply: reply
+    gender: gender,
+    name: name
   }
 })
 
-// 发布勤工助信息
+// 删除辅导员信息
+export const getAdminDeleteInfo = (ids) => request({
+  url:'admin/counsellorManage',
+  method:'DELETE',
+  data: ids
+})
+
+// 查询勤工助学申请
+export const getAdminQueryWork = () => request({
+  url:'adminCommon/jobApplicationAll',
+  method:'GET',
+})
+
+// 发布勤工助学申请
+export const getAdminPublishWork = (data) => request({
+  url:'admin/jobInformation',
+  method:'POST',
+  data:data
+})
+
+// 修改勤工助学申请
+export const getAdminModifyWork = (data) => request({
+  url:'admin/jobInformation',
+  method:'PUT',
+  data:data
+})
+
+// 删除勤工助学申请
+export const getAdminDeleteWork = (ids) => request({
+  url:'admin/jobInformation',
+  method:'DELETE',
+  data: ids
+})
+
+// 查询班委申请信息
+export const getAdminQueryCommittee = () => request({
+  url:'adminCommon/classInformationAll',
+  method:'GET',
+})
+
+// 查询处分解除申请
+export const getAdminQueryViolation = () => request({
+  url:'adminCommon/violationApplicationAll',
+  method:'GET',
+})
+
+// 审核处分解除申请
+export const getAdminReviewViolation = (result,id) => request({
+  url:'admin/examineViolation',
+  method:'POST',
+  data:{
+    result: result,
+    id: id
+  }
+})
+
+// 请假申请信息
+export const getAdminQueryLeave = () => request({
+  url:'adminCommon/excuseApplicationAll',
+  method:'GET',
+})
+
+// 查询奖学金申请
+export const getAdminQueryScholarship = () => request({
+  url:'adminCommon/scholarshipStuInformationAll',
+  method:'GET',
+})
+
+
+// 审核奖学金申请
+export const getAdminReviewScholarship = (result,id) => request({
+  url:'admin/examineScholarship',
+  method:'POST',
+  data:{
+    result: result,
+    id: id
+  }
+})
+
+// 发布通知通告
+export const getAdminPublishNotice = (data) => request({
+  url:'admin/Notice',
+  method:'POST',
+  data:data
+})
+
+// 修改通知通告
+export const getAdminModifyNotice = (data) => request({
+  url:'admin/updateNotice',
+  method:'POST',
+  data:data
+})
+
+// 查询通知通告
+export const getAdminQueryNotice = () => request({
+  url:'admin/notice',
+  method:'GET',
+})
+
+// 宿舍维修信息查询
+export const getAdminQueryRepair = () => request({
+  url:'adminCommon/dormitoryRepairApplicationAll',
+  method:'GET',
+})
+
+// 宿舍维修申请处理
+export const getAdminReviewRepair = (data) => request({
+  url:'admin/dormitoryRepair',
+  method:'POST',
+  data:data
+})

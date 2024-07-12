@@ -5,10 +5,10 @@
     border
     height="650">
 
-    <el-table-column width="60" label="选择">
-      <template>
-        <el-checkbox></el-checkbox>
-      </template>
+
+    <el-table-column
+      type="selection"
+      width="55">
     </el-table-column>
 
     <el-table-column
@@ -16,7 +16,7 @@
       :key="item.id"
       :prop="item.prop"
       :label="item.label"
-      width="180">
+      width="200">
 
     </el-table-column>
 
@@ -37,16 +37,15 @@ export default {
         { prop: 'restriction', label:'限制条件'},
         { prop: 'switchStatus', label:'开关状态'},
         { prop: 'applicationStatus', label:'申请状态'},
-      ]
+      ],
+      restrictions : []
     }
 
   },
   methods: {
-    handleEdit(index, row) {
-      console.log(index, row)
-    },
-    handleDelete(index, row) {
-      console.log(index, row)
+    test() {
+      console.log(this.columns)
+
     },
 
   },
@@ -56,16 +55,15 @@ export default {
   computed: {
     ...mapState({
       columns: state => state.Awards.ScholarshipDetailsList
-    })
+    }),
   },
-  components: {
-    // passingItem
-  }
+
 }
 </script>
 
 <style lang="scss" scoped>
 .el-table {
   border-radius: 25px;
+  white-space: pre-line; /* 允许换行 */
 }
 </style>

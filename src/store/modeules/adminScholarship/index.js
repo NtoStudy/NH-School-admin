@@ -1,4 +1,3 @@
-import { ReviewScholarships } from '@/api/index'
 const state = {}
 const mutations = {
 

@@ -20,70 +20,72 @@
             style="width: 100%"
             @selection-change="AddCount">
 
-    <el-table-column
-      width="60"
-      type="selection">
-    </el-table-column>
+    <template>
+      <el-table-column
+        width="60"
+        type="selection">
+      </el-table-column>
 
-    <el-table-column
-      prop="Employers"
-      label="用人单位"
-      width="140">
-    </el-table-column>
+      <el-table-column
+        prop="Employers"
+        label="用人单位"
+        width="140">
+      </el-table-column>
 
-    <el-table-column
-      prop="JobTitle"
-      label="岗位名称"
-      width="140">
-    </el-table-column>
+      <el-table-column
+        prop="JobTitle"
+        label="岗位名称"
+        width="140">
+      </el-table-column>
 
-    <el-table-column
-      prop="JobNature"
-      label="岗位性质"
-      width="120">
-    </el-table-column>
+      <el-table-column
+        prop="JobNature"
+        label="岗位性质"
+        width="120">
+      </el-table-column>
 
-    <el-table-column
-      prop="JobType"
-      label="岗位类型"
-      width="120">
-    </el-table-column>
+      <el-table-column
+        prop="JobType"
+        label="岗位类型"
+        width="120">
+      </el-table-column>
 
-    <el-table-column
-      prop="JobTime"
-      label="工作时间"
-      width="180">
-    </el-table-column>
+      <el-table-column
+        prop="JobTime"
+        label="工作时间"
+        width="180">
+      </el-table-column>
 
-    <el-table-column
-      prop="requiredPeople"
-      label="需求人数"
-      width="100">
-    </el-table-column>
+      <el-table-column
+        prop="requiredPeople"
+        label="需求人数"
+        width="100">
+      </el-table-column>
 
-    <el-table-column
-      prop="applicantsPeople"
-      label="申请人数"
-      width="100">
-    </el-table-column>
+      <el-table-column
+        prop="applicantsPeople"
+        label="申请人数"
+        width="100">
+      </el-table-column>
 
-    <el-table-column
-      prop="DifficultStudents"
-      label="困难生数"
-      width="100">
-    </el-table-column>
+      <el-table-column
+        prop="DifficultStudents"
+        label="困难生数"
+        width="100">
+      </el-table-column>
 
-    <el-table-column
-      prop="dutyPersonnel"
-      label="在岗人数"
-      width="100">
-    </el-table-column>
+      <el-table-column
+        prop="dutyPersonnel"
+        label="在岗人数"
+        width="100">
+      </el-table-column>
 
-    <el-table-column
-      prop="ApplicationStatus"
-      label="申请状态"
-      width="100">
-    </el-table-column>
+      <el-table-column
+        prop="ApplicationStatus"
+        label="申请状态"
+        width="100">
+      </el-table-column>
+    </template>
   </el-table>
 
   <el-table
@@ -95,59 +97,61 @@
     style="width: 100%">
 
 
-    <el-table-column
-      width="60"
-      type="selection">
-    </el-table-column>
+    <template>
+      <el-table-column
+        width="60"
+        type="selection">
+      </el-table-column>
 
-    <el-table-column
-      prop="schoolYear"
-      label="学年"
-      width="140">
-    </el-table-column>
+      <el-table-column
+        prop="schoolYear"
+        label="学年"
+        width="140">
+      </el-table-column>
 
-    <el-table-column
-      prop="Employers"
-      label="用人单位"
-      width="140">
-    </el-table-column>
+      <el-table-column
+        prop="Employers"
+        label="用人单位"
+        width="140">
+      </el-table-column>
 
-    <el-table-column
-      prop="JobTitle"
-      label="岗位名称"
-      width="140">
-    </el-table-column>
+      <el-table-column
+        prop="JobTitle"
+        label="岗位名称"
+        width="140">
+      </el-table-column>
 
-    <el-table-column
-      prop="JobNature"
-      label="岗位性质"
-      width="120">
-    </el-table-column>
+      <el-table-column
+        prop="JobNature"
+        label="岗位性质"
+        width="120">
+      </el-table-column>
 
-    <el-table-column
-      prop="JobType"
-      label="岗位类型"
-      width="120">
-    </el-table-column>
+      <el-table-column
+        prop="JobType"
+        label="岗位类型"
+        width="120">
+      </el-table-column>
 
-    <el-table-column
-      prop="applicantsPeople"
-      label="申请人数"
-      width="100">
-    </el-table-column>
+      <el-table-column
+        prop="applicantsPeople"
+        label="申请人数"
+        width="100">
+      </el-table-column>
 
-    <el-table-column
-      prop="applicantsTime"
-      label="申请时间"
-      width="100">
-    </el-table-column>
+      <el-table-column
+        prop="applicantsTime"
+        label="申请时间"
+        width="100">
+      </el-table-column>
 
 
-    <el-table-column
-      prop="ApplicationStatus"
-      label="申请状态"
-      width="100">
-    </el-table-column>
+      <el-table-column
+        prop="ApplicationStatus"
+        label="申请状态"
+        width="100">
+      </el-table-column>
+    </template>
   </el-table>
   <Footer></Footer>
 
@@ -156,8 +160,8 @@
         <h3>请输入你申请该项目的理由</h3>
       </template>
       <template #default>
-        <el-input placeholder="请输入你的内容" v-model="jobId"></el-input>
-        <el-input placeholder="请输入你的内容" v-model="jobName"></el-input>
+        <el-input placeholder="请输入你的x学号" v-model="jobId"></el-input>
+        <el-input placeholder="请输入你的姓名" v-model="jobName"></el-input>
       </template>
       <template #footer>
         <el-button round size="small" @click="cancel">取消</el-button>
@@ -238,7 +242,37 @@ export default {
         applicantsPeople:'20',
         applicantsTime:'20202020',
         ApplicationStatus:'已申请'
-      }],
+      },{
+        schoolYear:'',
+        Employers:'',
+        JobTitle:'',
+        JobNature:'',
+        JobType:'',
+        applicantsPeople:'',
+        applicantsTime:'',
+        ApplicationStatus:''
+      },
+      {
+        schoolYear:'',
+        Employers:'',
+        JobTitle:'',
+        JobNature:'',
+        JobType:'',
+        applicantsPeople:'',
+        applicantsTime:'',
+        ApplicationStatus:''
+      },
+      {
+        schoolYear:'',
+        Employers:'',
+        JobTitle:'',
+        JobNature:'',
+        JobType:'',
+        applicantsPeople:'',
+        applicantsTime:'',
+        ApplicationStatus:''
+      }
+      ],
       ifShow:'true',
       jobId:'',
       jobName:'',
