@@ -230,7 +230,7 @@ export const getAdminScholarshipInfo = () => request({
 export const getAdminReviewScholarships = (result,id) => request({
   url: 'admin/examineScholarship',
   method:'POST',
-  data:{
+  params:{
     result: result,
     id: id
   }
@@ -296,7 +296,7 @@ export const getAdminQueryViolation = () => request({
 export const getAdminReviewViolation = (result,id) => request({
   url:'admin/examineViolation',
   method:'POST',
-  data:{
+  params:{
     result: result,
     id: id
   }
@@ -308,22 +308,6 @@ export const getAdminQueryLeave = () => request({
   method:'GET',
 })
 
-// 查询奖学金申请
-export const getAdminQueryScholarship = () => request({
-  url:'adminCommon/scholarshipStuInformationAll',
-  method:'GET',
-})
-
-
-// 审核奖学金申请
-export const getAdminReviewScholarship = (result,id) => request({
-  url:'admin/examineScholarship',
-  method:'POST',
-  data:{
-    result: result,
-    id: id
-  }
-})
 
 // 发布通知通告
 export const getAdminPublishNotice = (data) => request({
@@ -352,8 +336,12 @@ export const getAdminQueryRepair = () => request({
 })
 
 // 宿舍维修申请处理
-export const getAdminReviewRepair = (data) => request({
+export const getAdminReviewRepair = (id,handleResult,reply) => request({
   url:'admin/dormitoryRepair',
   method:'POST',
-  data:data
+  data:{
+    id: id,
+    handleResult: handleResult,
+    reply: reply
+  }
 })

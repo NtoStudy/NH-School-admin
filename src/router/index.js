@@ -38,7 +38,7 @@ export const AsideRoutes = [
     redirect: '/login',
     children: [
       {
-        path: '/Home',
+        path: '/home',
         name: 'home',
         component: () => import('@/views/NanHome'),
         meta: {
@@ -262,49 +262,13 @@ export const AdminAsideRoutes = [
     redirect: '/login',
     children: [
       {
-        path: '/AdminHome',
-        name: 'AdminHome',
+        path: '/NanAdminHome',
+        name: 'NanAdminHome',
         component: () => import('@/views/NanAdminHome'),
         meta: {
           title: '首页',
           icon: { url: require('../assets/首页.png') }
         }
-      },
-      {
-        path: '/NanInfoProcess',
-        name: 'NanInfoProcess',
-        component: () => import('@/views/NanInfoProcessing'),
-        meta: {
-          title: '信息处理',
-          icon: { url: require('../assets/考核管理.png') }
-        },
-        redirect: '/NanInfoProcess/DormitoryInfo',
-        children: [
-          {
-            path: '/NanInfoProcess/DormitoryInfo',
-            name: 'DormitoryInfo',
-            component: () =>
-              import('@/views/NanInfoProcessing/children/DormitoryInformation')
-          },
-          {
-            path: '/NanInfoProcess/FinancialInfo',
-            name: 'FinancialInfo',
-            component: () =>
-              import('@/views/NanInfoProcessing/children/FinancialInformation')
-          },
-          {
-            path: '/NanInfoProcess/LeaveInfo',
-            name: 'LeaveInfo',
-            component: () =>
-              import('@/views/NanInfoProcessing/children/LeaveInformation')
-          },
-          {
-            path: '/NanInfoProcess/StayInfo',
-            name: 'StayInfo',
-            component: () =>
-              import('@/views/NanInfoProcessing/children/StayInformation')
-          }
-        ]
       },
       {
         path: '/NanAdminInfo',
@@ -315,6 +279,51 @@ export const AdminAsideRoutes = [
           icon: { url: require('../assets/个人信息.png') }
         }
       },
+      {
+        path: '/NanAdminInfoProcess',
+        name: 'NanAdminInfoProcess',
+        component: () => import('@/views/NanAdminInfoProcess'),
+        meta: {
+          title: '信息处理',
+          icon: { url: require('../assets/考核管理.png') }
+        },
+        redirect: '/NanAdminInfoProcess/DormitoryInfo',
+        children: [
+          {
+            path: '/NanAdminInfoProcess/DormitoryInfo',
+            name: 'DormitoryInfo',
+            component: () =>
+              import('@/views/NanAdminInfoProcess/children/DormitoryInformation')
+          },
+          {
+            path: '/NanAdminInfoProcess/FinancialInfo',
+            name: 'FinancialInfo',
+            component: () =>
+              import('@/views/NanAdminInfoProcess/children/FinancialInformation')
+          },
+          {
+            path: '/NanAdminInfoProcess/LeaveInfo',
+            name: 'LeaveInfo',
+            component: () =>
+              import('@/views/NanAdminInfoProcess/children/LeaveInformation')
+          },
+          {
+            path: '/NanAdminInfoProcess/StayInfo',
+            name: 'StayInfo',
+            component: () =>
+              import('@/views/NanAdminInfoProcess/children/StayInformation')
+          }
+        ]
+      },
+      {
+        path:'/NanAdminPunish',
+        name:'NanAdminPunish',
+        component:()=>import('@/views/NanAdminPunish'),
+        meta:{
+          title:'违纪处分',
+          icon:{url:require('../assets/违纪处分.png')}
+        }
+      }
     ]
 
   }

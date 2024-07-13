@@ -16,7 +16,9 @@ import Awards from '@/store/modeules/Awards'
 import monitor from '@/store/modeules/monitor'
 import complaint from '@/store/modeules/complaint'
 import adminScholarship from '@/store/modeules/adminScholarship'
-
+import adminDormitory from '@/store/modeules/admindormitory'
+import adminLeave from '@/store/modeules/adminLeave'
+import adminPunish from '@/store/modeules/adminPunish'
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
@@ -35,7 +37,10 @@ const store = new Vuex.Store({
     Awards,
     monitor,
     adminScholarship,
-    complaint
+    complaint,
+    adminDormitory,
+    adminLeave,
+    adminPunish
   },
   getters
 })

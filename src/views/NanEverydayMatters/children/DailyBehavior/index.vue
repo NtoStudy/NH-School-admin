@@ -12,64 +12,66 @@
       border
       height="420"
       style="width: 100%">
+      <template>
+        <el-table-column
+          width="60"
+          type="selection">
+        </el-table-column>
 
-      <el-table-column
-        width="60"
-        type="selection">
-      </el-table-column>
+        <el-table-column
+          prop="StudentID"
+          label="学号"
+          width="140">
+        </el-table-column>
 
-      <el-table-column
-        prop="StudentID"
-        label="学号"
-        width="140">
-      </el-table-column>
+        <el-table-column
+          prop="name"
+          label="姓名"
+          width="100">
+        </el-table-column>
 
-      <el-table-column
-        prop="name"
-        label="姓名"
-        width="100">
-      </el-table-column>
+        <el-table-column
+          prop="sexy"
+          label="性别"
+          width="60">
+        </el-table-column>
 
-      <el-table-column
-        prop="sexy"
-        label="性别"
-        width="60">
-      </el-table-column>
+        <el-table-column
+          prop="class"
+          label="班级"
+          width="120">
+        </el-table-column>
 
-      <el-table-column
-        prop="class"
-        label="班级"
-        width="120">
-      </el-table-column>
+        <el-table-column
+          prop="BehavioralCategories"
+          label="行为大类"
+          width="140">
+        </el-table-column>
 
-      <el-table-column
-        prop="BehavioralCategories"
-        label="行为大类"
-        width="140">
-      </el-table-column>
+        <el-table-column
+          prop="BehaviorType"
+          label="行为类别"
+          width="100">
+        </el-table-column>
 
-      <el-table-column
-        prop="BehaviorType"
-        label="行为类别"
-        width="100">
-      </el-table-column>
+        <el-table-column
+          prop="OccurrenceTime"
+          label="发生时间"
+          width="180">
+        </el-table-column>
 
-      <el-table-column
-        prop="OccurrenceTime"
-        label="发生时间"
-        width="180">
-      </el-table-column>
+        <el-table-column
+          prop="ApplicationEvaluation"
+          label="申请评估分值"
+          width="180">
+        </el-table-column>
 
-      <el-table-column
-        prop="ApplicationEvaluation"
-        label="申请评估分值"
-        width="180">
-      </el-table-column>
+        <el-table-column
+          prop="ReviewStatus"
+          label="审核状态">
+        </el-table-column>
+      </template>
 
-      <el-table-column
-        prop="ReviewStatus"
-        label="审核状态">
-      </el-table-column>
     </el-table>
     <template>
       <div class="footer">

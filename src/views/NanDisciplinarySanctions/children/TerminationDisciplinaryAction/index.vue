@@ -43,7 +43,7 @@
           <option value="物理">100</option>
         </select>
         <span> 条 / 共</span>
-        <span class="red"> 7 </span>
+        <span class="red"> {{this.columns.length}} </span>
         <span> 条 记 录 </span>
       </div>
       <div class="right_Footer">
