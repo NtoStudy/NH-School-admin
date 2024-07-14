@@ -178,11 +178,11 @@ export default {
     return {
 
       tableData: [{
-          tag_l: '学号',
+          tag_l: '职工号',
           tag_r: '姓名',
           formControls: {
-            row1: { type: 'input', value: '220207435' },
-            row2: { type: 'input', value: '小' },
+            row1: { type: 'input', value: '002202066' },
+            row2: { type: 'input', value: '薛' },
             isUpload: true
           }
         }, {
@@ -199,57 +199,33 @@ export default {
           row2: { type: 'datepicker', value: '' },
         }
       }, {
-        tag_l: '年级',
-        tag_r: '学年',
-        formControls: {
-          row1: { type: 'input', value: '22级' },
-          row2: { type: 'input', value: '23年' },
-        }
-      }, {
         tag_l: '学部',
         tag_r: '政治面貌',
         formControls: {
-          row1: { type: 'input', value: '电子学部' },
-          row2: { type: 'input', value: '群众' },
+          row1: { type: 'input', value: '信息电子学部' },
+          row2: { type: 'input', value: '党员' },
         }
       }, {
         tag_l: '专业',
         tag_r: '民族',
         formControls: {
           row1: { type: 'input', value: '软件工程' },
-          row2: { type: 'input', value: '回' },
+          row2: { type: 'input', value: '汉' },
         }
       }, {
-        tag_l: '班级',
-        tag_r: '学籍异动',
-        formControls: {
-          row1: { type: 'input', value: '2202074' },
-          row2: { type: 'input', value: '' },
-        }
-      }, {
-        tag_l: '入学时间',
+        tag_l: '带班班级',
         tag_r: '身份证号',
         formControls: {
-          row1: { type: 'input', value: '' },
-          row2: { type: 'input', value: '' },
+          row1: { type: 'input', value: '2202074' },
+          row2: { type: 'input', value: '2141456314133213x' },
         }
-      }, {
+      },
+      {
         tag_l: '籍贯',
+        tag_r: '户口',
         formControls: {
-          row1: { type: 'input', value: '' },
-          row2: { type: 'input', value: '' },
-        }
-      }, {
-        tag_l: '户口',
-        formControls: {
-          row1: { type: 'input', value: '' },
-          row2: { type: 'input', value: '' },
-        }
-      }, {
-        tag_l: '生源地',
-        formControls: {
-          row1: { type: 'input', value: '' },
-          row2: { type: 'input', value: '' },
+          row1: { type: 'input', value: '中国大陆' },
+          row2: { type: 'input', value: '中国大陆' },
         }
       }],
       tableData_b: [
@@ -259,20 +235,15 @@ export default {
         },
         {
           tag_l: 'QQ账号',
-          tag_r: '监护人电话'
+          tag_r: '微信号'
         },
         {
-          tag_l: '邮政编码'
+          tag_l: '邮政编码',
+          tag_r: '身份证地址'
         },
-        {
-          tag_l: '身份证地址'
-        },
-        {
-          tag_l: '微信号'
-        }
       ],
       tableData_c: [{
-        name: '一小池勺',
+        name: '管理员',
         age: '11',
         relationship: '1122',
         workplace: '41231',

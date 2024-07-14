@@ -323,6 +323,26 @@ export const AdminAsideRoutes = [
           title:'违纪处分',
           icon:{url:require('../assets/违纪处分.png')}
         }
+      },
+      {
+        path:'/NanAdminWorkStudy',
+        name:'NanAdminWorkStudy',
+        component:()=>import('@/views/NanAdminWorkStudy'),
+        meta:{
+          title:'勤工助学',
+          icon: {url:require('../assets/勤工俭学.png')}
+        },
+
+
+      },
+      {
+        path:'NanAdminMonitor',
+        name:'NanAdminMonitor',
+        component:()=>import('@/views/NanAdminMonitor'),
+        meta:{
+          title:'班委申请',
+          icon:{url:require('../assets/思政队伍.png')}
+        }
       }
     ]
 

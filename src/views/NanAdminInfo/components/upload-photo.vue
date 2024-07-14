@@ -3,7 +3,7 @@ export default {
   name: 'upload-photo',
   data() {
     return {
-      imageUrl: null
+      imageUrl: ''
     }
   },
   methods: {
@@ -33,7 +33,7 @@ export default {
       :on-success="handleAvatarSuccess"
       :before-upload="beforeAvatarUpload">
       <div class="upload-photo">
-        <el-avatar shape="square" :size="140" fit="fill" :src="imageUrl ? imageUrl : ''"></el-avatar>
+        <el-avatar shape="square" :size="140" fit="fill" :src="imageUrl ? imageUrl : '' "></el-avatar>
         <el-button type="primary">上传头像</el-button>
       </div>
     </el-upload>

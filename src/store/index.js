@@ -19,6 +19,8 @@ import adminScholarship from '@/store/modeules/adminScholarship'
 import adminDormitory from '@/store/modeules/admindormitory'
 import adminLeave from '@/store/modeules/adminLeave'
 import adminPunish from '@/store/modeules/adminPunish'
+import adminWorkStudy from '@/store/modeules/adminWorkStudy'
+import adminMonitor from '@/store/modeules/adminMonitor'
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
@@ -40,7 +42,9 @@ const store = new Vuex.Store({
     complaint,
     adminDormitory,
     adminLeave,
-    adminPunish
+    adminPunish,
+    adminWorkStudy,
+    adminMonitor
   },
   getters
 })

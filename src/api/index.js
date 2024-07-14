@@ -236,23 +236,6 @@ export const getAdminReviewScholarships = (result,id) => request({
   }
 })
 
-// 查询辅导员信息
-export const getAdminQueryInfo = (gender,name) => request({
-  url:'admin/counsellorInformation',
-  method:'GET',
-  data:{
-    gender: gender,
-    name: name
-  }
-})
-
-// 删除辅导员信息
-export const getAdminDeleteInfo = (ids) => request({
-  url:'admin/counsellorManage',
-  method:'DELETE',
-  data: ids
-})
-
 // 查询勤工助学申请
 export const getAdminQueryWork = () => request({
   url:'adminCommon/jobApplicationAll',
@@ -273,6 +256,18 @@ export const getAdminModifyWork = (data) => request({
   data:data
 })
 
+
+
+// 审核勤工助学信息
+export const getAdminReviewWork = (stuId,jobName) => request({
+  url:'admin/jobWorking',
+  method:'POST',
+  data:{
+    stuId: stuId,
+    jobName: jobName
+  }
+})
+
 // 删除勤工助学申请
 export const getAdminDeleteWork = (ids) => request({
   url:'admin/jobInformation',
@@ -281,7 +276,7 @@ export const getAdminDeleteWork = (ids) => request({
 })
 
 // 查询班委申请信息
-export const getAdminQueryCommittee = () => request({
+export const getAdminQueryMonitor = () => request({
   url:'adminCommon/classInformationAll',
   method:'GET',
 })
@@ -308,6 +303,56 @@ export const getAdminQueryLeave = () => request({
   method:'GET',
 })
 
+// 审核请假信息
+export const getAdminReviewLeave = (result,id) => request({
+  url:'counsellor/examineExcuse',
+  method:'POST',
+  params:{
+    result: result,
+    id: id
+  }
+})
+
+
+// 宿舍维修信息查询
+export const getAdminQueryRepair = () => request({
+  url:'adminCommon/dormitoryRepairApplicationAll',
+  method:'GET',
+})
+
+// 宿舍维修申请处理
+export const getAdminReviewRepair = (id,handleResult,reply) => request({
+  url:'admin/dormitoryRepair',
+  method:'POST',
+  data:{
+    id: id,
+    handleResult: handleResult,
+    reply: reply
+  }
+})
+
+
+
+
+// 不一定用到的接口
+// 查询辅导员信息
+export const getAdminQueryInfo = (gender,name) => request({
+  url:'admin/counsellorInformation',
+  method:'GET',
+  data:{
+    gender: gender,
+    name: name
+  }
+})
+
+// 删除辅导员信息
+export const getAdminDeleteInfo = (ids) => request({
+  url:'admin/counsellorManage',
+  method:'DELETE',
+  data: ids
+})
+
+
 
 // 发布通知通告
 export const getAdminPublishNotice = (data) => request({
@@ -327,21 +372,4 @@ export const getAdminModifyNotice = (data) => request({
 export const getAdminQueryNotice = () => request({
   url:'admin/notice',
   method:'GET',
-})
-
-// 宿舍维修信息查询
-export const getAdminQueryRepair = () => request({
-  url:'adminCommon/dormitoryRepairApplicationAll',
-  method:'GET',
-})
-
-// 宿舍维修申请处理
-export const getAdminReviewRepair = (id,handleResult,reply) => request({
-  url:'admin/dormitoryRepair',
-  method:'POST',
-  data:{
-    id: id,
-    handleResult: handleResult,
-    reply: reply
-  }
 })
