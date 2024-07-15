@@ -236,11 +236,20 @@ export const getAdminReviewScholarships = (result,id) => request({
   }
 })
 
-// 查询勤工助学申请
-export const getAdminQueryWork = () => request({
-  url:'adminCommon/jobApplicationAll',
-  method:'GET',
+export const getAdminQueryWork = (page, pageSize) => request({
+  url:'adminCommon/jobInformation',
+  method:'POST',
+  data:{
+    page:page,
+    pageSize: pageSize
+  }
 })
+
+// 查询勤工助学申请
+// export const getAdminQueryWork = () => request({
+//   url:'adminCommon/jobApplicationAll',
+//   method:'GET',
+// })
 
 // 发布勤工助学申请
 export const getAdminPublishWork = (data) => request({
@@ -272,7 +281,9 @@ export const getAdminReviewWork = (stuId,jobName) => request({
 export const getAdminDeleteWork = (ids) => request({
   url:'admin/jobInformation',
   method:'DELETE',
-  data: ids
+  params: {
+    ids: ids
+  }
 })
 
 // 查询班委申请信息

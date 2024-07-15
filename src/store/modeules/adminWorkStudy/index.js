@@ -10,9 +10,10 @@ const mutations = {
 }
 const actions = {
   async AdminQueryWork({commit}){
-    const res = await getAdminQueryWork()
+    const res = await getAdminQueryWork(1,7)
+    // console.log(res)
     if(res.role === 1){
-      commit('ADMINQUERYWORK',res.data)
+      commit('ADMINQUERYWORK',res.data.records)
     }
 
   }

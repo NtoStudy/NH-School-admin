@@ -24,8 +24,8 @@
           <div class="right">
             <el-button type="primary" size="small" icon="el-icon-edit" @click="dialogVisiblePut = true">发布勤工助学</el-button>
             <el-button type="primary" size="small" icon="el-icon-info" @click="dialogVisibleExamine = true">审核勤工助学</el-button>
-            <el-button type="primary" size="small" icon="el-icon-s-promotion">修改勤工助学</el-button>
-            <el-button type="primary" size="small" icon="el-icon-delete" >删除勤工助学</el-button>
+            <el-button type="primary" size="small" icon="el-icon-s-promotion" @click="dialogVisibleChange = true">修改勤工助学</el-button>
+            <el-button type="primary" size="small" icon="el-icon-delete" @click="dialogVisibleDelete = true">删除勤工助学</el-button>
             <AdminButton></AdminButton>
             <el-table
               :row-style="{ height: '40px' }"
@@ -42,47 +42,61 @@
                 </el-table-column>
 
                 <el-table-column
-                  prop="jobTime"
-                  label="工作时间"
+                  prop="id"
+                  label="工作编号"
                   width="160">
                 </el-table-column>
-
                 <el-table-column
-                  prop="employUnit"
-                  label="就业单位"
-                  width="180">
+                  prop="workingNumber"
+                  label="所需人数"
+                  width="160">
                 </el-table-column>
-
-                <el-table-column
-                  prop="jobName"
-                  label="工作名称"
-                  width="140">
-                </el-table-column>
-
-                <el-table-column
-                  prop="jobNature"
-                  label="工作性质"
-                  width="180">
-                </el-table-column>
-
-
-                <el-table-column
-                  prop="applicationNumber"
-                  label="工作编号"
-                  width="120">
-                </el-table-column>
-
-                <el-table-column
-                  prop="applicationTime"
-                  label="预期开设时间"
-                  width="180">
-                </el-table-column>
-
                 <el-table-column
                   prop="applicationStatus"
                   label="开设状态"
                   width="120">
                 </el-table-column>
+                <el-table-column
+                  prop="poorStu"
+                  label="薪资状况"
+                  width="120">
+                </el-table-column>
+                <el-table-column
+                  prop="applicationNumber"
+                  label="可申请人数"
+                  width="120">
+                </el-table-column>
+                <el-table-column
+                  prop="employUnit"
+                  label="就业单位"
+                  width="180">
+                </el-table-column>
+                <el-table-column
+                  prop="jobNature"
+                  label="工作性质"
+                  width="180">
+                </el-table-column>
+                <el-table-column
+                  prop="needNumber"
+                  label="预期招人"
+                  width="180">
+                </el-table-column>
+                <el-table-column
+                  prop="jobTime"
+                  label="工作时间"
+                  width="160">
+                </el-table-column>
+                <el-table-column
+                  prop="jobType"
+                  label="工作类型"
+                  width="160">
+                </el-table-column>
+                <el-table-column
+                  prop="jobName"
+                  label="项目名称"
+                  width="160">
+                </el-table-column>
+
               </template>
             </el-table>
             <div class="footer">
@@ -123,39 +137,99 @@
   </span>
       </el-dialog>
 
+      <el-dialog
+        title="提示"
+        :visible.sync="dialogVisibleDelete"
+        width="30%"
+        :before-close="handleClose">
+        <span>确定删除当前勤工助学申请吗？</span>
+        <span slot="footer" class="dialog-footer">
+    <el-button @click="dialogVisibleDelete = false">取 消</el-button>
+    <el-button type="primary" @click="DeleteInfo">确 定</el-button>
+  </span>
+      </el-dialog>
+
       <el-dialog title="请填写勤工助学项目信息" :visible.sync="dialogVisiblePut">
         <el-form :model="form">
-          <el-form-item label="工作名称" :label-width="formLabelWidth">
-            <el-input v-model="form.jobName" autocomplete="off"></el-input>
+          <el-form-item label="工作编号" :label-width="formLabelWidth">
+            <el-input v-model="form.id" autocomplete="off"></el-input>
           </el-form-item>
-          <el-form-item label="工作时间" :label-width="formLabelWidth">
-            <el-input v-model="form.jobTime" autocomplete="off"></el-input>
-          </el-form-item>
-          <el-form-item label="申请状态" :label-width="formLabelWidth">
-            <el-input v-model="form.applicationStatus" autocomplete="off"></el-input>
-          </el-form-item>
-          <el-form-item label="需要人口" :label-width="formLabelWidth">
+          <el-form-item label="所需人数" :label-width="formLabelWidth">
             <el-input v-model="form.workingNumber" autocomplete="off"></el-input>
           </el-form-item>
-          <el-form-item label="工作总人数" :label-width="formLabelWidth">
+          <el-form-item label="开设状态" :label-width="formLabelWidth">
+            <el-input v-model="form.applicationStatus" autocomplete="off"></el-input>
+          </el-form-item>
+          <el-form-item label="薪资状况" :label-width="formLabelWidth">
             <el-input v-model="form.poorStu" autocomplete="off"></el-input>
-          </el-form-item>
-          <el-form-item label="就业单位" :label-width="formLabelWidth">
-            <el-input v-model="form.employUnit" autocomplete="off"></el-input>
-          </el-form-item>
-          <el-form-item label="工作类型" :label-width="formLabelWidth">
-            <el-input v-model="form.jobType" autocomplete="off"></el-input>
           </el-form-item>
           <el-form-item label="可申请人数" :label-width="formLabelWidth">
             <el-input v-model="form.applicationNumber" autocomplete="off"></el-input>
           </el-form-item>
+          <el-form-item label="就业单位" :label-width="formLabelWidth">
+            <el-input v-model="form.employUnit" autocomplete="off"></el-input>
+          </el-form-item>
           <el-form-item label="工作性质" :label-width="formLabelWidth">
             <el-input v-model="form.jobNature" autocomplete="off"></el-input>
+          </el-form-item>
+          <el-form-item label="预期招人" :label-width="formLabelWidth">
+            <el-input v-model="form.needNumber" autocomplete="off"></el-input>
+          </el-form-item>
+          <el-form-item label="工作时间" :label-width="formLabelWidth">
+            <el-input v-model="form.jobTime" autocomplete="off"></el-input>
+          </el-form-item>
+          <el-form-item label="工作类型" :label-width="formLabelWidth">
+            <el-input v-model="form.jobType" autocomplete="off"></el-input>
+          </el-form-item>
+          <el-form-item label="项目名称" :label-width="formLabelWidth">
+            <el-input v-model="form.jobName" autocomplete="off"></el-input>
           </el-form-item>
         </el-form>
         <div slot="footer" class="dialog-footer">
           <el-button @click="dialogVisiblePut = false">取 消</el-button>
           <el-button type="primary" @click="AddInfo">确 定</el-button>
+        </div>
+      </el-dialog>
+
+      <el-dialog title="请填写勤工助学项目信息" :visible.sync="dialogVisibleChange">
+        <el-form :model="formChange">
+          <el-form-item label="工作编号" :label-width="formLabelWidth">
+            <el-input v-model="formChange.id" autocomplete="off"></el-input>
+          </el-form-item>
+          <el-form-item label="所需人数" :label-width="formLabelWidth">
+            <el-input v-model="formChange.workingNumber" autocomplete="off"></el-input>
+          </el-form-item>
+          <el-form-item label="开设状态" :label-width="formLabelWidth">
+            <el-input v-model="formChange.applicationStatus" autocomplete="off"></el-input>
+          </el-form-item>
+          <el-form-item label="薪资状况" :label-width="formLabelWidth">arn
+            <el-input v-model="formChange.poorStu" autocomplete="off"></el-input>
+          </el-form-item>
+          <el-form-item label="可申请人数" :label-width="formLabelWidth">
+            <el-input v-model="formChange.applicationNumber" autocomplete="off"></el-input>
+          </el-form-item>
+          <el-form-item label="就业单位" :label-width="formLabelWidth">
+            <el-input v-model="formChange.employUnit" autocomplete="off"></el-input>
+          </el-form-item>
+          <el-form-item label="工作性质" :label-width="formLabelWidth">
+            <el-input v-model="formChange.jobNature" autocomplete="off"></el-input>
+          </el-form-item>
+          <el-form-item label="预期招人" :label-width="formLabelWidth">
+            <el-input v-model="formChange.needNumber" autocomplete="off"></el-input>
+          </el-form-item>
+          <el-form-item label="工作时间" :label-width="formLabelWidth">
+            <el-input v-model="formChange.jobTime" autocomplete="off"></el-input>
+          </el-form-item>
+          <el-form-item label="工作类型" :label-width="formLabelWidth">
+            <el-input v-model="formChange.jobType" autocomplete="off"></el-input>
+          </el-form-item>
+          <el-form-item label="项目名称" :label-width="formLabelWidth">
+            <el-input v-model="formChange.jobName" autocomplete="off"></el-input>
+          </el-form-item>
+        </el-form>
+        <div slot="footer" class="dialog-footer">
+          <el-button @click="dialogVisibleChange = false">取 消</el-button>
+          <el-button type="primary" @click="ChangeInfo">确 定</el-button>
         </div>
       </el-dialog>
     </div>
@@ -164,7 +238,7 @@
 </template>
 
 <script>
-import {  getAdminPublishWork, getAdminReviewWork } from '@/api'
+import { getAdminDeleteWork, getAdminModifyWork, getAdminPublishWork, getAdminReviewWork } from '@/api'
 import { mapState } from 'vuex'
 import AdminButton from '@/components/AdminButton/index.vue'
 export default {
@@ -176,20 +250,37 @@ export default {
     return {
       dialogVisibleExamine: false,
       dialogVisiblePut:false,
+      dialogVisibleChange:false,
+      dialogVisibleDelete:false,
+      deleteId:'',
       jobName:"复酸统团",
       stuId:'',
       formLabelWidth: '120px',
       form: {
-        jobName: '',
-        jobTime:'',
-        applicationStatus:'',
-        needNumber:'',
+        id:'',
         workingNumber:'',
-        poorStu:'',
-        employUnit:'',
+        applicationStatus :'',
+        poorStu: "",
+        applicationNumber: '',
+        employUnit: "",
+        jobNature: "",
+        needNumber: '',
+        jobTime: "",
         jobType:'',
-        applicationNumber:'',
-        jobNature:''
+        jobName: ""
+      },
+      formChange: {
+        id:'',
+        workingNumber:'',
+        applicationStatus :'',
+        poorStu: "",
+        applicationNumber: '',
+        employUnit: "",
+        jobNature: "",
+        needNumber: '',
+        jobTime: "",
+        jobType:'',
+        jobName: ""
       }
     }
   },
@@ -202,7 +293,11 @@ export default {
         })
         .catch(_ => {
         });
-    },
+      },
+    // 查询信息封装成一个函数
+    GetData(){
+      this.$store.dispatch('AdminQueryWork')
+  },
     // 审核勤工助学的接口
     async Examine() {
       this.stuId = 37
@@ -217,13 +312,39 @@ export default {
       }
     },
     //拿到当前点击行的数据
-    handleCurrentChange(currentRow,) {
-      this.jobName = currentRow.jobName
+    handleCurrentChange(currentRow) {
+      this.deleteId = currentRow.id
+      const {
+        applicationNumber,
+        applicationStatus,
+        employUnit,
+        id,
+        jobName,
+        jobNature,
+        jobTime,
+        jobType,
+        needNumber,
+        poorStu,
+        workingNumber
+      } = currentRow
+      this.formChange = {
+        id: id,
+        workingNumber: workingNumber,
+        applicationStatus: applicationStatus,
+        poorStu: poorStu,
+        applicationNumber: applicationNumber,
+        employUnit: employUnit,
+        jobNature: jobNature,
+        needNumber: needNumber,
+        jobTime: jobTime,
+        jobType: jobType,
+        jobName: jobName,
+      }
+
     },
     // 新增勤工助学
     async AddInfo(){
       // 将表单中form的数据传给后台
-      console.log(123)
       const res = await getAdminPublishWork(this.form)
       if(res.role === 1){
         this.$message({
@@ -233,14 +354,70 @@ export default {
         // 关闭dialog弹窗
         this.dialogVisiblePut = false
         // 重新渲染页面数据
-        await this.$store.dispatch('AdminQueryWork')
+        await this.GetData()
+        this.form = {
+          id:'',
+          workingNumber:'',
+          applicationStatus :'',
+          poorStu: "",
+          applicationNumber: '',
+          employUnit: "",
+          jobNature: "",
+          needNumber: '',
+          jobTime: "",
+          jobType:'',
+          jobName: ""
+        }
       }
-    }
+    },
 
+    // 修改勤工助学
+    async ChangeInfo(){
+      // 将表单中form的数据传给后台
+      const data = {
+        id:this.formChange.id,
+        workingNumber:this.formChange.workingNumber,
+        applicationStatus :this.formChange.applicationStatus,
+        poorStu: this.formChange.poorStu,
+        applicationNumber: this.formChange.applicationNumber,
+        employUnit: this.formChange.employUnit,
+        jobNature: this.formChange.jobNature,
+        needNumber: this.formChange.needNumber,
+        jobType: this.formChange.jobType,
+        jobTime: this.formChange.jobTime,
+        jobName: this.formChange.jobName
+      }
+      console.log(data)
+      const res = await getAdminModifyWork(data)
+      console.log(res)
+      if(res.role === 1){
+        this.$message({
+          message: '修改成功',
+          type: 'success',
+        })
+        // 关闭dialog弹窗
+        this.dialogVisibleChange = false
+        // 重新渲染页面数据
+        await this.GetData()
+      }
+    },
+
+    // 删除勤工助学
+    async DeleteInfo(){
+      const res = await getAdminDeleteWork(this.deleteId)
+      if (res.role === 1){
+        this.$message({
+          message: '删除成功',
+          type: 'success',
+        })
+        this.dialogVisibleDelete = false
+        await this.GetData()
+      }
+    },
 
   },
   mounted() {
-    this.$store.dispatch('AdminQueryWork')
+    this.GetData()
   },
   computed:{
     ...mapState({

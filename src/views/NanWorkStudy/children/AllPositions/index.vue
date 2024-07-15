@@ -309,12 +309,6 @@ export default {
       }]
       const res = await getJobApplication(jobApplications)
       console.log(res)
-      // if(res.role === 2){
-      //   alert('等待审核该项目')
-      //   this.dialogVisible = false
-      // }else{
-      //   alert('暂时不能申请')
-      // }
     }
   },
 
