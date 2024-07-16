@@ -160,7 +160,7 @@
         <h3>请输入你申请该项目的理由</h3>
       </template>
       <template #default>
-        <el-input placeholder="请输入你的x学号" v-model="jobId"></el-input>
+        <el-input placeholder="请输入你的学号" v-model="jobId"></el-input>
         <el-input placeholder="请输入你的姓名" v-model="jobName"></el-input>
       </template>
       <template #footer>
@@ -303,12 +303,18 @@ export default {
       this.dialogVisible = false
     },
     async handleApply(){
-      const jobApplications = [{
-        "jobId": this.jobId,
-        "jobName": this.jobName
-      }]
-      const res = await getJobApplication(jobApplications)
-      console.log(res)
+      const res = await getJobApplication(this.jobId,this.jobName)
+      if(res.role === 2){
+        // 弹出提示表示申请成功 等待审核
+        this.$message({
+          message: '申请成功',
+          type: 'success'
+        })
+        // 关闭弹窗
+        this.dialogVisible = false
+        this.jobId = ''
+        this.jobName = ''
+      }
     }
   },
 

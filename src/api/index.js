@@ -97,11 +97,12 @@ export const getWorkInformation = (page, pageSize, key) => request({
 })
 
 // 新增工作申请
-export const getJobApplication = (jobs) => request({
+export const getJobApplication = (jobId,jobName) => request({
   url: '/student/jobApplication',
   method: 'POST',
   data: {
-    jobs: jobs
+    jobId: jobId,
+    jobName: jobName
   }
 })
 

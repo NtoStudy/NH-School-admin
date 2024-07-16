@@ -11,3 +11,7 @@
 [0713/191527.807:ERROR:directory_reader_win.cc(43)] FindFirstFile +C:\Users\鐗涙枃淇奬AppData\Local\Chrome\User Data\Crashpad\attachments: 系统找不到指定的路径。 (0x3)
 [0714/110524.903:ERROR:directory_reader_win.cc(43)] FindFirstFile +C:\Users\鐗涙枃淇奬AppData\Local\Chrome\User Data\Crashpad\attachments: 系统找不到指定的路径。 (0x3)
 [0715/203823.684:ERROR:directory_reader_win.cc(43)] FindFirstFile +C:\Users\鐗涙枃淇奬AppData\Local\Chrome\User Data\Crashpad\attachments: 系统找不到指定的路径。 (0x3)
+[0716/143811.823:ERROR:directory_reader_win.cc(43)] FindFirstFile +C:\Users\鐗涙枃淇奬AppData\Local\Chrome\User Data\Crashpad\attachments: 系统找不到指定的路径。 (0x3)
+[0716/144828.210:ERROR:process_reader_win.cc(108)] process 2868 not found
+[0716/144828.210:ERROR:exception_snapshot_win.cc(99)] thread ID 18280 not found in process
+[0716/144828.210:ERROR:scoped_process_suspend.cc(40)] NtResumeProcess: 已尝试访问正在退出的过程。 (0xc000010a)

@@ -172,7 +172,6 @@
         <el-input placeholder="请输入申请学年" v-model="StuYear"></el-input>
         <el-input placeholder="请输入申请时间" v-model="StuTime"></el-input>
         <el-input placeholder="请输入申请档次" v-model="StuGrade"></el-input>
-
       </template>
       <template #footer>
         <el-button round size="small" @click="cancel">取消</el-button>
