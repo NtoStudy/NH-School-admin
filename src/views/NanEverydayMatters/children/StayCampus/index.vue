@@ -61,8 +61,8 @@
         <h3>输入你要留校的时间段</h3>
       </template>
       <template>
-        <el-input placeholder="留校的开始时间" v-model="stayBegin"></el-input>
-        <el-input placeholder="留校的截至时间" v-model="stayEnd"></el-input>
+        <el-input placeholder="留校的开始时间 例如2020-01-12" v-model="stayBegin"></el-input>
+        <el-input placeholder="留校的截至时间 例如2020-12-12" v-model="stayEnd"></el-input>
       </template>
       <template #footer>
         <el-button round size="small" @click="cancel">取消</el-button>
@@ -89,14 +89,13 @@ export default {
       stayBegin:'',
       stayEnd:'',
       StayCampusList:[
-        { prop: "stuId", label: "第几位申请人" },
+        { prop: "stayBegin", label: "开始时间" },
+        { prop: "classInfo" , label:"班级" },
+        { prop: "applicationTime", label: "申请时间" },
+        { prop: "stayEnd" ,label:"截止时间"},
         { prop: "stuBasicId" ,label:"学号"},
         { prop: "nation" ,label:"申请地点"},
         { prop: "gender" , label:"性别" },
-        { prop: "classInfo" , label:"班级" },
-        { prop: "applicationTime", label: "申请时间" },
-        { prop: "stayBegin", label: "开始时间" },
-        { prop: "stayEnd" ,label:"截止时间"},
         { prop: "status" ,label:"审核状态"},
       ],
     }
@@ -120,6 +119,17 @@ export default {
       this.dialogVisible = false
     },
     async AddChange(){
+      if(this.stayBegin.length !== 10 && this.stayEnd.length !== 10 ){
+        this.$message({
+          message: '请输入正确的时间格式',
+          type: 'error'
+        })
+        this.dialogVisible = false
+        this.stayBegin = ''
+        this.stayEnd = ''
+        return
+      }
+
       const res = await getApplicationCampus(this.stayBegin,this.stayEnd)
       // console.log(res)
       if(res.role === 2){

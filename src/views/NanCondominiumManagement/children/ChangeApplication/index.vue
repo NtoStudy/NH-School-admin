@@ -62,7 +62,7 @@
 
     <el-dialog :visible.sync="dialogVisible">
       <template #title>
-        <h3>确定申请该岗位？</h3>
+        <h3>如实输入宿舍地址和请求内容</h3>
       </template>
       <template #default>
         <el-input placeholder="请输入申报的内容" v-model="requestContext"></el-input>

@@ -63,8 +63,8 @@
       <template #default>
         <el-input placeholder="请输入请假天数" v-model="excuseDays"></el-input>
         <el-input placeholder="请输入请假类型" v-model="excuseType"></el-input>
-        <el-input placeholder="请输入开始时间" v-model="excuseBegin"></el-input>
-        <el-input placeholder="请输入结束时间" v-model="excuseEnd"></el-input>
+        <el-input placeholder="请输入开始时间 例如2020-01-12" v-model="excuseBegin"></el-input>
+        <el-input placeholder="请输入结束时间 例如2020-10-12" v-model="excuseEnd"></el-input>
         <el-input placeholder="请输入请假原因" v-model="excuseReason"></el-input>
       </template>
       <template #footer>
@@ -95,16 +95,16 @@ export default {
       excuseEnd:'',
       excuseReason:'',
       LeaveCampusList:[
+        { prop: "excuseType", label: "请假类型"},
+        { prop: "excuseBegin", label: "开始时间"},
+        { prop: "excuseEnd", label: "结束时间"},
+        { prop: "excuseReason", label: "请假原因"},
         { prop: "studyYear", label: "学年"},
         { prop: "semester", label: "学期"},
         { prop: "stuBasicId", label: "学号"},
         { prop: "classInfo", label: "班级号"},
         { prop: "gender", label: "性别"},
         { prop: "excuseDays", label: "总时间"},
-        { prop: "excuseType", label: "请假类型"},
-        { prop: "excuseBegin", label: "开始时间"},
-        { prop: "excuseEnd", label: "结束时间"},
-        { prop: "excuseReason", label: "请假原因"},
         { prop: "status", label: "审核状态"},
       ]
     }
@@ -120,6 +120,18 @@ export default {
       this.dialogVisible = false
     },
     async AddChange(){
+      if(this.excuseBegin.length !== 10 && this.excuseEnd.length !== 10 ){
+        this.$message({
+          message: '请输入正确的时间格式',
+          type: 'error'
+        })
+        this.dialogVisible = false
+        this.stayBegin = ''
+        this.stayEnd = ''
+        return
+      }
+
+
       const res = await getLeaveApplication(
         this.excuseDays
         ,this.excuseType

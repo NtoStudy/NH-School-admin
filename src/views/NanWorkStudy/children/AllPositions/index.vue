@@ -1,166 +1,43 @@
 <template>
   <div>
-
   <el-button type="primary" size="small" icon="el-icon-plus" @click="AddOpen">申请</el-button>
   <el-button type="primary" size="small" icon="el-icon-edit" >修改</el-button>
   <el-button type="primary" size="small" icon="el-icon-delete" >删除</el-button>
   <el-button type="primary" size="small" icon="el-icon-s-promotion" >提交</el-button>
   <StuButton></StuButton>
-
   <div class="Button">
-    <div class="button-begin" @click="changeButtonBegin">未申请岗位</div>
-    <div class="button-end" @click="changeButtonEnd">已申请岗位</div>
+    <div class="button-begin" @click="changeButtonBegin">可申请岗位</div>
   </div>
 
-  <el-table v-if="ifShow"
+  <el-table
             :row-style="{ height: '40px' }"
-            :data="tableData_A"
+            :data="columns"
             border
             height="420"
             style="width: 100%"
+            ref="table"
             @selection-change="AddCount">
 
-    <template>
-      <el-table-column
-        width="60"
-        type="selection">
-      </el-table-column>
+    <el-table-column
+      width="60"
+      type="selection">
+    </el-table-column>
+    <el-table-column
+      v-for="(item,index) in EndWorkList"
+      :key="index"
+      :prop="item.prop"
+      :label="item.label"
+      width="200">
+    </el-table-column>
 
-      <el-table-column
-        prop="Employers"
-        label="用人单位"
-        width="140">
-      </el-table-column>
-
-      <el-table-column
-        prop="JobTitle"
-        label="岗位名称"
-        width="140">
-      </el-table-column>
-
-      <el-table-column
-        prop="JobNature"
-        label="岗位性质"
-        width="120">
-      </el-table-column>
-
-      <el-table-column
-        prop="JobType"
-        label="岗位类型"
-        width="120">
-      </el-table-column>
-
-      <el-table-column
-        prop="JobTime"
-        label="工作时间"
-        width="180">
-      </el-table-column>
-
-      <el-table-column
-        prop="requiredPeople"
-        label="需求人数"
-        width="100">
-      </el-table-column>
-
-      <el-table-column
-        prop="applicantsPeople"
-        label="申请人数"
-        width="100">
-      </el-table-column>
-
-      <el-table-column
-        prop="DifficultStudents"
-        label="困难生数"
-        width="100">
-      </el-table-column>
-
-      <el-table-column
-        prop="dutyPersonnel"
-        label="在岗人数"
-        width="100">
-      </el-table-column>
-
-      <el-table-column
-        prop="ApplicationStatus"
-        label="申请状态"
-        width="100">
-      </el-table-column>
-    </template>
   </el-table>
 
-  <el-table
-    v-else
-    :row-style="{ height: '40px' }"
-    :data="tableData_B"
-    border
-    height="420"
-    style="width: 100%">
-
-
-    <template>
-      <el-table-column
-        width="60"
-        type="selection">
-      </el-table-column>
-
-      <el-table-column
-        prop="schoolYear"
-        label="学年"
-        width="140">
-      </el-table-column>
-
-      <el-table-column
-        prop="Employers"
-        label="用人单位"
-        width="140">
-      </el-table-column>
-
-      <el-table-column
-        prop="JobTitle"
-        label="岗位名称"
-        width="140">
-      </el-table-column>
-
-      <el-table-column
-        prop="JobNature"
-        label="岗位性质"
-        width="120">
-      </el-table-column>
-
-      <el-table-column
-        prop="JobType"
-        label="岗位类型"
-        width="120">
-      </el-table-column>
-
-      <el-table-column
-        prop="applicantsPeople"
-        label="申请人数"
-        width="100">
-      </el-table-column>
-
-      <el-table-column
-        prop="applicantsTime"
-        label="申请时间"
-        width="100">
-      </el-table-column>
-
-
-      <el-table-column
-        prop="ApplicationStatus"
-        label="申请状态"
-        width="100">
-      </el-table-column>
-    </template>
-  </el-table>
-  <Footer></Footer>
 
     <el-dialog :visible.sync="dialogVisible">
       <template #title>
-        <h3>请输入你申请该项目的理由</h3>
+        <h3>请如实填写你的信息</h3>
       </template>
       <template #default>
-        <el-input placeholder="请输入你的学号" v-model="jobId"></el-input>
         <el-input placeholder="请输入你的姓名" v-model="jobName"></el-input>
       </template>
       <template #footer>
@@ -168,114 +45,58 @@
         <el-button round size="small" @click="handleApply">确定</el-button>
       </template>
     </el-dialog>
+    <div class="footer">
+      <div class="footer_left">
+        <span> 第 1 /</span>
+        <span class="red"> 1 </span>
+        <span> 页,</span>
+        <span> 每 页 显 示</span>
+        <select>
+          <option value="语文">10</option>
+          <option value="数学">20</option>
+          <option value="英语">50</option>
+          <option value="物理">100</option>
+        </select>
+        <span> 条 / 共</span>
+        <span class="red">1 </span>
+        <span> 条 记 录 </span>
+      </div>
+      <div class="footer_right">
+        <el-button-group>
+          <el-button type="success" plain  icon="el-icon-arrow-left" size="mini">上一页</el-button>
+          <el-button type="success" plain  size="mini">下一页<i class="el-icon-arrow-right el-icon--right"></i></el-button>
+        </el-button-group>
+      </div>
+    </div>
   </div>
 
 </template>
 
 <script>
 import StuButton from '@/components/Stu-Button/index.vue'
-import Footer from '@/components/Footer/index.vue'
 import { getJobApplication } from '@/api/index.js'
-import axios from 'axios'
+import { mapState } from 'vuex'
 export default {
   name: 'AllPositions',
   components:{
     StuButton,
-    Footer
   },
   data() {
     return {
       numberCount:0,
       dialogVisible:false,
-      applicationReason:'',
-      tableData_A:[{
-        Employers:'计划与财务办公室',
-        JobTitle:'多媒体及机房兼职设备维护员',
-        JobNature:'辅助管理',
-        JobType:'校级',
-        JobTime:'20230901~20240901',
-        requiredPeople:'12',
-        applicantsPeople:'12',
-        DifficultStudents:'12',
-        dutyPersonnel:'12',
-        ApplicationStatus:'未申请',
-      },{
-        Employers:'',
-        JobTitle:'',
-        JobNature:'',
-        JobType:'',
-        schoolYear:'',
-        requiredPeople:'',
-        applicantsPeople:'',
-        DifficultStudents:'',
-        dutyPersonnel:'',
-        ApplicationStatus:'',
-      },{
-        Employers:'',
-        JobTitle:'',
-        JobNature:'',
-        JobType:'',
-        schoolYear:'',
-        requiredPeople:'',
-        applicantsPeople:'',
-        DifficultStudents:'',
-        dutyPersonnel:'',
-        ApplicationStatus:'',
-      }, {
-        Employers: '',
-        JobTitle: '',
-        JobNature: '',
-        JobType: '',
-        schoolYear: '',
-        requiredPeople: '',
-        applicantsPeople: '',
-        DifficultStudents: '',
-        dutyPersonnel: '',
-        ApplicationStatus: '',
-      }],
-      tableData_B:[{
-        schoolYear:'20202002',
-        Employers:'计划与财务办公室',
-        JobTitle:'多媒体及机房兼职设备维护员',
-        JobNature:'辅助管理',
-        JobType:'校级',
-        applicantsPeople:'20',
-        applicantsTime:'20202020',
-        ApplicationStatus:'已申请'
-      },{
-        schoolYear:'',
-        Employers:'',
-        JobTitle:'',
-        JobNature:'',
-        JobType:'',
-        applicantsPeople:'',
-        applicantsTime:'',
-        ApplicationStatus:''
-      },
-      {
-        schoolYear:'',
-        Employers:'',
-        JobTitle:'',
-        JobNature:'',
-        JobType:'',
-        applicantsPeople:'',
-        applicantsTime:'',
-        ApplicationStatus:''
-      },
-      {
-        schoolYear:'',
-        Employers:'',
-        JobTitle:'',
-        JobNature:'',
-        JobType:'',
-        applicantsPeople:'',
-        applicantsTime:'',
-        ApplicationStatus:''
-      }
-      ],
-      ifShow:'true',
-      jobId:'',
       jobName:'',
+      jobId:'',
+      EndWorkList:[
+        {prop:'jobTime',label:'工作时间'},
+        {prop:'employUnit',label:'招聘人数'},
+        {prop:'jobName',label:'工作名称'},
+        {prop:'jobNature',label:'工作性质'},
+        {prop:'jobType',label:'职位类型'},
+        {prop:'applicationNumber',label:'申请人'},
+        {prop:'createTime',label:'开始时间'},
+        {prop:'applicationStatus',label:'审核状态'},
+      ],
 
     }
   },
@@ -295,19 +116,23 @@ export default {
       }
     },
     AddCount(){
+      // 用来统计是否点击到了内容
       this.numberCount++
-      console.log(this.numberCount)
     },
     cancel() {
       this.classJob = ''
       this.dialogVisible = false
     },
     async handleApply(){
+      this.selectedRow = this.$refs.table.selection;
+      console.log(this.selectedRow)
+      this.jobId = this.selectedRow.id
       const res = await getJobApplication(this.jobId,this.jobName)
+      console.log(res)
       if(res.role === 2){
         // 弹出提示表示申请成功 等待审核
         this.$message({
-          message: '申请成功',
+          message: '申请成功,等待管理员审核',
           type: 'success'
         })
         // 关闭弹窗
@@ -316,6 +141,14 @@ export default {
         this.jobName = ''
       }
     }
+  },
+  mounted() {
+    this.$store.dispatch('WorkAssistance/AllPositions')
+  },
+  computed:{
+    ...mapState({
+      columns: state => state.WorkAssistance.workList
+    })
   },
 
 
@@ -362,5 +195,22 @@ export default {
     border: none;
   }
 }
+.footer{
+  display: flex;
+  justify-content: space-between;
+  background-color: #f5f5f7;
+  height: 50px;
+  line-height: 50px;
+  .footer_left{
+    margin-left: 20px;
+  }
+  .red {
+    color: red;
+  }
+  .footer_right{
+    margin-top: 10px;
+    display: flex;
 
+  }
+}
 </style>

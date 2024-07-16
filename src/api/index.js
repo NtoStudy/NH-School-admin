@@ -86,13 +86,12 @@ export const getApplyingScholarships = () => request.post(
 // 勤工俭学
 
 // 查询工作信息
-export const getWorkInformation = (page, pageSize, key) => request({
+export const getWorkInformation = (page, pageSize) => request({
   url:'/student/jobInformation',
   method:'POST',
   data:{
     page: page,
     pageSize: pageSize,
-    key: key
   }
 })
 
@@ -105,11 +104,11 @@ export const getJobApplication = (jobId,jobName) => request({
     jobName: jobName
   }
 })
-
 // 查询已完成工作
-export const getCompletedWork = () => request({url:'/student/jobApplication'})
-
-
+export const getCompletedWork = () => request({
+  url:'/student/jobApplication',
+  method: 'GET',
+})
 
 // 班委申请
 

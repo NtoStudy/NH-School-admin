@@ -33,6 +33,7 @@
               border
               height="420"
               @current-change="handleCurrentChange"
+              ref="table"
               style="width: 100%">
               <template>
                 <el-table-column
@@ -202,7 +203,7 @@
           <el-form-item label="开设状态" :label-width="formLabelWidth">
             <el-input v-model="formChange.applicationStatus" autocomplete="off"></el-input>
           </el-form-item>
-          <el-form-item label="薪资状况" :label-width="formLabelWidth">arn
+          <el-form-item label="薪资状况" :label-width="formLabelWidth">
             <el-input v-model="formChange.poorStu" autocomplete="off"></el-input>
           </el-form-item>
           <el-form-item label="可申请人数" :label-width="formLabelWidth">
@@ -313,6 +314,8 @@ export default {
     },
     //拿到当前点击行的数据
     handleCurrentChange(currentRow) {
+      this.selectedRow = this.$refs.table.selection;
+      console.log(this.selectedRow)
       this.deleteId = currentRow.id
       const {
         applicationNumber,

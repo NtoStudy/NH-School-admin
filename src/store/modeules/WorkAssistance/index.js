@@ -27,10 +27,13 @@ const actions = {
   // 查询工作信息
  async AllPositions({commit}, data){
    // console.log(data)
-   const res = await getWorkInformation(data)
+   const res = await getWorkInformation(1,10)
+   if(res.role === 2){
+     commit('GETWORKINFORMATION',res.data.records)
+   }
    // console.log(res)
    // console.log(res.data)
-   commit('GETWORKINFORMATION',res.data)
+
  },
 
  // 查询已经完成的工作信息
