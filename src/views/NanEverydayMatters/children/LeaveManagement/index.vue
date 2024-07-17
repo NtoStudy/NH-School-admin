@@ -130,8 +130,6 @@ export default {
         this.stayEnd = ''
         return
       }
-
-
       const res = await getLeaveApplication(
         this.excuseDays
         ,this.excuseType
@@ -160,6 +158,13 @@ export default {
           type: 'success'
         })
         await this.$store.dispatch('LeaveManagement')
+        // 清空输入框
+        this.excuseDays = ''
+        this.excuseType = ''
+        this.excuseBegin = ''
+        this.excuseEnd = ''
+        this.excuseReason = ''
+
       }
       else{
         this.$message({

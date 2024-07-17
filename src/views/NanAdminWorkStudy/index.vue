@@ -24,15 +24,14 @@
           <div class="right">
             <el-button type="primary" size="small" icon="el-icon-edit" @click="dialogVisiblePut = true">发布勤工助学</el-button>
             <el-button type="primary" size="small" icon="el-icon-info" @click="dialogVisibleExamine = true">审核勤工助学</el-button>
-            <el-button type="primary" size="small" icon="el-icon-s-promotion" @click="dialogVisibleChange = true">修改勤工助学</el-button>
-            <el-button type="primary" size="small" icon="el-icon-delete" @click="dialogVisibleDelete = true">删除勤工助学</el-button>
+            <el-button type="primary" size="small" icon="el-icon-s-promotion" @click="ChangeCase">修改勤工助学</el-button>
+            <el-button type="primary" size="small" icon="el-icon-delete" @click="DeleteCase">删除勤工助学</el-button>
             <AdminButton></AdminButton>
             <el-table
               :row-style="{ height: '40px' }"
               :data="columns"
               border
               height="420"
-              @current-change="handleCurrentChange"
               ref="table"
               style="width: 100%">
               <template>
@@ -313,41 +312,10 @@ export default {
       }
     },
     //拿到当前点击行的数据
-    handleCurrentChange(currentRow) {
-      this.selectedRow = this.$refs.table.selection;
-      console.log(this.selectedRow)
-      this.deleteId = currentRow.id
-      const {
-        applicationNumber,
-        applicationStatus,
-        employUnit,
-        id,
-        jobName,
-        jobNature,
-        jobTime,
-        jobType,
-        needNumber,
-        poorStu,
-        workingNumber
-      } = currentRow
-      this.formChange = {
-        id: id,
-        workingNumber: workingNumber,
-        applicationStatus: applicationStatus,
-        poorStu: poorStu,
-        applicationNumber: applicationNumber,
-        employUnit: employUnit,
-        jobNature: jobNature,
-        needNumber: needNumber,
-        jobTime: jobTime,
-        jobType: jobType,
-        jobName: jobName,
-      }
-
-    },
     // 新增勤工助学
     async AddInfo(){
       // 将表单中form的数据传给后台
+      console.log(this.form)
       const res = await getAdminPublishWork(this.form)
       if(res.role === 1){
         this.$message({
@@ -375,23 +343,16 @@ export default {
     },
 
     // 修改勤工助学
+    ChangeCase(){
+      this.dialogVisibleChange = true
+      this.selectedRow = this.$refs.table.selection;
+      this.formChange = this.selectedRow[0]
+    },
+
+    // 修改勤工助学
     async ChangeInfo(){
-      // 将表单中form的数据传给后台
-      const data = {
-        id:this.formChange.id,
-        workingNumber:this.formChange.workingNumber,
-        applicationStatus :this.formChange.applicationStatus,
-        poorStu: this.formChange.poorStu,
-        applicationNumber: this.formChange.applicationNumber,
-        employUnit: this.formChange.employUnit,
-        jobNature: this.formChange.jobNature,
-        needNumber: this.formChange.needNumber,
-        jobType: this.formChange.jobType,
-        jobTime: this.formChange.jobTime,
-        jobName: this.formChange.jobName
-      }
-      console.log(data)
-      const res = await getAdminModifyWork(data)
+      console.log(this.formChange)
+      const res = await getAdminModifyWork(this.formChange)
       console.log(res)
       if(res.role === 1){
         this.$message({
@@ -403,6 +364,13 @@ export default {
         // 重新渲染页面数据
         await this.GetData()
       }
+    },
+
+    // 删除勤工助学
+    DeleteCase(){
+      this.dialogVisibleDelete = true
+      this.selectedRow = this.$refs.table.selection;
+      this.deleteId = this.selectedRow[0].id
     },
 
     // 删除勤工助学

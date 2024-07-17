@@ -33,12 +33,20 @@
               border
               height="420"
               style="width: 100%">
+
+<!--              这里是选择按钮-->
+              <el-table-column
+                type="selection"
+                width="60">
+              </el-table-column>
+
+
               <el-table-column
                 v-for="item in monitorList"
                 :key="item.id"
                 :prop="item.prop"
                 :label="item.label"
-                width="180">
+                width="200">
               </el-table-column>
 
             </el-table>
@@ -107,7 +115,6 @@ export default {
         { prop:'classJob', label:'职位'},
         { prop:'applicationTime', label:'申请时间'},
         { prop:'status', label:'审核状态'},
-        { prop:'classId', label:'班级'},
       ]
     }
   },
@@ -122,7 +129,6 @@ export default {
         const newData = {
           classJob:this.classJob,
           applicationTime:'202011',
-          classId:'23020',
           status:'等待审核'
         }
         this.monitorList.push(newData)

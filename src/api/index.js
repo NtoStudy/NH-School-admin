@@ -291,6 +291,16 @@ export const getAdminQueryMonitor = () => request({
   url:'adminCommon/classInformationAll',
   method:'GET',
 })
+// 审核班委信息
+export const getAdminReviewMonitor = (id,result) => request({
+  url:'counsellor/examineClassJob',
+  method:'POST',
+  params:{
+    id: id,
+    result: result,
+  }
+})
+
 
 // 查询处分解除申请
 export const getAdminQueryViolation = () => request({

@@ -33,18 +33,18 @@
   </el-table>
 
 
-    <el-dialog :visible.sync="dialogVisible">
-      <template #title>
-        <h3>请如实填写你的信息</h3>
-      </template>
-      <template #default>
-        <el-input placeholder="请输入你的姓名" v-model="jobName"></el-input>
-      </template>
-      <template #footer>
-        <el-button round size="small" @click="cancel">取消</el-button>
-        <el-button round size="small" @click="handleApply">确定</el-button>
-      </template>
+    <el-dialog
+      title="提示"
+      :visible.sync="dialogVisible"
+      width="30%"
+      :before-close="handleClose">
+      <span>确定要申请以下岗位吗</span>
+      <span slot="footer" class="dialog-footer">
+    <el-button @click="dialogVisible = false">取 消</el-button>
+    <el-button type="primary" @click="handleApply">确 定</el-button>
+  </span>
     </el-dialog>
+
     <div class="footer">
       <div class="footer_left">
         <span> 第 1 /</span>
@@ -119,14 +119,12 @@ export default {
       // 用来统计是否点击到了内容
       this.numberCount++
     },
-    cancel() {
-      this.classJob = ''
-      this.dialogVisible = false
-    },
     async handleApply(){
       this.selectedRow = this.$refs.table.selection;
       console.log(this.selectedRow)
-      this.jobId = this.selectedRow.id
+      this.jobId = this.selectedRow[0].id
+      this.jobName = this.selectedRow[0].jobName
+      console.log(this.jobId,this.jobName)
       const res = await getJobApplication(this.jobId,this.jobName)
       console.log(res)
       if(res.role === 2){
@@ -140,6 +138,13 @@ export default {
         this.jobId = ''
         this.jobName = ''
       }
+    },
+    handleClose(done) {
+      this.$confirm('确认关闭？')
+        .then(_ => {
+          done();
+        })
+        .catch(_ => {});
     }
   },
   mounted() {

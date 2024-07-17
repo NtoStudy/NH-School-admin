@@ -90,9 +90,9 @@ export default {
       stayEnd:'',
       StayCampusList:[
         { prop: "stayBegin", label: "开始时间" },
-        { prop: "classInfo" , label:"班级" },
-        { prop: "applicationTime", label: "申请时间" },
         { prop: "stayEnd" ,label:"截止时间"},
+        { prop: "applicationTime", label: "申请时间" },
+        { prop: "classInfo" , label:"班级" },
         { prop: "stuBasicId" ,label:"学号"},
         { prop: "nation" ,label:"申请地点"},
         { prop: "gender" , label:"性别" },
@@ -151,6 +151,9 @@ export default {
           type: 'success'
         })
        await this.$store.dispatch('StayCampus')
+        // 清空输入框
+        this.stayBegin = ''
+        this.stayEnd = ''
       }
       else{
         this.$message({

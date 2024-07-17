@@ -90,7 +90,6 @@ export default {
         { prop:'complaintReason', label:'投诉原因'},
         { prop:'complaintReply', label:'回复'},
         { prop:'complaintTime', label:'投诉时间',},
-        { prop:'replyUser', label:'负责人'},
       ]
     }
   },
@@ -116,9 +115,8 @@ export default {
         const newData = {
           complaintTarget: this.complaintTarget,
           complaintReason:this.complaintReason,
-          complaintReply:'Ut nisi anim',
+          complaintReply:'暂未回复',
           complaintTime:'202011',
-          replyUser:'辅导员'
         }
         this.complainList.push(newData)
         this.dialogVisible = false

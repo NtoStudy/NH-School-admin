@@ -22,7 +22,7 @@
 
         <el-col :span="15">
           <div class="right">
-            <el-button type="primary" size="small" icon="el-icon-edit">班委信息处理</el-button>
+            <el-button type="primary" size="small" icon="el-icon-edit" @click="dialogVisible = true">班委信息处理</el-button>
             <el-button type="primary" size="small" icon="el-icon-info">删除</el-button>
             <el-button type="primary" size="small" icon="el-icon-s-promotion">撤销</el-button>
             <AdminButton></AdminButton>
@@ -31,6 +31,7 @@
               :data="columns"
               border
               height="420"
+              ref="table"
               style="width: 100%">
               <template>
                 <el-table-column
@@ -38,36 +39,30 @@
                   type="selection"
                 >
                 </el-table-column>
-
                 <el-table-column
-                  prop="stuId"
-                  label="学号"
+                  prop="id"
+                  label="系列号"
                   width="100">
                 </el-table-column>
-
                 <el-table-column
                   prop="classJob"
                   label="班委职位"
                   width="160">
                 </el-table-column>
-
                 <el-table-column
                   prop="applicationTime"
                   label="申请时间"
                   width="200">
                 </el-table-column>
-
-                <el-table-column
-                  prop="classId"
-                  label="班级号"
-                  width="160">
-                </el-table-column>
-
-
                 <el-table-column
                   prop="status"
                   label="审核状态"
                   width="120">
+                </el-table-column>
+                <el-table-column
+                  prop="classId"
+                  label="班级号"
+                  width="160">
                 </el-table-column>
 
               </template>
@@ -100,24 +95,70 @@
       </el-row>
 
     </div>
+
+    <el-dialog
+      title="提示"
+      :visible.sync="dialogVisible"
+      width="30%"
+      :before-close="handleClose">
+      <span>确定同意当前勤工助学申请吗？</span>
+      <span slot="footer" class="dialog-footer">
+    <el-button @click="dialogVisible = false">取 消</el-button>
+    <el-button type="primary" @click="Examine">确 定</el-button>
+  </span>
+    </el-dialog>
   </div>
 </template>
 
 <script>
 import AdminButton from '@/components/AdminButton/index.vue'
 import { mapState } from 'vuex'
+import { getAdminReviewMonitor } from '@/api'
 
 export default {
   name:'NanAdminMonitor',
+  data(){
+    return{
+      dialogVisible:false,
+      id:'',
+      result:''
+    }
+  },
   components: { AdminButton },
   mounted() {
     this.$store.dispatch('AdminQueryMonitor')
+  },
+  methods:{
+    // 关闭弹窗
+    handleClose(done) {
+      this.$confirm('确认关闭？')
+        .then(_ => {
+          done();
+        })
+        .catch(_ => {
+        });
+    },
+    async Examine(){
+      this.selectedRow = this.$refs.table.selection;
+      this.id = this.selectedRow[0].id
+      this.result = this.selectedRow[0].status
+      const res = await getAdminReviewMonitor(this.id,this.result)
+      if(res.role === 1){
+        this.$message({
+          message: '已同意申请',
+          type: 'success',
+        })
+        // 关闭弹窗
+        this.dialogVisible = false
+      }
+
+    }
   },
   computed:{
     ...mapState({
       columns: state => state.adminMonitor.AdminQueryMonitorInfo
     })
-  }
+  },
 }
 </script>
 <style scoped lang="scss">

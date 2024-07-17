@@ -97,8 +97,6 @@ name:'ChangeApplication',
         {prop:'requestContext',label:'请求内容'},
         {prop:'requestTime',label:'请求时间'},
         {prop:'reply',label:'回复'},
-        {prop:'handleResult',label:'处理结果'},
-        {prop:'handleTime',label:'处理时间'},
       ]
     }
   },
